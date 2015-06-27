@@ -36,7 +36,6 @@ function PopupPageNode(model, scene, topScene, injections) {
     this.model = model;
     this.scene = scene;
     this.topScene = topScene;
-    this.timePassed = 0;
     this.previousTime = 0;
     this.injections = injections;
 
@@ -61,7 +60,7 @@ function PopupPageNode(model, scene, topScene, injections) {
         }
         if (model.camera.perspectiveZoom){
             var timeOffset = parseFloat(model.camera.timeOffset);
-            var perspective = model.page.perspective - self.perspectiveFunction((self.timePassed+timeOffset)/self.perspectiveZoomSpeed, self.perspectiveZoomAmount);
+            var perspective = model.page.perspective - self.perspectiveFunction((self.injections.timeKeeper.timePassed+timeOffset)/self.perspectiveZoomSpeed, self.perspectiveZoomAmount);
             self.camera.setDepth(perspective);
         }
         self.requestUpdate(this.id);
