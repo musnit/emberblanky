@@ -5,6 +5,7 @@ import BlankyApp from 'emberblanky/utils/blanky-app';
 export default Ember.Component.extend({
   paused: false,
   pageTime: 0,
+  hiddenOverflow: false,
   intialPageID: 'UHGPYzstxO',
   updateTime: function(){
     this.get('blanky').setTime(this.get('pageTime'));
