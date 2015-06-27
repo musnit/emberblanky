@@ -18,6 +18,10 @@ export default Ember.Component.extend({
     var nodes = this.get('currentPage.popups')
     return nodes.concat(this.get('currentPage.camera'));
   }.property('currentPage,currentPage.popups,currentPage.popups.[]'),
+  soundsToEdit: function(){
+    var sounds = this.get('currentPage.sounds')
+    return sounds;
+  }.property('currentPage.sounds,currentPage.sounds.[]'),
   currentPage: function(){
     if (this.get('blanky')){
       this.get('blanky').clearPage();
@@ -63,11 +67,15 @@ export default Ember.Component.extend({
         this.set('currentNodeName', 'camera');
       }
     },
-    addSound: function(){
-
+    addNewSound: function(){
+        this.set('currentPage.sounds', this.get('currentPage.sounds') || []);
+        this.get('currentPage.sounds').push({name: '', url:''});
+        this.notifyPropertyChange('soundsToEdit');
     },
-    removeSound: function(){
-
+    removeSound: function(sound){
+        var index = this.get('currentPage.sounds').indexOf(sound);
+        this.get('currentPage.sounds').splice(index, 1);
+        this.notifyPropertyChange('soundsToEdit');
     }
   }
 });

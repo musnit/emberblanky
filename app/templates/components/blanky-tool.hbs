@@ -67,16 +67,16 @@
                     name, src, loop, volume
                 </td>
             </tr>
-            {{#each page.sounds key="name" as |sound|}}
+            {{#each soundsToEdit key="name" as |sound|}}
                 <tr>
                     <td>
-                        {{input value=sound.name type="text"}}{{input value=sound.src type="text"}}{{input value=sound.loop type="number"}}{{input value=sound.volume type="number"}}<button onclick="window.saver.deleteSound(sound)">delete</button>
+                        {{input value=sound.name type="text"}}{{input value=sound.src type="text"}}{{input value=sound.loop type="number"}}{{input value=sound.volume type="number"}}<button {{action 'removeSound' sound}}>delete</button>
                     </td>
                 </tr>
             {{/each}}
             <tr>
                 <td>
-                <button onclick="window.saver.addSound()">Add new Sound</button>
+                <button {{action 'addNewSound'}}>Add new Sound</button>
                 </td>
             </tr>
             <tr>
