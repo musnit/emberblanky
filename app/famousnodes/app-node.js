@@ -14,8 +14,8 @@ function AppNode(scene, topScene) {
 
 AppNode.prototype = Object.create(Node.prototype);
 AppNode.prototype.constructor = AppNode;
-AppNode.prototype.createAndShowPage = function(pageJSON) {
-    this.contentNode = new PopupPageNode(pageJSON, this.scene, this.topScene);
+AppNode.prototype.createAndShowPage = function(pageJSON, injections) {
+    this.contentNode = new PopupPageNode(pageJSON, this.scene, this.topScene, injections);
     this.pagerNode.showPage(this.contentNode);
 };
 AppNode.prototype.clearPage = function() {

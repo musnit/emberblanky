@@ -61,11 +61,11 @@ function _createPopup() {
     this.requestUpdate(this.refresherComponentID);
 }
 
-function PopupNode(config, model, timeKeeper) {
+function PopupNode(config, model, injections) {
     Node.apply(this, arguments);
     this.config = config;
     this.model = model;
-    this.timeKeeper = timeKeeper;
+    this.timeKeeper = injections.timeKeeper;
     _createPopup.call(this);
     this.contentInserted = function() {
       this.domElement.contentInserted();

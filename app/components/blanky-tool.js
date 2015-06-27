@@ -3,7 +3,12 @@ import Ember from 'ember';
 import BlankyApp from 'emberblanky/utils/blanky-app';
 
 export default Ember.Component.extend({
+  paused: false,
+  pageTime: 0,
   intialPageID: 'UHGPYzstxO',
+  updateTime: function(){
+    this.get('blanky').setTime(this.get('pageTime'));
+  }.observes('pageTime'),
   setInitialStuff: function(){
     this.set('currentPageID', this.get('intialPageID'));
     this.set('currentNodeName', 'george');
@@ -26,6 +31,17 @@ export default Ember.Component.extend({
   }.on('didInsertElement'),
   actions:
   {
-
+    pausePlay: function(){
+      if (this.get('paused')){
+        this.get('blanky').playPage();
+      }
+      else{
+        this.get('blanky').pausePage();
+      }
+      this.toggleProperty('paused');
+    },
+    setTime: function(time){
+      this.get('blanky').setTime(time);
+    }
   }
 });

@@ -12,31 +12,10 @@ export default Ember.Controller.extend({
     Parse.initialize('U0A3f3L3EHbQpF8Oig2zhlOasUF6PhJkTOQOvjoH', 'aNTIn2zXGxzAEl8BLOnHzuWvaOYySN5QqHPLgA1X');
     var Page = Parse.Object.extend('Page');
 
-    var publisher;
-
-    rivets.binders.input = {
-        publishes: true,
-        routine: rivets.binders.value.routine,
-        bind: function(el) {
-            var self = this;
-            publisher = function() {
-                self.publish();
-                self.model.configChanged = true;
-            };
-            el.addEventListener('input', publisher);
-        },
-        unbind: function(el) {
-            el.removeEventListener('input', publisher);
-        }
-    };
-
     var PageCollection = Parse.Collection.extend({
       model: Page
     });
     var pageCollection = new PageCollection();
-    pageCollection.comparator = function(object) {
-      return object.get('page').name;
-    };
     var self = this;
     pageCollection.fetch({
       success: function(pages) {
@@ -55,21 +34,6 @@ export default Ember.Controller.extend({
         alert('error with fetching' + collection + ': ' + error);
       }
     });
-
-    this.clearPage = function() {
-        blanky.clearPage();
-    };
-
-    this.loadPage = function(pageID) {
-            blanky.loadPage(pageID);
-            window.saver.currentPageID = pageID;
-            window.pagesModel.editPage = [window.pageModel];
-
-            window.saver.model = window.pageModel;
-            window.saver.Page = Page;
-
-            window.pageModel.editPopup = [window.pageModel.camera];
-    };
 
     var saver = {};
     saver.saveToParse = function() {
@@ -152,38 +116,6 @@ export default Ember.Controller.extend({
         });
     };
     window.saver = saver;
-
-    var pageChanger = {};
-    pageChanger.main = this;
-    pageChanger.changePage = function() {
-        var pageID = document.getElementById('page-chooser').value;
-        this.main.clearPage();
-        this.main.loadPage(pageID);
-    };
-    window.pageChanger = pageChanger;
-
-    var timeController = {};
-    timeController.main = this;
-    timeController.pause = function() {
-        var pauseButton = document.getElementById('pause-button');
-        pauseButton.onclick = function onclick() {
-          window.timeController.play();
-        };
-        pauseButton.textContent = 'Play';
-        window.timeKeeper.pause();
-    };
-    timeController.update = function(newTime) {
-        window.timeKeeper.setTime(newTime);
-    };
-    timeController.play = function() {
-        var pauseButton = document.getElementById('pause-button');
-        pauseButton.onclick = function onclick() {
-          window.timeController.pause();
-        };
-        pauseButton.textContent = 'Pause';
-        window.timeKeeper.play();
-    };
-    window.timeController = timeController;
 
     var editChanger = {};
     editChanger.main = this;

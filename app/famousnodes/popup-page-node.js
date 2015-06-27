@@ -17,19 +17,19 @@ function _createPage() {
     this.cameraBoundRoot = this.topSceneRoot.addChild();
     this.popups.forEach(function(popup) {
         if (popup.cameraBound){
-            popupNode = new PopupNode(popup, self.model, self);
+            popupNode = new PopupNode(popup, self.model, self.injections);
             self.cameraBoundNodes.push(popupNode);
             self.cameraBoundRoot.addChild(popupNode);
         }
         else {
-            popupNode = new PopupNode(popup, self.model, self);
+            popupNode = new PopupNode(popup, self.model, self.injections);
             self.popupNodes.push(popupNode);
             self.addChild(popupNode);
         }
     });
 }
 
-function PopupPageNode(model, scene, topScene) {
+function PopupPageNode(model, scene, topScene, injections) {
     var self = this;
     Node.apply(this, arguments);
     this.popups = model.popups;
@@ -38,25 +38,21 @@ function PopupPageNode(model, scene, topScene) {
     this.topScene = topScene;
     this.timePassed = 0;
     this.previousTime = 0;
+    this.injections = injections;
 
-    window.timeKeeper = this;
-    window.orientationController.setTimeKeeper(this);
+    window.orientationController.setTimeKeeper(injections.timeKeeper);
 
     _createPage.call(this);
     this.camera = new Camera(scene);
 
     this.parsedConfig = ConfigParser.prototype.parseConfig(model.camera, model);
-    this.transformer = new ParameterTransformer(this.parsedConfig, model, this);
+    this.transformer = new ParameterTransformer(this.parsedConfig, model, injections.timeKeeper);
 
     this.setupInitialState();
 
     this.updaterComponent = {
       onUpdate: function(time) {
-        if (!self.paused){
-          var timeDiff = time - self.previousTime;
-          self.timePassed = self.timePassed + timeDiff;
-        }
-        self.previousTime = time;
+        self.injections.timeKeeper.update(time);
         if (model.camera.configChanged){
             self.parsedConfig = ConfigParser.prototype.parseConfig(model.camera, model);
             self.setupInitialState();
@@ -124,24 +120,6 @@ PopupPageNode.prototype.contentInserted = function() {
 PopupPageNode.prototype.dismount = function() {
   this.cameraBoundRoot.dismount();
   Node.prototype.dismount.apply(this, arguments);
-};
-
-PopupPageNode.prototype.start = function() {
-  this.initialTime = Date.now();
-  this.currentTime = 0;
-  this.lastTime = 0;
-};
-
-PopupPageNode.prototype.pause = function() {
-  this.paused = true;
-};
-
-PopupPageNode.prototype.play = function() {
-  this.paused = false;
-};
-
-PopupPageNode.prototype.setTime = function(time) {
-  this.timePassed = parseFloat(time);
 };
 
 export default PopupPageNode;
