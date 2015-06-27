@@ -47,16 +47,6 @@ export default Ember.Controller.extend({
           }
         });
     };
-    saver.addNewPopup = function() {
-        var defaultPopup = {'accel':false,'accelAmount':'1','height':'1','initialX':'0','initialY':'0','name':'new','rotateAngle':'100','rotateSpeed':'2000','scale':'1','scaleX':'1','scaleY':'1','timeOffset':'0','timer':{'initialTime':1419434956210},'translate':false,'translateX':'0','translateXSpeed':'1000','translateY':'0','translateYSpeed':'1000','url':'','xyRatio':'1','zoomAmount':'0','zoomSpeed':'2000'};
-        this.model.popups.push(defaultPopup);
-    };
-    saver.removePopup = function() {
-        var editPopup = this.model.editPopup[0];
-        var index = this.model.popups.indexOf(editPopup);
-        this.model.popups.splice(index, 1);
-        window.editChanger.changeEditing();
-    };
     saver.addFrame = function() {
         var editPopup = this.model.editPopup[0];
         editPopup.frames = editPopup.frames || [];

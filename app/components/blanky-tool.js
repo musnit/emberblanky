@@ -53,7 +53,15 @@ export default Ember.Component.extend({
       this.notifyPropertyChange('nodesToEdit');
     },
     removeCurrentPopup: function(){
-
+      if(this.get('currentNode.name') === 'camera'){
+        alert('cannot remove camera!');
+      }
+      else{
+        var index = this.get('currentPage.popups').indexOf(this.get('currentNode'));
+        this.get('currentPage.popups').splice(index, 1);
+        this.notifyPropertyChange('nodesToEdit');
+        this.set('currentNodeName', 'camera');
+      }
     },
     addSound: function(){
 
