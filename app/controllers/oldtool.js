@@ -1,15 +1,5 @@
-import Ember from 'ember';
-//import Famous from 'npm:famous';
-//import Fixtures from 'bookanimation';
-import BlankyApp from 'BlankyApp';
-import Parse from 'Parse';
-import rivets from 'rivets';
 
-export default Ember.Controller.extend({
-  start: function(){
-    var blanky = new BlankyApp();
-
-    Parse.initialize('U0A3f3L3EHbQpF8Oig2zhlOasUF6PhJkTOQOvjoH', 'aNTIn2zXGxzAEl8BLOnHzuWvaOYySN5QqHPLgA1X');
+    Parse.initialize('jMRxP9yPhtv1P9g3oPtrKYhIgwkhZAgD7XPRBwwp', 'WIkGloO6EWK8WakPrFnLpajSvM1kAzsOgB4bPbl4');
     var Page = Parse.Object.extend('Page');
 
     var PageCollection = Parse.Collection.extend({
@@ -47,28 +37,6 @@ export default Ember.Controller.extend({
           }
         });
     };
-    saver.addFrame = function() {
-        var editPopup = this.model.editPopup[0];
-        editPopup.frames = editPopup.frames || [];
-        editPopup.frames.push({url:''});
-    };
-    saver.deleteFrame = function(frame) {
-        var editPopup = this.model.editPopup[0];
-        var frameTDs = frame.parentElement.parentElement.children;
-        var frameTDsArray = [].slice.call(frameTDs);
-        var clickedIndex = frameTDsArray.indexOf(frame.parentElement) - 1;
-        editPopup.frames.splice(clickedIndex, 1);
-    };
-    saver.addSound = function() {
-        this.model.sounds = this.model.sounds || [];
-        this.model.sounds.push({name: '', url:''});
-    };
-    saver.deleteSound = function(sound) {
-        var soundTDs = sound.parentElement.parentElement.children;
-        var soundTDsArray = [].slice.call(soundTDs);
-        var clickedIndex = soundTDsArray.indexOf(sound.parentElement) - 1;
-        this.model.sounds.splice(clickedIndex, 1);
-    };
     saver.dupePage = function() {
         var page = new this.Page();
         page.set('name', 'dup of ' + this.model.name);
@@ -105,7 +73,3 @@ export default Ember.Controller.extend({
           }
         });
     };
-    window.saver = saver;
-
-  }.on('init')
-});

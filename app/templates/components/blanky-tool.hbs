@@ -67,7 +67,7 @@
                     name, src, loop, volume
                 </td>
             </tr>
-            {{#each soundsToEdit key="name" as |sound|}}
+            {{#each soundsToEdit key="@guid" as |sound|}}
                 <tr>
                     <td>
                         {{input value=sound.name type="text"}}{{input value=sound.src type="text"}}{{input value=sound.loop type="number"}}{{input value=sound.volume type="number"}}<button {{action 'removeSound' sound}}>delete</button>
