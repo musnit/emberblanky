@@ -2,7 +2,6 @@ import Ember from 'ember';
 import Resolver from 'ember/resolver';
 import loadInitializers from 'ember/load-initializers';
 import config from './config/environment';
-import Famous from "npm:famous";
 
 var App;
 

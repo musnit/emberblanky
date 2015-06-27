@@ -1,4 +1,4 @@
-import Famous from "npm:famous";
+//import Famous from "npm:famous";
 
 var Fixtures = require('Fixtures');
 window.Fixtures = Fixtures;

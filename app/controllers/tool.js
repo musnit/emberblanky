@@ -1,16 +1,16 @@
-/* globals define */
-define(function(require, exports, module) {
-    'use strict';
+import Ember from 'ember';
+//import Famous from 'npm:famous';
+//import Fixtures from 'bookanimation';
+import BlankyApp from 'BlankyApp';
+import Parse from 'Parse';
+import rivets from 'rivets';
 
-    var BlankyApp = require('BlankyApp');
+export default Ember.Controller.extend({
+  start: function(){
     var blanky = new BlankyApp();
-
-    // import dependencies
-    var Parse = require('parse');
 
     Parse.initialize('U0A3f3L3EHbQpF8Oig2zhlOasUF6PhJkTOQOvjoH', 'aNTIn2zXGxzAEl8BLOnHzuWvaOYySN5QqHPLgA1X');
     var Page = Parse.Object.extend('Page');
-    var rivets = require('rivets');
 
     var publisher;
 
@@ -52,7 +52,7 @@ define(function(require, exports, module) {
         self.loadPage(window.initialPageId);
       },
       error: function(collection, error) {
-        alert('error with fetching page list');
+        alert('error with fetching' + collection + ': ' + error);
       }
     });
 
@@ -166,7 +166,7 @@ define(function(require, exports, module) {
     timeController.main = this;
     timeController.pause = function() {
         var pauseButton = document.getElementById('pause-button');
-        pauseButton.onclick = function onclick(event) {
+        pauseButton.onclick = function onclick() {
           window.timeController.play();
         };
         pauseButton.textContent = 'Play';
@@ -177,7 +177,7 @@ define(function(require, exports, module) {
     };
     timeController.play = function() {
         var pauseButton = document.getElementById('pause-button');
-        pauseButton.onclick = function onclick(event) {
+        pauseButton.onclick = function onclick() {
           window.timeController.pause();
         };
         pauseButton.textContent = 'Pause';
@@ -211,4 +211,5 @@ define(function(require, exports, module) {
     };
     rivets.bind(document.getElementById('globals-section'), globalConfig);
     rivets.bind(document.getElementById('device-area'), globalConfig);
+  }.on('init')
 });

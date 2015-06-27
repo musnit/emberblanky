@@ -1,5 +1,4 @@
 /* global require, module */
-
 var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 var app = new EmberApp();
@@ -15,6 +14,9 @@ var app = new EmberApp();
 // If the library that you are including contains AMD or ES6
 // modules that you would like to import into your application
 // please specify an object with the list of modules as keys
-// along with the exports of each module as its value.
+// along with the exports of each module as its value.;
+app.import('vendor/soundjs-0.6.0.min.js');
+app.import('vendor/parse-1.3.2.min.js');
+app.import('vendor/stats.min.js');
 
 module.exports = app.toTree();

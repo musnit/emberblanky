@@ -21,6 +21,8 @@
   "devDependencies": {
     "broccoli": "^0.16.3",
     "broccoli-asset-rev": "^2.0.2",
+    "broccoli-es6modules": "^1.0.0",
+    "broccoli-merge-trees": "^0.2.1",
     "broccoli-uglify-js": "^0.1.3",
     "ember-browserify": "^1.0.1",
     "ember-cli": "0.2.7",
