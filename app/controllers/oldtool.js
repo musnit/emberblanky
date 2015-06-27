@@ -117,31 +117,5 @@ export default Ember.Controller.extend({
     };
     window.saver = saver;
 
-    var editChanger = {};
-    editChanger.main = this;
-    editChanger.changeEditing = function() {
-        var itemID = document.querySelector('input[name="edit-chooser"]:checked').value;
-        if (itemID !== 'camera'){
-            var editPopup = window.pageModel.popups.filter(function(popup) {
-                if (popup.name === itemID){
-                    return true;
-                }
-                else {
-                    return false;
-                }
-            });
-            window.pageModel.editPopup = editPopup;
-        }
-        else {
-            window.pageModel.editPopup = [window.pageModel.camera];
-        }
-    };
-    window.editChanger = editChanger;
-
-    var globalConfig = {
-        hideOverflow: false
-    };
-    rivets.bind(document.getElementById('globals-section'), globalConfig);
-    rivets.bind(document.getElementById('device-area'), globalConfig);
   }.on('init')
 });

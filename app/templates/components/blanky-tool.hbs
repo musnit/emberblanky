@@ -96,14 +96,14 @@
                 <td>
                     Change item to edit?:
                     {{view 'select'
-                        content=nodesToEdit
+                        contentBinding=nodesToEdit
                         optionValuePath='content.name'
                         optionLabelPath='content.name'
-                        value=currentNodeName}}
+                        valueBinding=currentNodeName}}
                 </td>
                 </tr>
                 <tr>
-                    <button onclick="window.saver.addNewPopup()">Add new popup</button><br/>
+                    <button {{action 'addNewPopup'}}>Add new popup</button><br/>
                 </tr>
             {{#with currentNode as |node|}}
             <tr>

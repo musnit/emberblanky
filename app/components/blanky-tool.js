@@ -16,9 +16,8 @@ export default Ember.Component.extend({
   }.on('init'),
   nodesToEdit: function(){
     var nodes = this.get('currentPage.popups')
-    nodes.push(this.get('currentPage.camera'));
-    return nodes;
-  }.property('currentPage'),
+    return nodes.concat(this.get('currentPage.camera'));
+  }.property('currentPage,currentPage.popups,currentPage.popups.[]'),
   currentPage: function(){
     if (this.get('blanky')){
       this.get('blanky').clearPage();
@@ -27,7 +26,7 @@ export default Ember.Component.extend({
     return this.get('pages').filterBy('objectId', this.get('currentPageID'))[0];
   }.property('currentPageID'),
   currentNode: function(){
-    var node = this.get('currentPage.popups').filterBy('name', this.get('currentNodeName'))[0];
+    var node = this.get('nodesToEdit').filterBy('name', this.get('currentNodeName'))[0];
     return node;
   }.property('currentNodeName,currentPage'),
   start: function(){
@@ -46,6 +45,21 @@ export default Ember.Component.extend({
     },
     setTime: function(time){
       this.get('blanky').setTime(time);
+    },
+    addNewPopup: function(){
+      var defaultPopup = {'accel':false,'accelAmount':'1','height':'1','initialX':'0','initialY':'0','name':'new','rotateAngle':'100','rotateSpeed':'2000','scale':'1','scaleX':'1','scaleY':'1','timeOffset':'0','timer':{'initialTime':1419434956210},'translate':false,'translateX':'0','translateXSpeed':'1000','translateY':'0','translateYSpeed':'1000','url':'','xyRatio':'1','zoomAmount':'0','zoomSpeed':'2000'};
+      this.get('currentPage.popups').push(defaultPopup);
+      this.set('currentNodeName', 'new');
+      this.notifyPropertyChange('nodesToEdit');
+    },
+    removeCurrentPopup: function(){
+
+    },
+    addSound: function(){
+
+    },
+    removeSound: function(){
+
     }
   }
 });

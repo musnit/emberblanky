@@ -39,7 +39,6 @@ OrientationController.prototype.makeOrientationFunction = function(reading) {
         var fx = self.interpolate(x0, y0, x1, y1);
         return fx;
     });
-    window.watchh = functions;
     var orientationDifferenceAt = function(time){
         var orientation;
         if(time >= point2.timeStamp){

@@ -18,11 +18,9 @@ export default function BlankyApp(isApp, pagesModel, defaultPageID) {
   this.isApp = isApp;
   FamousEngine.init();
 
-  window.blanky = this;
-
   var mainScene = FamousEngine.createScene('#device-screen');
   var topScene = FamousEngine.createScene('#top-screen');
-  window.appNode = new AppNode(mainScene, topScene);
+  this.appNode = new AppNode(mainScene, topScene);
 
   window.orientationController = new OrientationController({timePassed: 0});
   window.orientationController.startListening(this);
@@ -32,7 +30,7 @@ export default function BlankyApp(isApp, pagesModel, defaultPageID) {
 }
 
 BlankyApp.prototype.clearPage = function() {
-    window.appNode.clearPage();
+    this.appNode.clearPage();
     this.soundController.clearSounds();
   };
 
@@ -40,9 +38,8 @@ BlankyApp.prototype.loadPage = function(pageID) {
     var pageModel = this.pagesModel.filter(function(page) {
         return page.objectId === pageID;
     })[0];
-    window.pageModel = pageModel;
-    window.appNode.createAndShowPage(pageModel, this.injections);
-    this.soundController.createSounds(window.pageModel.sounds);
+    this.appNode.createAndShowPage(pageModel, this.injections);
+    this.soundController.createSounds(pageModel.sounds);
 };
 
 BlankyApp.prototype.pausePage = function() {
