@@ -12,10 +12,13 @@ export default Ember.Component.extend({
   }.observes('pageTime'),
   setInitialStuff: function(){
     this.set('currentPageID', this.get('intialPageID'));
-    this.set('currentNodeName', 'george');
-    this.set('nodesToEdit', this.get('currentPage.popups'));
-    this.get('nodesToEdit').push(this.get('currentPage.camera'));
+    this.set('currentNodeName', 'camera');
   }.on('init'),
+  nodesToEdit: function(){
+    var nodes = this.get('currentPage.popups')
+    nodes.push(this.get('currentPage.camera'));
+    return nodes;
+  }.property('currentPage'),
   currentPage: function(){
     if (this.get('blanky')){
       this.get('blanky').clearPage();
@@ -26,7 +29,7 @@ export default Ember.Component.extend({
   currentNode: function(){
     var node = this.get('currentPage.popups').filterBy('name', this.get('currentNodeName'))[0];
     return node;
-  }.property('currentNodeName'),
+  }.property('currentNodeName,currentPage'),
   start: function(){
     this.set('blanky', new BlankyApp(false, this.get('pages'), this.get('intialPageID')));
   }.on('didInsertElement'),
