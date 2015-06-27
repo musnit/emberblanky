@@ -34,8 +34,9 @@ ParameterTransformer.prototype.calculateTransform = function() {
         changeZoom: 1,
         changeHeight: 0
     };
+    var self = this;
     this.parsedConfig.changingFunctions.forEach(function(changingFunction) {
-        characteristics[changingFunction.characteristic] += changingFunction.fn(this.timeKeeper.timePassed);
+        characteristics[changingFunction.characteristic] += changingFunction.fn(self.timeKeeper.timePassed);
     });
     var newTransformations = {
         rotate: [this.initialRotate[0] + characteristics.changeRotateX, this.initialRotate[1] + characteristics.changeRotateY, this.initialRotate[2] + characteristics.changeRotateZ],

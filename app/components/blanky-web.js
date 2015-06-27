@@ -3,7 +3,7 @@ import Ember from 'ember';
 import BlankyApp from 'emberblanky/utils/blanky-app';
 import Fixtures from 'emberblanky/utils/blanky-fixtures';
 
-export default Ember.Controller.extend({
+export default Ember.Component.extend({
   start: function(){
     window.Fixtures = Fixtures;
     var pagesModel = {};
@@ -12,6 +12,7 @@ export default Ember.Controller.extend({
     var loopingIDs = ['UHGPYzstxO','gBqF9PtfBm','w9zCNnEbfC','mt1s3uZ90p','rZ4dWe9BGU'];
     var loopNum = 1;
     var clicked = function(event) {
+        console.log('ey');
         var x = event.clientX;
         if (x < document.getElementById('device-screen').getBoundingClientRect().width/2){
             window.orientationController.reset();
