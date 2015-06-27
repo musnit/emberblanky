@@ -1,0 +1,296 @@
+<h3>Main controls</h3>
+<div id="globals-section">
+    Control Time: <button id='pause-button' onclick="window.timeController.pause()">Pause</button><input id='time-chooser' oninput="window.timeController.update(this.value)" type='range' min='0' max='113097' style="width:800px"><br/>
+    Hide Overflow?: <input checked="hiddenOverflow" type='checkbox'><br/>
+</div>
+<div id="editor-section">
+    Change page: <select id='page-chooser' onchange="window.pageChanger.changePage()">
+    {{#each pages key="objectId" as |page|}}
+        <option value="{{page.objectId}}">{{ page.page.name }} - {{ page.device }} - {{ page.name }} - {{ page.objectId }}</option>
+    {{/each}}
+    </select><br/>
+    <button onclick="window.saver.addNewPage()">Add new blank page</button><br/>
+    {{#with currentPage as |page|}}
+        <div id="edit-section">
+            <h3>Page controls -  {{page.objectId}}</h3>
+            <table>
+            <tr>
+                <td>
+                    Example name: <input value="{{page.name}}">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Page name: <input value="{{page.page.name}}">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Page X: <input value="{{page.page.x}}">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Page Y: <input value="{{page.page.y}}">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Page Speed: <input value="{{page.page.speed}}">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Page Perspective: <input value="{{page.page.perspective}}">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Page device: <input value="{{page.device}}">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Sounds:
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    name, src, loop, volume
+                </td>
+            </tr>
+            {{#each page.sounds key="name" as |sound|}}
+                <tr>
+                    <td>
+                        <input value='{{sound.name}}' type="text"><input value='{{sound.src}}' type="text"><input value='{{sound.loop}}' type="number"><input value='{{sound.volume}}' type="number"><button onclick="window.saver.deleteSound(sound)">delete</button>
+                    </td>
+                </tr>
+            {{/each}}
+            <tr>
+                <td>
+                <button onclick="window.saver.addSound()">Add new Sound</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button onclick="window.saver.saveToParse()">Save everything on page</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button onclick="window.saver.dupePage()">Duplicate this page</button><br/><br/>
+                </td>
+            </tr>
+            </table>
+            <h3>Popup controls</h3>
+            <table>
+                <tr>
+                <td>
+                    Change item to edit?:
+                    <form>
+                        {{#each nodesToEdit key="name" as |node|}}
+                            <input checked='{{currentNodeEditing.name}}' name='edit-chooser' value='{{node.name}}' onclick="window.editChanger.changeEditing()" type="radio"> {{node.name}}
+                        {{/each}}
+                    </form>
+                </td>
+                </tr>
+                <tr>
+                    <button onclick="window.saver.addNewPopup()">Add new popup</button><br/>
+                </tr>
+            {{#with currentNodeEditing as |node|}}
+            <tr>
+                <td>
+                    <table border=1>
+                        <tbody>
+                            <tr>
+                                <td>Name: <input value="{{node.name}}"></td>
+                                <td>Url: <input value="{{node.url}}"></td>
+                                <td>Depth: <input value="{{node.height}}" type='range' min='0' max='20'><input style="width:50px" value="{{node.height}}"></td>
+                                <td>Camera Bound? <input type="checkbox" checked="{{node.cameraBound}}"></td>
+                                <td>Offset: <input value="{{node.cameraBoundOffset}}" type='range' min='0' max='20'><input style="width:50px" value="{{node.cameraBoundOffset}}"></td>
+                                <td>Image<input checked='{{node.surfaceType}}' type="radio" value="image">
+                                    Plain<input checked='{{node.surfaceType}}' type="radio" value="plain">
+                                    Highlight<input checked='{{node.surfaceType}}' type="radio" value="highlight">
+                                    Singalong<input checked='{{node.surfaceType}}' type="radio" value="singalong">
+                                    ChangingPlainText<input checked='{{node.surfaceType}}' type="radio" value="changingPlain">
+                                    OneLineRunOn<input checked='{{node.surfaceType}}' type="radio" value="oneLineRunOn">
+                                    RepeatingImage<input checked='{{node.surfaceType}}' type="radio" value="repeatingImage">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Initial X:<input value="{{node.initialX}}" type='range' min='-500' max='500'><input style="width:50px" value="{{node.initialX}}"></td>
+                                <td>Initial Y:<input value="{{node.initialY}}" type='range' min='-500' max='500'><input style="width:50px" value="{{node.initialY}}"></td>
+                                <td>Scale: <input value="{{node.scale}}" step="0.01" type='range' min='0.1' max='3'><input style="width:50px" value="{{node.scale}}"></td>
+                                <td>XYRatio: <input value="{{node.xyRatio}}" step="0.01" type='range' min='0.1' max='3'><input style="width:50px" value="{{node.xyRatio}}"></td>
+                                <td>Singspeed: <input value="{{node.singSpeed}}" type='range' min='0' max='3000'><input style="width:50px" value="{{node.singSpeed}}"></td>
+                                <td>Singmotion: <input value="{{node.singMotion}}" type='range' min='0' max='3000'><input style="width:50px" value="{{node.singMotion}}"></td>
+                            </tr>
+                            <tr>
+                                <td>Animation Time Offset: <input value="{{node.timeOffset}}" type='range' min='100' max='3000'><input style="width:50px" value="{{node.timeOffset}}"></td>
+                                <td>XOrigin: <input value="{{node.xOrigin}}" step="0.01" type='range' min='0' max='1'><input style="width:50px" value="{{node.xOrigin}}"></td>
+                                <td>YOrigin: <input value="{{node.yOrigin}}" step="0.01" type='range' min='0' max='1'><input style="width:50px" value="{{node.yOrigin}}"></td>
+                                <td>Text: <textarea value="{{node.text}}"></textarea></td>
+                                <td>Classes: <input value="{{node.surfaceClasses}}"></td>
+                                <td>Opacity: <input value="{{node.opacity}}" step="0.01" type='range' min='0' max='1'><input style="width:50px" value="{{node.opacity}}"></td>
+                            </tr>
+                            <tr>
+                                <td>SizeX: <input value="{{node.sizeX}}" type='range' min='0' max='1500'><input style="width:50px" value="{{node.sizeX}}"></td>
+                                <td>SizeY: <input value="{{node.sizeY}}" type='range' min='0' max='1500'><input style="width:50px" value="{{node.sizeY}}"></td>
+                                <td>InitialRotateX: <input value="{{node.initialRotateX}}" step="0.01" type='range' min='-3.5' max='3.5'><input style="width:50px" value="{{node.initialRotateX}}"></td>
+                                <td>InitialRotateY: <input value="{{node.initialRotateY}}" step="0.01" type='range' min='-3.5' max='3.5'><input style="width:50px" value="{{node.initialRotateY}}"></td>
+                                <td>InitialRotateZ: <input value="{{node.initialRotateZ}}" step="0.01" type='range' min='-3.5' max='3.5'><input style="width:50px" value="{{node.initialRotateZ}}"></td>
+                            </tr>
+                            <tr>
+                                <td>Translation? <input type="checkbox" checked="{{node.translate}}"></td>
+                                <td>X: <input value="{{node.translateX}}" type='range' min='-500' max='500'><input style="width:50px" value="{{node.translateX}}"></td>
+                                <td>X Speed: <input value="{{node.translateXSpeed}}" type='range' min='100' max='3000'><input style="width:50px" value="{{node.translateXSpeed}}"></td>
+                                <td>Y: <input value="{{node.translateY}}" type='range' min='-500' max='500'><input style="width:50px" value="{{node.translateY}}"></td>
+                                <td>Y Speed:<input value="{{node.translateYSpeed}}" type='range' min='100' max='3000'><input style="width:50px" value="{{node.translateYSpeed}}"></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>Cut? <input type="checkbox" checked="{{node.translateTypeCut}}"></td>
+                                <td>StartPercent: <input value="{{node.translateCutStart}}" type='range' min='0' max='100'><input style="width:50px" value="{{node.translateCutStart}}"></td>
+                                <td>EndPercent: <input value="{{node.translateCutEnd}}" type='range' min='0' max='100'><input style="width:50px" value="{{node.translateCutEnd}}"></td>
+                            </tr>
+                            <tr>
+                                <td>Motion type: Sine<input checked='{{node.motionType}}' type="radio" value="sine"> Triangle<input checked='{{node.motionType}}' type="radio" value="triangle"> Sawtooth<input checked='{{node.motionType}}' type="radio" value="sawtooth"> Cos<input checked='{{node.motionType}}' type="radio" value="cos">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Rotation? <input type="checkbox" checked="{{node.rotate}}"></td>
+                                <td>Angle: <input value="{{node.rotateAngle}}" type='range' min='1' max='50'><input style="width:50px" value="{{node.rotateAngle}}"></td>
+                                <td>Speed: <input value="{{node.rotateSpeed}}" type='range' min='100' max='3000'><input style="width:50px" value="{{node.rotateSpeed}}"></td>
+                                <td>Rotate type: Sine<input checked='{{node.rotateType}}' type="radio" value="sine"> Triangle<input checked='{{node.rotateType}}' type="radio" value="triangle"> Sawtooth<input checked='{{node.rotateType}}' type="radio" value="sawtooth"> Cos<input checked='{{node.rotateType}}' type="radio" value="cos">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Zooming? <input type="checkbox" checked="{{node.zoom}}"></td>
+                                <td>Amount: <input value="{{node.zoomAmount}}" type='range' min='100' max='3000'><input style="width:50px" value="{{node.zoomAmount}}"></td>
+                                <td>Speed: <input value="{{node.zoomSpeed}}" type='range' min='100' max='3000'><input style="width:50px" value="{{node.zoomSpeed}}"></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>Relative to translate? <input type="checkbox" checked="{{node.zoomRelativeTranslate}}"></td>
+                                <td>Multiplier: <input value="{{node.zoomRelativeMultiplier}}" type='range' min='0' max='100'><input style="width:50px" value="{{node.zoomRelativeMultiplier}}"></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>Cut? <input type="checkbox" checked="{{node.zoomTypeCut}}"></td>
+                                <td>StartPercent: <input value="{{node.zoomCutStart}}" type='range' min='0' max='100'><input style="width:50px" value="{{node.zoomCutStart}}"></td>
+                                <td>EndPercent: <input value="{{node.zoomCutEnd}}" type='range' min='0' max='100'><input style="width:50px" value="{{node.zoomCutEnd}}"></td>
+                            </tr>
+                            <tr>
+                                <td>Zoom type: Sine<input checked='{{node.zoomType}}' type="radio" value="sine"> Triangle<input checked='{{node.zoomType}}' type="radio" value="triangle"> Sawtooth<input checked='{{node.zoomType}}' type="radio" value="sawtooth"> Cos<input checked='{{node.zoomType}}' type="radio" value="cos">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Skewing? <input type="checkbox" checked="{{node.skew}}"></td>
+                                <td>AmountX: <input value="{{node.skewAmountX}}" type='range' min='100' max='3000'><input style="width:50px" value="{{node.skewAmountX}}"></td>
+                                <td>SpeedX: <input value="{{node.skewSpeedX}}" type='range' min='100' max='3000'><input style="width:50px" value="{{node.skewSpeedX}}"></td>
+                                <td>AmountY: <input value="{{node.skewAmountY}}" type='range' min='100' max='3000'><input style="width:50px" value="{{node.skewAmountY}}"></td>
+                                <td>SpeedY: <input value="{{node.skewSpeedY}}" type='range' min='100' max='3000'><input style="width:50px" value="{{node.skewSpeedY}}"></td>
+                            </tr>
+                            <tr>
+                                <td>Accelerometer Translation? <input type="checkbox" checked="{{node.accel}}"></td>
+                                <td>Amount: <input value="{{node.accelAmount}}" type='range' min='100' max='3000'><input style="width:50px" value="{{node.accelAmount}}"></td>
+                            </tr>
+                            <tr>
+                                <td>Animation? <input type="checkbox" checked="{{node.animation}}"></td>
+                                <td>Speed: <input value="{{node.animationSpeed}}" type='range' min='100' max='3000'><input style="width:50px" value="{{node.animationSpeed}}"></td>
+                                <td>Num Frames: <input value="{{node.numFrames}}" type='range' min='1' max='60'><input style="width:50px" value="{{node.numFrames}}"></td>
+                            </tr>
+                            <tr>
+                                <td><button onclick="window.saver.removePopup()">Remove Popup!!</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            {{/with}}
+            <tr>
+                <td>
+                    <table border=1>
+                        <tbody>
+                            <tr>
+                                <td>Name: <input rv-input="page.camera.name"></td>
+                                <td>Url: <input rv-input="page.camera.url"></td>
+                                <td>Depth: <input rv-input="page.camera.height" type='range' min='0' max='20'><input style="width:50px" rv-input="page.camera.height"></td>
+                            </tr>
+                            <tr>
+                                <td>Initial X:<input rv-input="page.camera.initialX" type='range' min='-500' max='500'><input style="width:50px" rv-input="page.camera.initialX"></td>
+                                <td>Initial Y:<input rv-input="page.camera.initialY" type='range' min='-500' max='500'><input style="width:50px" rv-input="page.camera.initialY"></td>
+                                <td>Scale: <input rv-input="page.camera.scale" step="0.01" type='range' min='0.1' max='3'><input style="width:50px" rv-input="page.camera.scale"></td>
+                                <td>XYRatio: <input rv-input="page.camera.xyRatio" step="0.01" type='range' min='0.1' max='3'><input style="width:50px" rv-input="page.camera.xyRatio"></td>
+                            </tr>
+                            <tr>
+                                <td>Animation Time Offset: <input rv-input="page.camera.timeOffset" type='range' min='100' max='3000'><input style="width:50px" rv-input="page.camera.timeOffset"></td>
+                                <td>XOrigin: <input rv-input="page.camera.xOrigin" step="0.01" type='range' min='0' max='1'><input style="width:50px" rv-input="page.camera.xOrigin"></td>
+                                <td>YOrigin: <input rv-input="page.camera.yOrigin" step="0.01" type='range' min='0' max='1'><input style="width:50px" rv-input="page.camera.yOrigin"></td>
+                            </tr>
+                            <tr>
+                                <td>InitialRotateX: <input rv-input="item.initialRotateX" step="0.01" type='range' min='-3.5' max='3.5'><input style="width:50px" rv-input="item.initialRotateX"></td>
+                                <td>InitialRotateY: <input rv-input="item.initialRotateY" step="0.01" type='range' min='-3.5' max='3.5'><input style="width:50px" rv-input="item.initialRotateY"></td>
+                                <td>InitialRotateZ: <input rv-input="item.initialRotateZ" step="0.01" type='range' min='-3.5' max='3.5'><input style="width:50px" rv-input="item.initialRotateZ"></td>
+                            </tr>
+                            <tr>
+                                <td>Translation? <input type="checkbox" rv-checked="page.camera.translate"></td>
+                                <td>X: <input rv-input="page.camera.translateX" type='range' min='-500' max='500'><input style="width:50px" rv-input="page.camera.translateX"></td>
+                                <td>X Speed: <input rv-input="page.camera.translateXSpeed" type='range' min='100' max='3000'><input style="width:50px" rv-input="page.camera.translateXSpeed"></td>
+                                <td>Y: <input rv-input="page.camera.translateY" type='range' min='-500' max='500'><input style="width:50px" rv-input="page.camera.translateY"></td>
+                                <td>Y Speed:<input rv-input="page.camera.translateYSpeed" type='range' min='100' max='3000'><input style="width:50px" rv-input="page.camera.translateYSpeed"></td>
+                            </tr>
+                            <tr>
+                                <td>Motion type: Sine<input rv-checked='page.camera.motionType' type="radio" value="sine"> Triangle<input rv-checked='page.camera.motionType' type="radio" value="triangle"> Sawtooth<input rv-checked='page.camera.motionType' type="radio" value="sawtooth"> Cos<input rv-checked='page.camera.motionType' type="radio" value="cos">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Rotation? <input type="checkbox" rv-checked="page.camera.rotate"></td>
+                                <td>Angle: <input rv-input="page.camera.rotateAngle" type='range' min='1' max='50'><input style="width:50px" rv-input="page.camera.rotateAngle"></td>
+                                <td>Speed: <input rv-input="page.camera.rotateSpeed" type='range' min='100' max='3000'><input style="width:50px" rv-input="page.camera.rotateSpeed"></td>
+                                <td>Rotate type: Sine<input rv-checked='page.camera.rotateType' type="radio" value="sine"> Triangle<input rv-checked='page.camera.rotateType' type="radio" value="triangle"> Sawtooth<input rv-checked='page.camera.rotateType' type="radio" value="sawtooth"> Cos<input rv-checked='page.camera.rotateType' type="radio" value="cos">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Zooming? <input type="checkbox" rv-checked="page.camera.zoom"></td>
+                                <td>Amount: <input rv-input="page.camera.zoomAmount" type='range' min='100' max='3000'><input style="width:50px" rv-input="page.camera.zoomAmount"></td>
+                                <td>Speed: <input rv-input="page.camera.zoomSpeed" type='range' min='100' max='3000'><input style="width:50px" rv-input="page.camera.zoomSpeed"></td>
+                                <td>Zoom type: Sine<input rv-checked='page.camera.zoomType' type="radio" value="sine"> Triangle<input rv-checked='page.camera.zoomType' type="radio" value="triangle"> Sawtooth<input rv-checked='page.camera.zoomType' type="radio" value="sawtooth"> Cos<input rv-checked='page.camera.zoomType' type="radio" value="cos">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Accelerometer Translation? <input type="checkbox" rv-checked="page.camera.accel"></td>
+                                <td>Amount: <input rv-input="page.camera.accelAmount" type='range' min='100' max='3000'><input style="width:50px" rv-input="page.camera.accelAmount"></td>
+                            </tr>
+                            <tr>
+                                <td>Accelerometer Rotation? <input type="checkbox" rv-checked="page.camera.accelRotate"></td>
+                                <td>Amount: <input rv-input="page.camera.accelRotateAmount" type='range' min='100' max='3000'><input style="width:50px" rv-input="page.camera.accelRotateAmount"></td>
+                            </tr>
+                            <tr>
+                                <td>Zoom Perspective? <input type="checkbox" rv-checked="page.camera.perspectiveZoom"></td>
+                                <td>Motion type: Sine<input rv-checked='page.camera.perspectiveZoomType' type="radio" value="sine"> Triangle<input rv-checked='page.camera.perspectiveZoomType' type="radio" value="triangle"> Sawtooth<input rv-checked='page.camera.perspectiveZoomType' type="radio" value="sawtooth"> Cos<input rv-checked='page.camera.perspectiveZoomType' type="radio" value="cos">
+                                </td>
+                                <td>Amount: <input rv-input="page.camera.perspectiveZoomAmount" type='range' min='-500' max='500'><input style="width:50px" rv-input="page.camera.perspectiveZoomAmount"></td>
+                                <td>Speed: <input rv-input="page.camera.perspectiveZoomSpeed" type='range' min='100' max='3000'><input style="width:50px" rv-input="page.camera.perspectiveZoomSpeed"></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>Cut? <input type="checkbox" rv-checked="page.camera.perspectiveZoomCut"></td>
+                                <td>StartPercent: <input rv-input="page.camera.perspectiveZoomCutStart" type='range' min='0' max='100'><input style="width:50px" rv-input="page.camera.perspectiveZoomCutStart"></td>
+                                <td>EndPercent: <input rv-input="page.camera.perspectiveZoomCutEnd" type='range' min='0' max='100'><input style="width:50px" rv-input="page.camera.perspectiveZoomCutEnd"></td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            </table>
+        </div>
+    {{/with}}
+</div>
+
+<div id="device-area">
+<img id="iphone-5-pic" src="/content/images/ipad.png">
+<div id="device-screen" rv-class-hidden-overflow="hiddenOverflow" class="iphone-5 famous-container"></div>
+<div id="top-screen" rv-class-hidden-overflow="hiddenOverflow" class="iphone-5 famous-container"></div>
+</div>

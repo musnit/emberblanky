@@ -1,10 +1,8 @@
 //import Famous from "npm:famous";
 
 var Fixtures = require('Fixtures');
-window.Fixtures = Fixtures;
 var pagesModel = {};
 pagesModel.pages = Fixtures.results;
-window.pagesModel = pagesModel;
 var loopingIDs = ['UHGPYzstxO','gBqF9PtfBm','w9zCNnEbfC','mt1s3uZ90p','rZ4dWe9BGU'];
 var loopNum = 1;
 var BlankyApp = require('BlankyApp');
@@ -20,13 +18,11 @@ var clicked = function(event) {
     }
 };
 var startApp = function() {
-    window.blanky = new BlankyApp(true);
-    window.blanky.loadPage(window.initialPageId);
+    var blanky = new BlankyApp(true, pagesModel);
     document.getElementById('top-screen').addEventListener('click', clicked, false);
 };
 var startWeb = function() {
-    window.blanky = new BlankyApp(false);
-    window.blanky.loadPage(window.initialPageId);
+    var blanky = new BlankyApp(false, pagesModel);
     document.getElementById('top-screen').addEventListener('click', clicked, false);
 };
 
