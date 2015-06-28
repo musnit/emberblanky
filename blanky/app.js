@@ -1,5 +1,5 @@
-import Fixtures from 'emberblanky/utils/blanky-fixtures';
-import BlankyApp from 'emberblanky/utils/blanky-app';
+import Fixtures from '../fixtures/blanky-fixtures';
+import BlankyApp from '../utils/blanky-app';
 
 var pages = Fixtures.results;
 var loopingIDs = ['UHGPYzstxO','gBqF9PtfBm','w9zCNnEbfC','mt1s3uZ90p','rZ4dWe9BGU'];
