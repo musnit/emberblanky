@@ -1,4 +1,4 @@
-import Element from 'emberblanky/famouselements/element-prototype';
+import Element from './element-prototype';
 
 function RepeatingImage(node, config) {
   var options = {

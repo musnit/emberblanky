@@ -1,10 +1,10 @@
 import Famous from 'npm:famous';
 //var Timer = Famous.Clock;
-import OrientationController from 'emberblanky/utils/orientation-controller';
-import SoundController from 'emberblanky/utils/sound-controller';
-import AppNode from 'emberblanky/famousnodes/app-node';
-import TimeKeeper from 'emberblanky/utils/time-keeper';
-//import StatsTimer from 'utils/stats-timer';
+import OrientationController from './orientation-controller';
+import SoundController from './sound-controller';
+import AppNode from '../famousnodes/app-node';
+import TimeKeeper from './time-keeper';
+//import StatsTimer from './stats-timer';
 
 export default function BlankyApp(isApp, pagesModel, defaultPageID) {
   this.pagesModel = pagesModel;

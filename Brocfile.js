@@ -1,5 +1,7 @@
 /* global require, module */
 var EmberApp = require('ember-cli/lib/broccoli/ember-app');
+var concat = require('broccoli-concat');
+var cleanCSS = require('broccoli-clean-css');
 
 var app = new EmberApp();
 
@@ -19,4 +21,15 @@ app.import('vendor/soundjs-0.6.0.min.js');
 app.import('vendor/parse-1.3.2.min.js');
 app.import('vendor/stats.min.js');
 
-module.exports = app.toTree();
+var concatenatedCss = concat('app/styles', {
+    inputFiles: [
+        '**/*.css'
+    ],
+    outputFile: '/assets/app.css'
+});
+
+if (app.env === 'production') {
+    concatenatedCss = cleanCSS(concatenatedCss, {restructuring: false});
+}
+
+module.exports = app.toTree([concatenatedCss]);

@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
-import BlankyApp from 'emberblanky/utils/blanky-app';
-import Fixtures from 'emberblanky/utils/blanky-fixtures';
+import BlankyApp from 'emberblanky/blankylib/utils/blanky-app';
+import Fixtures from 'emberblanky/blankylib/fixtures/blanky-fixtures';
 
 export default Ember.Component.extend({
   loopNum: 1,

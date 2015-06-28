@@ -1,5 +1,5 @@
-import MathFunctions from 'emberblanky/utils/math-functions';
-import ActionFunctions from 'emberblanky/utils/action-functions';
+import MathFunctions from './math-functions';
+import ActionFunctions from './action-functions';
 
 function ConfigParser() {
 }

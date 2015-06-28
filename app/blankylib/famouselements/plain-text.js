@@ -1,4 +1,4 @@
-import Element from 'emberblanky/famouselements/element-prototype';
+import Element from './element-prototype';
 
 function PlainText(node, config) {
   var options = {

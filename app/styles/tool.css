@@ -1,0 +1,43 @@
+table {
+  width: 780px;
+}
+section {
+    width: 100%;
+    height: 100%;
+}
+#time-chooser{
+  width: 800px;
+}
+#edit-section{
+  z-index: 999;
+}
+.full-image {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+
+    background-position: top center;
+}
+
+#ipad-pic {
+  position: relative;
+  width: 1282.46628131px;
+  height: 864.492307692px;
+  left: -139px;
+  top: -51px;
+  z-index: 999;
+}
+
+#iphone-5-pic {
+  position: relative;
+  width: 712px;
+  height: 361px;
+  left: -77px;
+  top: -20px;
+  z-index: 999;
+}

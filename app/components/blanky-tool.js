@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-import BlankyApp from 'emberblanky/utils/blanky-app';
+import BlankyApp from 'emberblanky/blankylib/utils/blanky-app';
 
 export default Ember.Component.extend({
   paused: false,

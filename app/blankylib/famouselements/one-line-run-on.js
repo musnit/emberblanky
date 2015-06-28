@@ -1,6 +1,6 @@
-import Element from 'emberblanky/famouselements/element-prototype';
-import RepeatingImage from 'emberblanky/famouselements/repeating-image';
-import MathFunctions from 'emberblanky/utils/math-functions';
+import Element from './element-prototype';
+import RepeatingImage from './repeating-image';
+import MathFunctions from '../utils/math-functions';
 
 function OneLineRunOn(node, config, model) {
   var self = this;

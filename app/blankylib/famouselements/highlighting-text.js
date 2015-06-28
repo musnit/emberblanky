@@ -1,6 +1,6 @@
 import Famous from 'npm:famous';
-import Element from 'emberblanky/famouselements/element-prototype';
-import MathFunctions from 'emberblanky/utils/math-functions';
+import Element from './element-prototype';
+import MathFunctions from '../utils/math-functions';
 
 function HighlightingText(node, config, model) {
   var self = this;

@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import Fixtures from 'emberblanky/utils/blanky-fixtures';
+import Fixtures from 'emberblanky/blankylib/fixtures/blanky-fixtures';
 var Page = Parse.Object.extend('Page');
 var PageCollection = Parse.Collection.extend({
   model: Page

@@ -1,5 +1,5 @@
-import Element from 'emberblanky/famouselements/element-prototype';
-import MathFunctions from 'emberblanky/utils/math-functions';
+import Element from './element-prototype';
+import MathFunctions from '../utils/math-functions';
 
 function SingalongText(node, config, model) {
   var self = this;
