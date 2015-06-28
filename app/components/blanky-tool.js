@@ -76,6 +76,19 @@ export default Ember.Component.extend({
         var index = this.get('currentPage.sounds').indexOf(sound);
         this.get('currentPage.sounds').splice(index, 1);
         this.notifyPropertyChange('soundsToEdit');
+    },
+    saveCurrentPage: function(){
+      var pageModel = this.get('currentPage');
+      var pageJSON = JSON.parse(JSON.stringify(pageModel));
+      this.sendAction('save', pageJSON);
+    },
+    dupeCurrentPage: function(){
+      var pageModel = this.get('currentPage');
+      var pageJSON = JSON.parse(JSON.stringify(pageModel));
+      this.sendAction('dupe', pageJSON);
+    },
+    newPage: function(){
+      this.sendAction('new');
     }
   }
 });

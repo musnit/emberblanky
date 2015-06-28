@@ -17,7 +17,7 @@
         optionLabelPath='content.fullName'
         value=currentPageID}}
     <br/>
-    <button onclick="window.saver.addNewPage()">Add new blank page</button><br/>
+    <button {{action 'newPage'}}>Add new blank page</button><br/>
     {{#with currentPage as |page|}}
         <div id="edit-section">
             <h3>Page controls -  {{page.objectId}}</h3>
@@ -81,12 +81,12 @@
             </tr>
             <tr>
                 <td>
-                    <button onclick="window.saver.saveToParse()">Save everything on page</button>
+                    <button {{action 'saveCurrentPage'}}>Save everything on page</button>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <button onclick="window.saver.dupePage()">Duplicate this page</button><br/><br/>
+                    <button {{action 'dupeCurrentPage'}}>Duplicate this page</button><br/><br/>
                 </td>
             </tr>
             </table>

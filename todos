@@ -2,17 +2,9 @@ todos:
 
 every event in the html.
 initial radio button on chenge item to edit? radio button checked
-saving/loading with parse
 every button
 TEST EVERYTHING ONE BY ONE
-
-
-            publisher = function() {
-                self.publish();
-                self.model.configChanged = true;
-            };
 
 accom0027
 
 bug: add many new popups all have same name - new. name is supposed to be unique identifier lol
-      same with sounds
