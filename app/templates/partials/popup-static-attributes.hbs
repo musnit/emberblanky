@@ -1,0 +1,26 @@
+<tr>
+    <td>Name: {{config-input node=node value=node.name}}</td>
+    <td>Url: {{config-input node=node value=node.url}}</td>
+    <td>
+        {{view 'select'
+            contentBinding=surfaceTypes
+            optionValuePath='content.value'
+            optionLabelPath='content.label'
+            valueBinding=node.surfaceType
+            prompt="default(image)"}}
+    </td>
+    <td>Camera Bound? {{view 'config-checkbox' node=node checked=node.cameraBound}}</td>
+    <td>Offset: {{config-input node=node value=node.cameraBoundOffset type='range' min='0' max='20'}}{{config-input node=node style="width:50px" value=node.cameraBoundOffset}}</td>
+</tr>
+<tr>
+    <td>SizeX: {{config-input node=node value=node.sizeX type='range' min='0' max='1500'}}{{config-input node=node style="width:50px" value=node.sizeX}}</td>
+    <td>SizeY: {{config-input node=node value=node.sizeY type='range' min='0' max='1500'}}{{config-input node=node style="width:50px" value=node.sizeY}}</td>
+</tr>
+{{partial 'partials/static-attributes'}}
+<tr>
+    <td>Singspeed: {{config-input node=node value=node.singSpeed type='range' min='0' max='3000'}}{{config-input node=node style="width:50px" value=node.singSpeed}}</td>
+    <td>Singmotion: {{config-input node=node value=node.singMotion type='range' min='0' max='3000'}}{{config-input node=node style="width:50px" value=node.singMotion}}</td>
+    <td>Text: <textarea value=node.text></textarea></td>
+    <td>Classes: {{config-input node=node value=node.surfaceClasses}}</td>
+    <td>Opacity: {{config-input node=node value=node.opacity step="0.01" type='range' min='0' max='1'}}{{config-input node=node style="width:50px" value=node.opacity}}</td>
+</tr>

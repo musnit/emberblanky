@@ -1,0 +1,22 @@
+<tr>
+    <td>Accelerometer Rotation? {{view 'config-checkbox' node=node checked=node.accelRotate}}</td>
+    <td>Amount: {{config-input node=node value=node.accelRotateAmount type='range' min='100' max='3000'}}{{config-input node=node style="width:50px" value=node.accelRotateAmount}}</td>
+</tr>
+<tr>
+    <td>Zoom Perspective? {{view 'config-checkbox' node=node checked=node.perspectiveZoom}}</td>
+    <td>Zoom Perspective type: {{view 'config-select'
+            contentBinding=motionTypes
+            optionValuePath='content.value'
+            optionLabelPath='content.label'
+            valueBinding=node.perspectiveZoomType
+            prompt="default(sin)"}}
+    </td>
+    <td>Amount: {{config-input node=node value=node.perspectiveZoomAmount type='range' min='-500' max='500'}}{{config-input node=node style="width:50px" value=node.perspectiveZoomAmount}}</td>
+    <td>Speed: {{config-input node=node value=node.perspectiveZoomSpeed type='range' min='100' max='3000'}}{{config-input node=node style="width:50px" value=node.perspectiveZoomSpeed}}</td>
+</tr>
+<tr>
+    <td></td>
+    <td>Cut? {{view 'config-checkbox' node=node checked=node.perspectiveZoomCut}}</td>
+    <td>StartPercent: {{config-input node=node value=node.perspectiveZoomCutStart type='range' min='0' max='100'}}{{config-input node=node style="width:50px" value=node.perspectiveZoomCutStart}}</td>
+    <td>EndPercent: {{config-input node=node value=node.perspectiveZoomCutEnd type='range' min='0' max='100'}}{{config-input node=node style="width:50px" value=node.perspectiveZoomCutEnd}}</td>
+</tr>

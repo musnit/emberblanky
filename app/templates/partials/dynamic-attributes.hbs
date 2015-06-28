@@ -1,0 +1,67 @@
+<tr>
+    <td>Translation? {{view 'config-checkbox' node=node checked=node.translate}}</td>
+    <td>X: {{config-input node=node value=node.translateX type='range' min='-500' max='500'}}{{config-input node=node style="width:50px" value=node.translateX}}</td>
+    <td>X Speed: {{config-input node=node value=node.translateXSpeed type='range' min='100' max='3000'}}{{config-input node=node style="width:50px" value=node.translateXSpeed}}</td>
+    <td>Y: {{config-input node=node value=node.translateY type='range' min='-500' max='500'}}{{config-input node=node style="width:50px" value=node.translateY}}</td>
+    <td>Y Speed:{{config-input node=node value=node.translateYSpeed type='range' min='100' max='3000'}}{{config-input node=node style="width:50px" value=node.translateYSpeed}}</td>
+</tr>
+<tr>
+    <td>Motion type: {{view 'config-select'
+            contentBinding=motionTypes
+            optionValuePath='content.value'
+            optionLabelPath='content.label'
+            valueBinding=node.motionType
+            prompt="default(sin)"}}
+    </td>
+    <td>Cut? {{view 'config-checkbox' node=node checked=node.translateTypeCut}}</td>
+    <td>StartPercent: {{config-input node=node value=node.translateCutStart type='range' min='0' max='100'}}{{config-input node=node style="width:50px" value=node.translateCutStart}}</td>
+    <td>EndPercent: {{config-input node=node value=node.translateCutEnd type='range' min='0' max='100'}}{{config-input node=node style="width:50px" value=node.translateCutEnd}}</td>
+</tr>
+<tr>
+    <td>Rotation? {{view 'config-checkbox' node=node checked=node.rotate}}</td>
+    <td>Angle: {{config-input node=node value=node.rotateAngle type='range' min='1' max='50'}}{{config-input node=node style="width:50px" value=node.rotateAngle}}</td>
+    <td>Speed: {{config-input node=node value=node.rotateSpeed type='range' min='100' max='3000'}}{{config-input node=node style="width:50px" value=node.rotateSpeed}}</td>
+    <td>Rotate type: {{view 'config-select'
+            contentBinding=motionTypes
+            optionValuePath='content.value'
+            optionLabelPath='content.label'
+            valueBinding=node.rotateType
+            prompt="default(sin)"}}
+    </td>
+</tr>
+<tr>
+    <td>Zooming? {{view 'config-checkbox' node=node checked=node.zoom}}</td>
+    <td>Amount: {{config-input node=node value=node.zoomAmount type='range' min='100' max='3000'}}{{config-input node=node style="width:50px" value=node.zoomAmount}}</td>
+    <td>Speed: {{config-input node=node value=node.zoomSpeed type='range' min='100' max='3000'}}{{config-input node=node style="width:50px" value=node.zoomSpeed}}</td>
+</tr>
+<tr>
+    <td></td>
+    <td>Relative to translate? {{view 'config-checkbox' node=node checked=node.zoomRelativeTranslate}}</td>
+    <td>Multiplier: {{config-input node=node value=node.zoomRelativeMultiplier type='range' min='0' max='100'}}{{config-input node=node style="width:50px" value=node.zoomRelativeMultiplier}}</td>
+</tr>
+<tr>
+    <td></td>
+    <td>Cut? {{view 'config-checkbox' node=node checked=node.zoomTypeCut}}</td>
+    <td>StartPercent: {{config-input node=node value=node.zoomCutStart type='range' min='0' max='100'}}{{config-input node=node style="width:50px" value=node.zoomCutStart}}</td>
+    <td>EndPercent: {{config-input node=node value=node.zoomCutEnd type='range' min='0' max='100'}}{{config-input node=node style="width:50px" value=node.zoomCutEnd}}</td>
+</tr>
+<tr>
+    <td>Zoom type: {{view 'config-select'
+            contentBinding=motionTypes
+            optionValuePath='content.value'
+            optionLabelPath='content.label'
+            valueBinding=node.zoomType
+            prompt="default(sawtooth)"}}
+    </td>
+</tr>
+<tr>
+    <td>Skewing? {{view 'config-checkbox' node=node checked=node.skew}}</td>
+    <td>AmountX: {{config-input node=node value=node.skewAmountX type='range' min='100' max='3000'}}{{config-input node=node style="width:50px" value=node.skewAmountX}}</td>
+    <td>SpeedX: {{config-input node=node value=node.skewSpeedX type='range' min='100' max='3000'}}{{config-input node=node style="width:50px" value=node.skewSpeedX}}</td>
+    <td>AmountY: {{config-input node=node value=node.skewAmountY type='range' min='100' max='3000'}}{{config-input node=node style="width:50px" value=node.skewAmountY}}</td>
+    <td>SpeedY: {{config-input node=node value=node.skewSpeedY type='range' min='100' max='3000'}}{{config-input node=node style="width:50px" value=node.skewSpeedY}}</td>
+</tr>
+<tr>
+    <td>Accelerometer Translation? {{view 'config-checkbox' node=node checked=node.accel}}</td>
+    <td>Amount: {{config-input node=node value=node.accelAmount type='range' min='100' max='3000'}}{{config-input node=node style="width:50px" value=node.accelAmount}}</td>
+</tr>

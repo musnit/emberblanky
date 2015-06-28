@@ -1,12 +1,12 @@
 todos:
 
-camera refactor
-selects/radios
 cordova test
 new stuffs!
+camera depth vs camera perspective?
 
 accom0027
 
 bug: add many new popups all have same name - new. name is supposed to be unique identifier lol
 bug: remove popup doesnt redraw...should check all things if they redraw insta. seems like change rotate type doesnt either.
 bug: changing names of popup doesnt affect the select until refresh
+bug: selects/radios

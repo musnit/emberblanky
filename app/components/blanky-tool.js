@@ -22,6 +22,7 @@ export default Ember.Component.extend({
     {'label': 'Sawtooth', 'value': 'sawtooth' },
     {'label': 'Cos', 'value': 'cos' }
   ],
+  currentNodeIsCamera: Ember.computed.equal('currentNode.name','camera'),
   updateTime: function(){
     this.get('blanky').setTime(this.get('pageTime'));
   }.observes('pageTime'),

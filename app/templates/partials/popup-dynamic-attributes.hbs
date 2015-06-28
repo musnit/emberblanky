@@ -1,0 +1,5 @@
+<tr>
+    <td>Animation? {{view 'config-checkbox' node=node checked=node.animation}}</td>
+    <td>Speed: {{config-input node=node value=node.animationSpeed type='range' min='100' max='3000'}}{{config-input node=node style="width:50px" value=node.animationSpeed}}</td>
+    <td>Num Frames: {{config-input node=node value=node.numFrames type='range' min='1' max='60'}}{{config-input node=node style="width:50px" value=node.numFrames}}</td>
+</tr>

@@ -1,0 +1,41 @@
+<h3>Popup controls</h3>
+<table>
+    <tr>
+    <td>
+        Change item to edit?:
+        {{view 'select'
+            contentBinding=nodesToEdit
+            optionValuePath='content.name'
+            optionLabelPath='content.name'
+            valueBinding=currentNodeName
+        }}
+    </td>
+    </tr>
+    <tr>
+        <button {{action 'addNewPopup'}}>Add new popup</button><br/>
+    </tr>
+    {{#with currentNode as |node|}}
+    <tr>
+        <td>
+            <table border=1>
+                <tbody>
+                    {{#if currentNodeIsCamera}}
+                        {{partial 'partials/camera-static-attributes'}}
+                    {{else}}
+                        {{partial 'partials/popup-static-attributes'}}
+                    {{/if}}
+                    {{partial 'partials/dynamic-attributes'}}
+                    {{#if currentNodeIsCamera}}
+                        {{partial 'partials/camera-dynamic-attributes'}}
+                    {{else}}
+                        {{partial 'partials/popup-dynamic-attributes'}}
+                        <tr>
+                            <td><button {{action 'removeCurrentPopup'}}>Remove Popup!!</button></td>
+                        </tr>
+                    {{/if}}
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    {{/with}}
+</table>
