@@ -4,6 +4,7 @@ module.exports = function(environment) {
   var ENV = {
     contentSecurityPolicy: {
       'style-src': "'self' 'unsafe-inline'",
+      'connect-src': 'https://api.parse.com http://localhost:4200'
     },
     modulePrefix: 'emberblanky',
     environment: environment,

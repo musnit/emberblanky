@@ -1,29 +1,4 @@
 
-    Parse.initialize('jMRxP9yPhtv1P9g3oPtrKYhIgwkhZAgD7XPRBwwp', 'WIkGloO6EWK8WakPrFnLpajSvM1kAzsOgB4bPbl4');
-    var Page = Parse.Object.extend('Page');
-
-    var PageCollection = Parse.Collection.extend({
-      model: Page
-    });
-    var pageCollection = new PageCollection();
-    var self = this;
-    pageCollection.fetch({
-      success: function(pages) {
-        var pagesModel = {};
-        pagesModel.pages = pages.toJSON();
-        window.pagesModel = pagesModel;
-        var pagesListView = window.pagesListView || rivets.bind(document.getElementById('editor-section'), pagesModel);
-        window.pagesListView = pagesListView;
-        window.pagesListView.unbind();
-        window.pagesListView.models = pagesModel;
-        window.pagesListView.bind();
-        document.getElementById('page-chooser').value = window.initialPageId;
-        self.loadPage(window.initialPageId);
-      },
-      error: function(collection, error) {
-        alert('error with fetching' + collection + ': ' + error);
-      }
-    });
 
     var saver = {};
     saver.saveToParse = function() {

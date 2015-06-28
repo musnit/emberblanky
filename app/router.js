@@ -6,7 +6,8 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.route('fixture-tool', { path: '/' });
+  this.route('tool', { path: '/' });
+  this.route('fixture-tool');
 });
 
 export default Router;
