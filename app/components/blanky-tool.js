@@ -7,6 +7,21 @@ export default Ember.Component.extend({
   pageTime: 0,
   hiddenOverflow: false,
   intialPageID: 'UHGPYzstxO',
+  surfaceTypes: [
+    {'label': 'Image' , 'value': 'image' },
+    {'label': 'Plain' , 'value': 'plain' },
+    {'label': 'Highlight', 'value': 'highlight' },
+    {'label': 'Singalong', 'value': 'singalong' },
+    {'label': 'ChangingPlainText', 'value': 'changingPlain' },
+    {'label': 'OneLineRunOn', 'value': 'oneLineRunOn' },
+    {'label': 'RepeatingImage', 'value': 'repeatingImage' },
+  ],
+  motionTypes: [
+    {'label': 'Sine' , 'value': 'sine' },
+    {'label': 'Triangle' , 'value': 'triangle' },
+    {'label': 'Sawtooth', 'value': 'sawtooth' },
+    {'label': 'Cos', 'value': 'cos' }
+  ],
   updateTime: function(){
     this.get('blanky').setTime(this.get('pageTime'));
   }.observes('pageTime'),

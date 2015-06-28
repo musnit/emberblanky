@@ -92,10 +92,10 @@ OrientationController.prototype.startListening = function() {
                 return value;
             }
           });
-          if(this.timeKeeper){
+          if(self.timeKeeper){
             var reading = {
               orientationDifference: orientationDifference,
-              timeStamp: this.timeKeeper.timePassed + 50
+              timeStamp: self.timeKeeper.timePassed + 50
             };
             self.orientationDifferenceAt = self.makeOrientationFunction(reading);
           }

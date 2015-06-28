@@ -1,10 +1,8 @@
 todos:
 
-every event in the html.
-initial radio button on chenge item to edit? radio button checked
-every button
-TEST EVERYTHING ONE BY ONE
+selects/radios
 
 accom0027
 
 bug: add many new popups all have same name - new. name is supposed to be unique identifier lol
+bug: remove popup doesnt redraw...should check all things if they redraw insta. seems like change rotate type doesnt either.

@@ -114,15 +114,15 @@
                                 <td>Name: {{config-input node=node value=node.name}}</td>
                                 <td>Url: {{config-input node=node value=node.url}}</td>
                                 <td>Depth: {{config-input node=node value=node.height type='range' min='0' max='20'}}{{config-input node=node style="width:50px" value=node.height}}</td>
-                                <td>Camera Bound? {{config-input node=node type="checkbox" checked=node.cameraBound}}</td>
+                                <td>Camera Bound? {{view 'config-checkbox' node=node checked=node.cameraBound}}</td>
                                 <td>Offset: {{config-input node=node value=node.cameraBoundOffset type='range' min='0' max='20'}}{{config-input node=node style="width:50px" value=node.cameraBoundOffset}}</td>
-                                <td>Image{{config-input node=node checked=node.surfaceType type="radio" value="image"}}
-                                    Plain{{config-input node=node checked=node.surfaceType type="radio" value="plain"}}
-                                    Highlight{{config-input node=node checked=node.surfaceType type="radio" value="highlight"}}
-                                    Singalong{{config-input node=node checked=node.surfaceType type="radio" value="singalong"}}
-                                    ChangingPlainText{{config-input node=node checked=node.surfaceType type="radio" value="changingPlain"}}
-                                    OneLineRunOn{{config-input node=node checked=node.surfaceType type="radio" value="oneLineRunOn"}}
-                                    RepeatingImage{{config-input node=node checked=node.surfaceType type="radio" value="repeatingImage"}}
+                                <td>
+                                    {{view 'select'
+                                        contentBinding=surfaceTypes
+                                        optionValuePath='content.value'
+                                        optionLabelPath='content.label'
+                                        valueBinding=node.surfaceType
+                                        prompt="default(image)"}}
                                 </td>
                             </tr>
                             <tr>
@@ -149,7 +149,7 @@
                                 <td>InitialRotateZ: {{config-input node=node value=node.initialRotateZ step="0.01" type='range' min='-3.5' max='3.5'}}{{config-input node=node style="width:50px" value=node.initialRotateZ}}</td>
                             </tr>
                             <tr>
-                                <td>Translation? {{config-input node=node type="checkbox" checked=node.translate}}</td>
+                                <td>Translation? {{view 'config-checkbox' node=node checked=node.translate}}</td>
                                 <td>X: {{config-input node=node value=node.translateX type='range' min='-500' max='500'}}{{config-input node=node style="width:50px" value=node.translateX}}</td>
                                 <td>X Speed: {{config-input node=node value=node.translateXSpeed type='range' min='100' max='3000'}}{{config-input node=node style="width:50px" value=node.translateXSpeed}}</td>
                                 <td>Y: {{config-input node=node value=node.translateY type='range' min='-500' max='500'}}{{config-input node=node style="width:50px" value=node.translateY}}</td>
@@ -157,54 +157,69 @@
                             </tr>
                             <tr>
                                 <td></td>
-                                <td>Cut? {{config-input node=node type="checkbox" checked=node.translateTypeCut}}</td>
+                                <td>Cut? {{view 'config-checkbox' node=node checked=node.translateTypeCut}}</td>
                                 <td>StartPercent: {{config-input node=node value=node.translateCutStart type='range' min='0' max='100'}}{{config-input node=node style="width:50px" value=node.translateCutStart}}</td>
                                 <td>EndPercent: {{config-input node=node value=node.translateCutEnd type='range' min='0' max='100'}}{{config-input node=node style="width:50px" value=node.translateCutEnd}}</td>
                             </tr>
                             <tr>
-                                <td>Motion type: Sine{{config-input node=node checked=node.motionType type="radio" value="sine"}} Triangle{{config-input node=node checked=node.motionType type="radio" value="triangle"}} Sawtooth{{config-input node=node checked=node.motionType type="radio" value="sawtooth"}} Cos{{config-input node=node checked=node.motionType type="radio" value="cos"}}
+                                <td>Motion type: {{view 'config-select'
+                                        contentBinding=motionTypes
+                                        optionValuePath='content.value'
+                                        optionLabelPath='content.label'
+                                        valueBinding=node.motionType
+                                        prompt="default(sin)"}}
                                 </td>
                             </tr>
                             <tr>
-                                <td>Rotation? {{config-input node=node type="checkbox" checked=node.rotate}}</td>
+                                <td>Rotation? {{view 'config-checkbox' node=node checked=node.rotate}}</td>
                                 <td>Angle: {{config-input node=node value=node.rotateAngle type='range' min='1' max='50'}}{{config-input node=node style="width:50px" value=node.rotateAngle}}</td>
                                 <td>Speed: {{config-input node=node value=node.rotateSpeed type='range' min='100' max='3000'}}{{config-input node=node style="width:50px" value=node.rotateSpeed}}</td>
-                                <td>Rotate type: Sine{{config-input node=node checked=node.rotateType type="radio" value="sine"}} Triangle{{config-input node=node checked=node.rotateType type="radio" value="triangle"}} Sawtooth{{config-input node=node checked=node.rotateType type="radio" value="sawtooth"}} Cos{{config-input node=node checked=node.rotateType type="radio" value="cos"}}
+                                <td>Rotate type: {{view 'config-select'
+                                        contentBinding=motionTypes
+                                        optionValuePath='content.value'
+                                        optionLabelPath='content.label'
+                                        valueBinding=node.rotateType
+                                        prompt="default(sin)"}}
                                 </td>
                             </tr>
                             <tr>
-                                <td>Zooming? {{config-input node=node type="checkbox" checked=node.zoom}}</td>
+                                <td>Zooming? {{view 'config-checkbox' node=node checked=node.zoom}}</td>
                                 <td>Amount: {{config-input node=node value=node.zoomAmount type='range' min='100' max='3000'}}{{config-input node=node style="width:50px" value=node.zoomAmount}}</td>
                                 <td>Speed: {{config-input node=node value=node.zoomSpeed type='range' min='100' max='3000'}}{{config-input node=node style="width:50px" value=node.zoomSpeed}}</td>
                             </tr>
                             <tr>
                                 <td></td>
-                                <td>Relative to translate? {{config-input node=node type="checkbox" checked=node.zoomRelativeTranslate}}</td>
+                                <td>Relative to translate? {{view 'config-checkbox' node=node checked=node.zoomRelativeTranslate}}</td>
                                 <td>Multiplier: {{config-input node=node value=node.zoomRelativeMultiplier type='range' min='0' max='100'}}{{config-input node=node style="width:50px" value=node.zoomRelativeMultiplier}}</td>
                             </tr>
                             <tr>
                                 <td></td>
-                                <td>Cut? {{config-input node=node type="checkbox" checked=node.zoomTypeCut}}</td>
+                                <td>Cut? {{view 'config-checkbox' node=node checked=node.zoomTypeCut}}</td>
                                 <td>StartPercent: {{config-input node=node value=node.zoomCutStart type='range' min='0' max='100'}}{{config-input node=node style="width:50px" value=node.zoomCutStart}}</td>
                                 <td>EndPercent: {{config-input node=node value=node.zoomCutEnd type='range' min='0' max='100'}}{{config-input node=node style="width:50px" value=node.zoomCutEnd}}</td>
                             </tr>
                             <tr>
-                                <td>Zoom type: Sine{{config-input node=node checked=node.zoomType type="radio" value="sine"}} Triangle{{config-input node=node checked=node.zoomType type="radio" value="triangle"}} Sawtooth{{config-input node=node checked=node.zoomType type="radio" value="sawtooth"}} Cos{{config-input node=node checked=node.zoomType type="radio" value="cos"}}
+                                <td>Zoom type: {{view 'config-select'
+                                        contentBinding=motionTypes
+                                        optionValuePath='content.value'
+                                        optionLabelPath='content.label'
+                                        valueBinding=node.zoomType
+                                        prompt="default(sawtooth)"}}
                                 </td>
                             </tr>
                             <tr>
-                                <td>Skewing? {{config-input node=node type="checkbox" checked=node.skew}}</td>
+                                <td>Skewing? {{view 'config-checkbox' node=node checked=node.skew}}</td>
                                 <td>AmountX: {{config-input node=node value=node.skewAmountX type='range' min='100' max='3000'}}{{config-input node=node style="width:50px" value=node.skewAmountX}}</td>
                                 <td>SpeedX: {{config-input node=node value=node.skewSpeedX type='range' min='100' max='3000'}}{{config-input node=node style="width:50px" value=node.skewSpeedX}}</td>
                                 <td>AmountY: {{config-input node=node value=node.skewAmountY type='range' min='100' max='3000'}}{{config-input node=node style="width:50px" value=node.skewAmountY}}</td>
                                 <td>SpeedY: {{config-input node=node value=node.skewSpeedY type='range' min='100' max='3000'}}{{config-input node=node style="width:50px" value=node.skewSpeedY}}</td>
                             </tr>
                             <tr>
-                                <td>Accelerometer Translation? {{config-input node=node type="checkbox" checked=node.accel}}</td>
+                                <td>Accelerometer Translation? {{view 'config-checkbox' node=node checked=node.accel}}</td>
                                 <td>Amount: {{config-input node=node value=node.accelAmount type='range' min='100' max='3000'}}{{config-input node=node style="width:50px" value=node.accelAmount}}</td>
                             </tr>
                             <tr>
-                                <td>Animation? {{config-input node=node type="checkbox" checked=node.animation}}</td>
+                                <td>Animation? {{view 'config-checkbox' node=node checked=node.animation}}</td>
                                 <td>Speed: {{config-input node=node value=node.animationSpeed type='range' min='100' max='3000'}}{{config-input node=node style="width:50px" value=node.animationSpeed}}</td>
                                 <td>Num Frames: {{config-input node=node value=node.numFrames type='range' min='1' max='60'}}{{config-input node=node style="width:50px" value=node.numFrames}}</td>
                             </tr>
