@@ -1,5 +1,3 @@
-//import Famous from "npm:famous";
-
 var Fixtures = require('Fixtures');
 var pagesModel = {};
 pagesModel.pages = Fixtures.results;

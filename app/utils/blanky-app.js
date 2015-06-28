@@ -8,7 +8,7 @@ import TimeKeeper from 'emberblanky/utils/time-keeper';
 
 export default function BlankyApp(isApp, pagesModel, defaultPageID) {
   this.pagesModel = pagesModel;
-  this.defaultPageID = defaultPageID || 'w9zCNnEbfC'
+  this.defaultPageID = defaultPageID || 'UHGPYzstxO'
   this.timeKeeper = new TimeKeeper();
   this.injections = {
     timeKeeper: this.timeKeeper

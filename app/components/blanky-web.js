@@ -4,35 +4,24 @@ import BlankyApp from 'emberblanky/utils/blanky-app';
 import Fixtures from 'emberblanky/utils/blanky-fixtures';
 
 export default Ember.Component.extend({
+  loopNum: 1,
+  loopingIDs: ['UHGPYzstxO','gBqF9PtfBm','w9zCNnEbfC','mt1s3uZ90p','rZ4dWe9BGU'],
   start: function(){
-    var loopingIDs = ['UHGPYzstxO','gBqF9PtfBm','w9zCNnEbfC','mt1s3uZ90p','rZ4dWe9BGU'];
-    var loopNum = 1;
+    var self = this;
     var clicked = function(event) {
         var x = event.clientX;
         if (x < document.getElementById('device-screen').getBoundingClientRect().width/2){
             window.orientationController.reset();
         }
         else {
-            window.blanky.clearPage();
-            window.blanky.loadPage(loopingIDs[loopNum%loopingIDs.length]);
-            loopNum++;
+            var ids = self.get('loopingIDs');
+            var num = self.get('loopNum');
+            self.get('blanky').clearPage()
+            self.get('blanky').loadPage(ids[num%ids.length]);
+            self.set('loopNum', num + 1);
         }
     };
-    var startApp = function() {
-        window.blanky = new BlankyApp(true, this.get('model'));
-        document.getElementById('top-screen').addEventListener('click', clicked, false);
-    };
-    var startWeb = function() {
-        window.blanky = new BlankyApp(false, this.get('model'));
-        document.getElementById('top-screen').addEventListener('click', clicked, false);
-    };
-
-    var isApp = document.URL.indexOf('http://') === -1 && document.URL.indexOf('https://') === -1;
-    if (isApp){
-        document.addEventListener('deviceready', startApp, false);
-    }
-    else {
-        startWeb();
-    }
+    this.set('blanky', new BlankyApp(false, this.get('pages')));
+    document.getElementById('top-screen').addEventListener('click', clicked, false);
   }.on('didInsertElement')
 });
