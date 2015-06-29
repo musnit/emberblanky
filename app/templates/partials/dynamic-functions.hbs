@@ -15,6 +15,14 @@
               valueBinding=dynamicFunction.functionType
               prompt="none"}}
       </td>
+      <td>Cut: {{view 'config-checkbox' node=node checked=dynamicFunction.cut}}
+      </td>
+      {{#if dynamicFunction.cut}}
+        <td>CutStart: {{config-input node=node value=dynamicFunction.cutStart type='range' min='-500' max='500'}}{{config-input node=node style="width:50px" value=dynamicFunction.cutStart}}
+        </td>
+        <td>CutEnd: {{config-input node=node value=dynamicFunction.cutEnd type='range' min='-500' max='500'}}{{config-input node=node style="width:50px" value=dynamicFunction.cutEnd}}
+        </td>
+      {{/if}}
       <td>
         <button {{action 'removeDynamicFunction' dynamicFunction}}>delete</button>
       </td>

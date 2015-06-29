@@ -31,14 +31,14 @@ Choose item to edit:
                         {{/if}}
                     {{/if}}
                     {{#if (if-same editingSection 'dynamic')}}
-                        {{partial 'partials/dynamic-attributes'}}
+                        {{partial 'partials/dynamic-functions'}}
                     {{/if}}
                     {{#if (if-same editingSection 'legacy')}}
-                        {{partial 'partials/legacy-attributes'}}
+                        {{partial 'partials/legacy-functions'}}
                         {{#if currentNodeIsCamera}}
-                            {{partial 'partials/camera-legacy-attributes'}}
+                            {{partial 'partials/camera-legacy-functions'}}
                         {{else}}
-                            {{partial 'partials/popup-legacy-attributes'}}
+                            {{partial 'partials/popup-legacy-functions'}}
                         {{/if}}
                     {{/if}}
                 </tbody>

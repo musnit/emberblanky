@@ -2,6 +2,7 @@ todos:
 
 new stuffs!
 proper function 2.0 thing
+no more tables
 cordova test
 camera depth vs camera perspective?
 
@@ -11,3 +12,10 @@ bug: add many new popups all have same name - new. name is supposed to be unique
 bug: remove popup doesnt redraw...should check all things if they redraw insta. seems like change rotate type doesnt either.
 bug: changing names of popup doesnt affect the select until refresh
 bug: selects/radios
+
+dynamic functions:
+cut!
+try fit in animation/orientation?
+camera?
+relative to somevalue(maybe should generalize this more)
+interaction ^_^?

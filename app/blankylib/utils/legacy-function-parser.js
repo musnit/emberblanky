@@ -84,15 +84,6 @@ LegacyFunctionParser.prototype.parseConfig = function(config) {
     }
 
     legacyConfig.skewFunction = MathFunctions.prototype.cosFunction;
-    if (legacyConfig.zoomTypeCut){
-        legacyConfig.zoomFunction = MathFunctions.prototype.cutFunction(legacyConfig.zoomFunction,
-            legacyConfig.zoomCutStart, legacyConfig.zoomCutEnd, legacyConfig.zoomFunction.period);
-    }
-    if (legacyConfig.translateTypeCut){
-        legacyConfig.translateFunction = MathFunctions.prototype.cutFunction(legacyConfig.translateFunction,
-            legacyConfig.translateCutStart, legacyConfig.translateCutEnd, legacyConfig.translateFunction.period);
-    }
-
     legacyConfig.legacyFunctionConfigs = [];
 
     if (legacyConfig.translate){
@@ -100,14 +91,20 @@ LegacyFunctionParser.prototype.parseConfig = function(config) {
             characteristic:'changeX',
             speed: legacyConfig.translateXSpeed,
             multiplier: legacyConfig.translateX,
-            functionType: legacyConfig.translateFunction
+            functionType: legacyConfig.translateFunction,
+            cut: legacyConfig.translateTypeCut,
+            cutStart: legacyConfig.translateCutStart,
+            cutEnd: legacyConfig.translateCutEnd
         });
 
         legacyConfig.legacyFunctionConfigs.push({
             characteristic:'changeY',
             speed: legacyConfig.translateYSpeed,
             multiplier: legacyConfig.translateY,
-            functionType: legacyConfig.translateFunction
+            functionType: legacyConfig.translateFunction,
+            cut: legacyConfig.translateTypeCut,
+            cutStart: legacyConfig.translateCutStart,
+            cutEnd: legacyConfig.translateCutEnd
         });
     }
     if (legacyConfig.rotate){
@@ -138,7 +135,10 @@ LegacyFunctionParser.prototype.parseConfig = function(config) {
                 characteristic:'changeZoom',
                 speed: legacyConfig.zoomSpeed,
                 multiplier: legacyConfig.zoomRelativeMultiplier/legacyConfig.translateY,
-                functionType: legacyConfig.zoomFunction
+                functionType: legacyConfig.zoomFunction,
+                cut: legacyConfig.zoomTypeCut,
+                cutStart: legacyConfig.zoomCutStart,
+                cutEnd: legacyConfig.zoomCutEnd
             });
         }
         else {
@@ -146,7 +146,10 @@ LegacyFunctionParser.prototype.parseConfig = function(config) {
                 characteristic:'changeZoom',
                 speed: legacyConfig.zoomSpeed,
                 multiplier: legacyConfig.zoomAmount,
-                functionType: legacyConfig.zoomFunction
+                functionType: legacyConfig.zoomFunction,
+                cut: legacyConfig.zoomTypeCut,
+                cutStart: legacyConfig.zoomCutStart,
+                cutEnd: legacyConfig.zoomCutEnd
             });
         }
     }

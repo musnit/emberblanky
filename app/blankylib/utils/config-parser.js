@@ -48,6 +48,10 @@ ConfigParser.prototype.parseConfig = function(config, model) {
 
     parsedConfig.allFunctions = parsedConfig.dynamicFunctions.concat(parsedConfig.legacyFunctionConfigs);
     parsedConfig.changingFunctions = parsedConfig.allFunctions.map(function(functionConfig) {
+        if (functionConfig.cut){
+            functionConfig.functionType = MathFunctions.prototype.cutFunction(functionConfig.functionType,
+                functionConfig.cutStart, functionConfig.cutEnd, functionConfig.functionType.period);
+        }
         return {
             characteristic: functionConfig.characteristic,
             fn: ActionFunctions.prototype.timeFunction(parsedConfig.timeOffset,

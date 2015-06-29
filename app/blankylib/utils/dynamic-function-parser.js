@@ -33,6 +33,9 @@ DynamicFunctionParser.prototype.parseFunctions = function(dynamicFunctions) {
             speed: parseFloat(dynamicFunction.speed),
             multiplier: parseFloat(dynamicFunction.multiplier),
             functionType: self.getFunctionByType(dynamicFunction.functionType),
+            cut: dynamicFunction.cut,
+            cutStart: parseFloat(dynamicFunction.cutStart),
+            cutEnd: parseFloat(dynamicFunction.cutEnd)
         };
     });
     var filteredDynamicFunctions = parsedDynamicFunctions.filter(function(dynamicFunction){
@@ -47,6 +50,14 @@ DynamicFunctionParser.prototype.parseFunctions = function(dynamicFunctions) {
         }
         if(dynamicFunction.functionType === null){
             return false;
+        }
+        if(dynamicFunction.cut){
+            if(isNaN(dynamicFunction.cutStart)){
+                return false;
+            }
+            if(isNaN(dynamicFunction.cutEnd)){
+                return false;
+            }
         }
         return true;
     });
