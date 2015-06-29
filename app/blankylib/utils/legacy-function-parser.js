@@ -5,7 +5,7 @@ function LegacyFunctionParser() {
 }
 
 LegacyFunctionParser.prototype.constructor = LegacyFunctionParser;
-LegacyFunctionParser.prototype.parseConfig = function(config, parsedConfig) {
+LegacyFunctionParser.prototype.parseConfig = function(config) {
     var legacyConfig = {};
     legacyConfig.translateFunction = undefined;
     legacyConfig.zoomFunction = undefined;
@@ -18,12 +18,17 @@ LegacyFunctionParser.prototype.parseConfig = function(config, parsedConfig) {
     legacyConfig.zoomTypeCut = config.zoomTypeCut;
     legacyConfig.translateTypeCut = config.translateTypeCut;
 
+    legacyConfig.translate = config.translate;
+    legacyConfig.rotate = config.rotate;
+    legacyConfig.skew = config.skew;
+    legacyConfig.zoom = config.zoom;
+    legacyConfig.zoomRelativeTranslate = config.zoomRelativeTranslate;
+
     legacyConfig.zoomCutStart = parseFloat(config.zoomCutStart);
     legacyConfig.zoomCutEnd = parseFloat(config.zoomCutEnd);
     legacyConfig.translateCutStart = parseFloat(config.translateCutStart);
     legacyConfig.translateCutEnd = parseFloat(config.translateCutEnd);
 
-    legacyConfig.translate = config.translate;
     legacyConfig.translateXSpeed = parseFloat(config.translateXSpeed);
     legacyConfig.translateYSpeed = parseFloat(config.translateYSpeed);
     legacyConfig.translateX = parseFloat(config.translateX);

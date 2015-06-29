@@ -41,14 +41,10 @@ ConfigParser.prototype.parseConfig = function(config, model) {
     parsedConfig.accelAmount = parseFloat(config.accelAmount) || 1;
     parsedConfig.accelRotate = config.accelRotate;
     parsedConfig.accelRotateAmount = parseFloat(config.accelRotateAmount) || 1;
-    parsedConfig.rotate = config.rotate;
-    parsedConfig.skew = config.skew;
-    parsedConfig.zoom = config.zoom;
-    parsedConfig.zoomRelativeTranslate = config.zoomRelativeTranslate;
     parsedConfig.animation = config.animation;
     parsedConfig.cameraBound = config.cameraBound;
     parsedConfig.dynamicFunctions = DynamicFunctionParser.prototype.parseFunctions(config.dynamicFunctions);
-    parsedConfig.legacyFunctionConfigs = LegacyFunctionParser.prototype.parseConfig(config, parsedConfig);
+    parsedConfig.legacyFunctionConfigs = LegacyFunctionParser.prototype.parseConfig(config);
 
     parsedConfig.allFunctions = parsedConfig.dynamicFunctions.concat(parsedConfig.legacyFunctionConfigs);
     parsedConfig.changingFunctions = parsedConfig.allFunctions.map(function(functionConfig) {
