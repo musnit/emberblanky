@@ -19,6 +19,9 @@ DynamicFunctionParser.prototype.getFunctionByType = function(functionType){
         case 'sine':
             return MathFunctions.prototype.sinFunction;
             break;
+        case 'sinsawtooth':
+            return MathFunctions.prototype.sinSawtoothFunction;
+            break;
         default:
             return null;
             break;

@@ -23,7 +23,8 @@ export default Ember.Component.extend({
     {'label': 'Sine' , 'value': 'sine' },
     {'label': 'Triangle' , 'value': 'triangle' },
     {'label': 'Sawtooth', 'value': 'sawtooth' },
-    {'label': 'Cos', 'value': 'cos' }
+    {'label': 'Cos', 'value': 'cos' },
+    {'label': 'SinSawtooth', 'value': 'sinsawtooth' }
   ],
   characteristics: [
     {'value': 'changeX' },

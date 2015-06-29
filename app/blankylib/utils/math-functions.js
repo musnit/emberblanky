@@ -39,6 +39,12 @@ MathFunctions.prototype.sawToothFunction = function(xPosition, range) {
 };
 MathFunctions.prototype.sawToothFunction.period = 1;
 
+//amplitute: 1, about: 0.5, start: 0, period: 1
+MathFunctions.prototype.sinSawtoothFunction = function(xPosition, range) {
+    return range*(Math.sin(Math.PI*xPosition - Math.PI*Math.floor(xPosition) - Math.PI/2) + 1);
+};
+MathFunctions.prototype.sinSawtoothFunction.period = 1;
+
 MathFunctions.prototype.periodChangedFunction = function(initialFunction, change) {
     var newFunction = function(xPosition, range) {
         return initialFunction(change*xPosition, range);
