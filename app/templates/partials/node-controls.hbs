@@ -7,8 +7,9 @@ Choose item to edit:
 </ul>
 <br/>
 <ul class="nav nav-tabs" role="tablist">
-    <li class={{if editingStatic 'active'}}><a class="click-hover" {{action 'activateStaticControls'}}>Static attributes</a></li>
-    <li class={{if editingStatic '' 'active'}}><a class="click-hover" {{action 'activateDynamicControls'}}>Dynamic attributes</a></li>
+    <li class={{if-same editingSection 'static' 'active'}}><a class="click-hover" {{action 'activateStaticControls'}}>Static attributes</a></li>
+    <li class={{if-same editingSection 'dynamic' 'active'}}><a class="click-hover" {{action 'activateDynamicControls'}}>Dynamic attributes</a></li>
+    <li class={{if-same editingSection 'legacy' 'active'}}><a class="click-hover" {{action 'activateLegacyControls'}}>Legacy attributes</a></li>
     {{#unless currentNodeIsCamera}}
         <li><button {{action 'removeCurrentPopup'}}>Remove Popup!!</button></li>
     {{/unless}}
@@ -22,18 +23,22 @@ Choose item to edit:
         <td>
             <table border=1>
                 <tbody>
-                    {{#if editingStatic}}
+                    {{#if (if-same editingSection 'static')}}
                         {{#if currentNodeIsCamera}}
                             {{partial 'partials/camera-static-attributes'}}
                         {{else}}
                             {{partial 'partials/popup-static-attributes'}}
                         {{/if}}
-                    {{else}}
+                    {{/if}}
+                    {{#if (if-same editingSection 'dynamic')}}
                         {{partial 'partials/dynamic-attributes'}}
+                    {{/if}}
+                    {{#if (if-same editingSection 'legacy')}}
+                        {{partial 'partials/legacy-attributes'}}
                         {{#if currentNodeIsCamera}}
-                            {{partial 'partials/camera-dynamic-attributes'}}
+                            {{partial 'partials/camera-legacy-attributes'}}
                         {{else}}
-                            {{partial 'partials/popup-dynamic-attributes'}}
+                            {{partial 'partials/popup-legacy-attributes'}}
                         {{/if}}
                     {{/if}}
                 </tbody>

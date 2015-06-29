@@ -7,7 +7,7 @@ export default Ember.Component.extend({
   pageTime: 0,
   hiddenOverflow: false,
   editingPage: false,
-  editingStatic: true,
+  editingSection: 'static',
   intialPageID: 'UHGPYzstxO',
   surfaceTypes: [
     {'label': 'Image' , 'value': 'image' },
@@ -115,10 +115,13 @@ export default Ember.Component.extend({
       this.set('editingPage', false);
     },
     activateStaticControls: function(){
-      this.set('editingStatic', true);
+      this.set('editingSection', 'static');
     },
     activateDynamicControls: function(){
-      this.set('editingStatic', false);
+      this.set('editingSection', 'dynamic');
+    },
+    activateLegacyControls: function(){
+      this.set('editingSection', 'legacy');
     },
     changeCurrentNodeName: function(name){
       this.set('currentNodeName', name);
