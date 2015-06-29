@@ -10,6 +10,7 @@ section {
 }
 #edit-section{
   z-index: 999;
+  max-width: 1000px;
 }
 .full-image {
     position: relative;
@@ -40,4 +41,8 @@ section {
   left: -77px;
   top: -20px;
   z-index: 999;
+}
+
+.click-hover{
+  cursor: pointer;
 }

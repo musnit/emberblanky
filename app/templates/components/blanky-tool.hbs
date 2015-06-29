@@ -20,14 +20,23 @@
     <button {{action 'newPage'}}>Add new blank page</button><br/>
     {{#with currentPage as |page|}}
         <div id="edit-section">
-            {{partial 'partials/page-controls'}}
-            {{partial 'partials/node-controls'}}
+            <div id="main-section-picker">
+              <ul class="nav nav-tabs" role="tablist">
+                <li class={{if editingPage 'active'}}><a class="click-hover" {{action 'activatePageControls'}}>Page Controls</a></li>
+                <li class={{if editingPage '' 'active'}}><a class="click-hover" {{action 'activateNodeControls'}}>Node Controls</a></li>
+              </ul>
+            </div>
+            {{#if editingPage}}
+                {{partial 'partials/page-controls'}}
+            {{else}}
+                {{partial 'partials/node-controls'}}
+            {{/if}}
         </div>
     {{/with}}
 </div>
 
 <div id="device-area">
-<img id="iphone-5-pic" src="/content/images/ipad.png">
-<div id="device-screen" class="{{if hiddenOverflow 'hidden-overflow'}} iphone-5 famous-container"></div>
-<div id="top-screen" class="{{if hiddenOverflow 'hidden-overflow'}} iphone-5 famous-container"></div>
+    <img id="iphone-5-pic" src="/content/images/ipad.png">
+    <div id="device-screen" class="{{if hiddenOverflow 'hidden-overflow'}} iphone-5 famous-container"></div>
+    <div id="top-screen" class="{{if hiddenOverflow 'hidden-overflow'}} iphone-5 famous-container"></div>
 </div>

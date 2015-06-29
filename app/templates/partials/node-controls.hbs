@@ -1,41 +1,44 @@
-<h3>Popup controls</h3>
+Choose item to edit:
+<ul class="nav nav-pills">
+    {{#each nodesToEdit key="@guid" as |node|}}
+      <li class={{if-same node.name currentNodeName 'active'}} {{action 'changeCurrentNodeName' node.name}}><a class="click-hover">{{node.name}}</a></li>
+    {{/each}}
+    <li><button {{action 'addNewPopup'}}>Add new popup</button></li>
+</ul>
+<br/>
+<ul class="nav nav-tabs" role="tablist">
+    <li class={{if editingStatic 'active'}}><a class="click-hover" {{action 'activateStaticControls'}}>Static attributes</a></li>
+    <li class={{if editingStatic '' 'active'}}><a class="click-hover" {{action 'activateDynamicControls'}}>Dynamic attributes</a></li>
+    {{#unless currentNodeIsCamera}}
+        <li><button {{action 'removeCurrentPopup'}}>Remove Popup!!</button></li>
+    {{/unless}}
+</ul>
+
+{{#with currentNode as |node|}}
 <table>
     <tr>
-    <td>
-        Change item to edit?:
-        {{view 'select'
-            contentBinding=nodesToEdit
-            optionValuePath='content.name'
-            optionLabelPath='content.name'
-            valueBinding=currentNodeName
-        }}
-    </td>
     </tr>
-    <tr>
-        <button {{action 'addNewPopup'}}>Add new popup</button><br/>
-    </tr>
-    {{#with currentNode as |node|}}
     <tr>
         <td>
             <table border=1>
                 <tbody>
-                    {{#if currentNodeIsCamera}}
-                        {{partial 'partials/camera-static-attributes'}}
+                    {{#if editingStatic}}
+                        {{#if currentNodeIsCamera}}
+                            {{partial 'partials/camera-static-attributes'}}
+                        {{else}}
+                            {{partial 'partials/popup-static-attributes'}}
+                        {{/if}}
                     {{else}}
-                        {{partial 'partials/popup-static-attributes'}}
-                    {{/if}}
-                    {{partial 'partials/dynamic-attributes'}}
-                    {{#if currentNodeIsCamera}}
-                        {{partial 'partials/camera-dynamic-attributes'}}
-                    {{else}}
-                        {{partial 'partials/popup-dynamic-attributes'}}
-                        <tr>
-                            <td><button {{action 'removeCurrentPopup'}}>Remove Popup!!</button></td>
-                        </tr>
+                        {{partial 'partials/dynamic-attributes'}}
+                        {{#if currentNodeIsCamera}}
+                            {{partial 'partials/camera-dynamic-attributes'}}
+                        {{else}}
+                            {{partial 'partials/popup-dynamic-attributes'}}
+                        {{/if}}
                     {{/if}}
                 </tbody>
             </table>
         </td>
     </tr>
-    {{/with}}
 </table>
+{{/with}}

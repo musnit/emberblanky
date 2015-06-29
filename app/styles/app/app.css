@@ -23,8 +23,12 @@ body {
   right: 0;
 }
 
-body {
+#device-area {
   font-family: TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia, serif;
+  font-size: initial;
+  line-height: initial;
+  color: initial;
+  background-color: initial;
 }
 
 .overlay-text {
