@@ -9,7 +9,7 @@ export default Ember.Component.extend({
   hiddenOverflow: false,
   editingPage: false,
   editingSection: 'static',
-  intialPageID: 'rZ4dWe9BGU',
+  intialPageID: 'KmEFZViENH',
   surfaceTypes: [
     {'label': 'Image' , 'value': 'image' },
     {'label': 'Plain' , 'value': 'plain' },
@@ -24,7 +24,9 @@ export default Ember.Component.extend({
     {'label': 'Triangle' , 'value': 'triangle' },
     {'label': 'Sawtooth', 'value': 'sawtooth' },
     {'label': 'Cos', 'value': 'cos' },
-    {'label': 'SinSawtooth', 'value': 'sinsawtooth' }
+    {'label': 'SinSawtooth', 'value': 'sinsawtooth' },
+    {'label': 'TanSawtooth', 'value': 'tansawtooth' },
+    {'label': 'CubedSawtooth', 'value': 'cubedsawtooth' }
   ],
   characteristics: [
     {'value': 'changeX' },

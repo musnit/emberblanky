@@ -3,6 +3,7 @@ var Node = Famous.core.Node;
 var Camera = Famous.components.Camera;
 import ParameterTransformer from '../utils/parameter-transformer';
 import ConfigParser from '../utils/config-parser';
+import DynamicFunctionParser from '../utils/dynamic-function-parser';
 import MathFunctions from '../utils/math-functions';
 import PopupNode from './popup-node';
 
@@ -84,18 +85,7 @@ PopupPageNode.prototype.setupInitialState = function() {
         this.perspectiveZoomAmount = parseFloat(this.model.camera.perspectiveZoomAmount);
         this.perspectiveZoomCutStart = parseFloat(this.model.camera.perspectiveZoomCutStart);
         this.perspectiveZoomCutEnd = parseFloat(this.model.camera.perspectiveZoomCutEnd);
-        if (this.model.camera.perspectiveZoomType === 'triangle'){
-            this.perspectiveFunction = MathFunctions.prototype.triangleFunction;
-        }
-        else if (this.model.camera.perspectiveZoomType === 'sawtooth'){
-            this.perspectiveFunction = MathFunctions.prototype.sawToothFunction;
-        }
-        else if (this.model.camera.perspectiveZoomType === 'cos'){
-            this.perspectiveFunction = MathFunctions.prototype.cosFunction;
-        }
-        else {
-            this.perspectiveFunction = MathFunctions.prototype.sinFunction;
-        }
+        this.perspectiveFunction = DynamicFunctionParser.prototype.getFunctionByType(this.model.camera.perspectiveZoomType)
         if (this.model.camera.perspectiveZoomCut){
             this.perspectiveFunction = MathFunctions.prototype.cutFunction(this.perspectiveFunction, this.perspectiveZoomCutStart, this.perspectiveZoomCutEnd, this.perspectiveFunction.period);
         }

@@ -22,6 +22,12 @@ DynamicFunctionParser.prototype.getFunctionByType = function(functionType){
         case 'sinsawtooth':
             return MathFunctions.prototype.sinSawtoothFunction;
             break;
+        case 'tansawtooth':
+            return MathFunctions.prototype.tanSawtoothFunction;
+            break;
+        case 'cubedsawtooth':
+            return MathFunctions.prototype.cubedSawtoothFunction;
+            break;
         default:
             return null;
             break;

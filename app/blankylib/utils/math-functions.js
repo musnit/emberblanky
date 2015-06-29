@@ -45,6 +45,18 @@ MathFunctions.prototype.sinSawtoothFunction = function(xPosition, range) {
 };
 MathFunctions.prototype.sinSawtoothFunction.period = 1;
 
+//amplitute: inf, about: inf/2, start: 0, period: 1
+MathFunctions.prototype.tanSawtoothFunction = function(xPosition, range) {
+    return range*(Math.tan((xPosition - Math.floor(xPosition))*Math.PI/2));
+};
+MathFunctions.prototype.tanSawtoothFunction.period = 1;
+
+//amplitute: 1, about: 0,5, start: 0, period: 1
+MathFunctions.prototype.cubedSawtoothFunction = function(xPosition, range) {
+    return range*(Math.pow(xPosition - Math.floor(xPosition) +1, 3) - 1);
+};
+MathFunctions.prototype.cubedSawtoothFunction.period = 1;
+
 MathFunctions.prototype.periodChangedFunction = function(initialFunction, change) {
     var newFunction = function(xPosition, range) {
         return initialFunction(change*xPosition, range);
