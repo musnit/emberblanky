@@ -17,7 +17,9 @@
         optionLabelPath='content.fullName'
         value=currentPageID}}
     <br/>
-    <button {{action 'newPage'}}>Add new blank page</button><br/>
+    <button {{action 'newPage'}}>Add new blank page</button>
+    <button {{action 'saveCurrentPage'}}>Save everything on page</button>
+    <button {{action 'dupeCurrentPage'}}>Duplicate this page</button><br/>
     {{#with currentPage as |page|}}
         <div id="edit-section">
             <div id="main-section-picker">

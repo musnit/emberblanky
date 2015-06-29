@@ -25,7 +25,6 @@ ParameterTransformer.prototype.calculateTransform = function() {
     var characteristics = {
         changeX: 0,
         changeY: 0,
-        changeZ: 0,
         changeRotateX: 0,
         changeRotateY: 0,
         changeRotateZ: 0,

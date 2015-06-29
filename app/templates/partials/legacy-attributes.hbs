@@ -7,7 +7,7 @@
 </tr>
 <tr>
     <td>Motion type: {{view 'config-select'
-            contentBinding=motionTypes
+            contentBinding=functionTypes
             optionValuePath='content.value'
             optionLabelPath='content.label'
             valueBinding=node.motionType
@@ -22,7 +22,7 @@
     <td>Angle: {{config-input node=node value=node.rotateAngle type='range' min='1' max='50'}}{{config-input node=node style="width:50px" value=node.rotateAngle}}</td>
     <td>Speed: {{config-input node=node value=node.rotateSpeed type='range' min='100' max='3000'}}{{config-input node=node style="width:50px" value=node.rotateSpeed}}</td>
     <td>Rotate type: {{view 'config-select'
-            contentBinding=motionTypes
+            contentBinding=functionTypes
             optionValuePath='content.value'
             optionLabelPath='content.label'
             valueBinding=node.rotateType
@@ -47,7 +47,7 @@
 </tr>
 <tr>
     <td>Zoom type: {{view 'config-select'
-            contentBinding=motionTypes
+            contentBinding=functionTypes
             optionValuePath='content.value'
             optionLabelPath='content.label'
             valueBinding=node.zoomType

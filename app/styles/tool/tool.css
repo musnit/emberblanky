@@ -8,7 +8,7 @@ section {
 #time-chooser{
   width: 800px;
 }
-#edit-section{
+#editor-section{
   z-index: 999;
   max-width: 1000px;
 }

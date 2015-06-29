@@ -3,12 +3,13 @@ import Ember from 'ember';
 import BlankyApp from 'emberblanky/blankylib/utils/blanky-app';
 
 export default Ember.Component.extend({
+  classNames: ['blanky-tool'],
   paused: false,
   pageTime: 0,
   hiddenOverflow: false,
   editingPage: false,
   editingSection: 'static',
-  intialPageID: 'UHGPYzstxO',
+  intialPageID: 'rZ4dWe9BGU',
   surfaceTypes: [
     {'label': 'Image' , 'value': 'image' },
     {'label': 'Plain' , 'value': 'plain' },
@@ -18,11 +19,22 @@ export default Ember.Component.extend({
     {'label': 'OneLineRunOn', 'value': 'oneLineRunOn' },
     {'label': 'RepeatingImage', 'value': 'repeatingImage' },
   ],
-  motionTypes: [
+  functionTypes: [
     {'label': 'Sine' , 'value': 'sine' },
     {'label': 'Triangle' , 'value': 'triangle' },
     {'label': 'Sawtooth', 'value': 'sawtooth' },
     {'label': 'Cos', 'value': 'cos' }
+  ],
+  characteristics: [
+    {'value': 'changeX' },
+    {'value': 'changeY' },
+    {'value': 'changeHeight' },
+    {'value': 'changeRotateX' },
+    {'value': 'changeRotateY' },
+    {'value': 'changeRotateZ' },
+    {'value': 'changeSkewX' },
+    {'value': 'changeSkewY' },
+    {'value': 'changeZoom' }
   ],
   currentNodeIsCamera: Ember.computed.equal('currentNode.name','camera'),
   updateTime: function(){
@@ -40,11 +52,16 @@ export default Ember.Component.extend({
     var sounds = this.get('currentPage.sounds')
     return sounds;
   }.property('currentPage.sounds,currentPage.sounds.[]'),
+  dynamicFunctionsToEdit: function(){
+    var dynamicFunctions = this.get('currentNode.dynamicFunctions')
+    return dynamicFunctions;
+  }.property('currentNode.dynamicFunctions,currentNode.dynamicFunctions.[]'),
   currentPage: function(){
     if (this.get('blanky')){
       this.get('blanky').clearPage();
       this.get('blanky').loadPage(this.get('currentPageID'));
     }
+    this.set('currentNodeName', 'camera');
     return this.get('pages').filterBy('objectId', this.get('currentPageID'))[0];
   }.property('currentPageID'),
   currentNode: function(){
@@ -125,6 +142,19 @@ export default Ember.Component.extend({
     },
     changeCurrentNodeName: function(name){
       this.set('currentNodeName', name);
+    },
+    addDynamicFunction: function(){
+        this.set('currentNode.dynamicFunctions', this.get('currentNode.dynamicFunctions') || []);
+        this.get('currentNode.dynamicFunctions').push(
+          {characteristic: null, speed: 0, multiplier: 0, functionType: null}
+        );
+        this.notifyPropertyChange('dynamicFunctionsToEdit');
+    },
+    removeDynamicFunction: function(dynamicFunction){
+        var index = this.get('currentNode.dynamicFunctions').indexOf(dynamicFunction);
+        this.get('currentNode.dynamicFunctions').splice(index, 1);
+        this.get('currentNode').configChanged = true;
+        this.notifyPropertyChange('dynamicFunctionsToEdit');
     }
   }
 });

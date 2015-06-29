@@ -1,0 +1,26 @@
+{{#each dynamicFunctionsToEdit key="@guid" as |dynamicFunction|}}
+  <tr>
+      <td>Characteristic: {{view 'config-select'
+              contentBinding=characteristics
+              optionValuePath='content.value'
+              optionLabelPath='content.value'
+              valueBinding=dynamicFunction.characteristic
+              prompt="none"}}</td>
+      <td>Speed: {{config-input node=node value=dynamicFunction.speed type='range' min='-500' max='500'}}{{config-input node=node style="width:50px" value=dynamicFunction.speed}}</td>
+      <td>Multiplier: {{config-input node=node value=dynamicFunction.multiplier type='range' min='100' max='3000'}}{{config-input node=node style="width:50px" value=dynamicFunction.multiplier}}</td>
+      <td>Function Type: {{view 'config-select'
+              contentBinding=functionTypes
+              optionValuePath='content.value'
+              optionLabelPath='content.label'
+              valueBinding=dynamicFunction.functionType
+              prompt="none"}}
+      </td>
+      <td>
+        <button {{action 'removeDynamicFunction' dynamicFunction}}>delete</button>
+      </td>
+  </tr>
+{{/each}}
+<tr>
+  <button {{action 'addDynamicFunction'}}>Add new dynamic function!</button>
+</tr>
+

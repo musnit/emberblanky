@@ -8,7 +8,7 @@ Choose item to edit:
 <br/>
 <ul class="nav nav-tabs" role="tablist">
     <li class={{if-same editingSection 'static' 'active'}}><a class="click-hover" {{action 'activateStaticControls'}}>Static attributes</a></li>
-    <li class={{if-same editingSection 'dynamic' 'active'}}><a class="click-hover" {{action 'activateDynamicControls'}}>Dynamic attributes</a></li>
+    <li class={{if-same editingSection 'dynamic' 'active'}}><a class="click-hover" {{action 'activateDynamicControls'}}>Dynamic functions</a></li>
     <li class={{if-same editingSection 'legacy' 'active'}}><a class="click-hover" {{action 'activateLegacyControls'}}>Legacy attributes</a></li>
     {{#unless currentNodeIsCamera}}
         <li><button {{action 'removeCurrentPopup'}}>Remove Popup!!</button></li>

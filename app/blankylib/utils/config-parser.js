@@ -1,5 +1,7 @@
 import MathFunctions from './math-functions';
 import ActionFunctions from './action-functions';
+import LegacyFunctionParser from './legacy-function-parser';
+import DynamicFunctionParser from './dynamic-function-parser';
 
 function ConfigParser() {
 }
@@ -26,42 +28,15 @@ ConfigParser.prototype.parseConfig = function(config, model) {
     parsedConfig.scale = parseFloat(config.scale);
     parsedConfig.xyRatio = parseFloat(config.xyRatio);
     parsedConfig.timeOffset = parseFloat(config.timeOffset);
-    parsedConfig.translateXSpeed = parsedConfig.pageSpeed * parseFloat(config.translateXSpeed);
-    parsedConfig.translateYSpeed = parsedConfig.pageSpeed * parseFloat(config.translateYSpeed);
-    parsedConfig.translateX = parseFloat(config.translateX);
-    parsedConfig.translateY = parseFloat(config.translateY);
-    parsedConfig.rotateSpeed = parsedConfig.pageSpeed * parseFloat(config.rotateSpeed);
-    parsedConfig.rotateAngle = parseFloat(config.rotateAngle);
-    parsedConfig.skewSpeedX = parsedConfig.pageSpeed * parseFloat(config.skewSpeedX);
-    parsedConfig.skewAmountX = parseFloat(config.skewAmountX);
-    parsedConfig.skewSpeedY = parsedConfig.pageSpeed * parseFloat(config.skewSpeedY);
-    parsedConfig.skewAmountY = parseFloat(config.skewAmountY);
-    parsedConfig.zoomSpeed = parsedConfig.pageSpeed * parseFloat(config.zoomSpeed);
-    parsedConfig.zoomAmount = parseFloat(config.zoomAmount);
-    parsedConfig.zoomCutStart = parseFloat(config.zoomCutStart);
-    parsedConfig.zoomCutEnd = parseFloat(config.zoomCutEnd);
-    parsedConfig.translateCutStart = parseFloat(config.translateCutStart);
-    parsedConfig.translateCutEnd = parseFloat(config.translateCutEnd);
     parsedConfig.height = parseFloat(config.height);
     parsedConfig.cameraBoundOffset = parseFloat(config.cameraBoundOffset);
-    parsedConfig.zoomRelativeMultiplier = parseFloat(config.zoomRelativeMultiplier);
     parsedConfig.animationSpeed = parsedConfig.pageSpeed * (parseFloat(config.animationSpeed) || 100);
     parsedConfig.singSpeed = parsedConfig.pageSpeed * (parseFloat(config.singSpeed) || 1);
     parsedConfig.singMotion = (parseFloat(config.singMotion) || 1000);
     parsedConfig.numFrames = parseFloat(config.numFrames);
-    parsedConfig.motionType = config.motionType;
-    parsedConfig.zoomType = config.zoomType;
-    parsedConfig.rotateType = config.rotateType;
-    parsedConfig.zoomTypeCut = config.zoomTypeCut;
-    parsedConfig.translateTypeCut = config.translateTypeCut;
-    parsedConfig.translateFunction = undefined;
-    parsedConfig.zoomFunction = undefined;
-    parsedConfig.rotateFunction = undefined;
-    parsedConfig.skewFunction = undefined;
     parsedConfig.animationFunction = function() {
         return Math.floor(MathFunctions.prototype.sawToothFunction.apply(this, arguments));
     };
-    parsedConfig.translate = config.translate;
     parsedConfig.accel = config.accel;
     parsedConfig.accelAmount = parseFloat(config.accelAmount) || 1;
     parsedConfig.accelRotate = config.accelRotate;
@@ -72,119 +47,15 @@ ConfigParser.prototype.parseConfig = function(config, model) {
     parsedConfig.zoomRelativeTranslate = config.zoomRelativeTranslate;
     parsedConfig.animation = config.animation;
     parsedConfig.cameraBound = config.cameraBound;
+    parsedConfig.dynamicFunctions = DynamicFunctionParser.prototype.parseFunctions(config.dynamicFunctions);
+    parsedConfig.legacyFunctionConfigs = LegacyFunctionParser.prototype.parseConfig(config, parsedConfig);
 
-    if (parsedConfig.motionType === 'triangle'){
-        parsedConfig.translateFunction = MathFunctions.prototype.triangleFunction;
-    }
-    else if (parsedConfig.motionType === 'sawtooth'){
-        parsedConfig.translateFunction = MathFunctions.prototype.sawToothFunction;
-    }
-    else if (parsedConfig.motionType === 'cos'){
-        parsedConfig.translateFunction = MathFunctions.prototype.cosFunction;
-    }
-    else {
-        parsedConfig.translateFunction = MathFunctions.prototype.sinFunction;
-    }
-
-    if (parsedConfig.zoomType === 'triangle'){
-        parsedConfig.zoomFunction = MathFunctions.prototype.triangleFunction;
-    }
-    else if (parsedConfig.zoomType === 'sin'){
-        parsedConfig.zoomFunction = MathFunctions.prototype.sinFunction;
-    }
-    else if (parsedConfig.zoomType === 'cos'){
-        parsedConfig.zoomFunction = MathFunctions.prototype.cosFunction;
-    }
-    else {
-        parsedConfig.zoomFunction = MathFunctions.prototype.sawToothFunction;
-    }
-
-    if (parsedConfig.rotateType === 'triangle'){
-        parsedConfig.rotateFunction = MathFunctions.prototype.triangleFunction;
-    }
-    else if (parsedConfig.rotateType === 'sawToothFunction'){
-        parsedConfig.rotateFunction = MathFunctions.prototype.sawToothFunction;
-    }
-    else if (parsedConfig.rotateType === 'cos'){
-        parsedConfig.rotateFunction = MathFunctions.prototype.cosFunction;
-    }
-    else {
-        parsedConfig.rotateFunction = MathFunctions.prototype.sinFunction;
-    }
-
-    parsedConfig.skewFunction = MathFunctions.prototype.cosFunction;
-    if (parsedConfig.zoomTypeCut){
-        parsedConfig.zoomFunction = MathFunctions.prototype.cutFunction(parsedConfig.zoomFunction,
-            parsedConfig.zoomCutStart, parsedConfig.zoomCutEnd, parsedConfig.zoomFunction.period);
-    }
-    if (parsedConfig.translateTypeCut){
-        parsedConfig.translateFunction = MathFunctions.prototype.cutFunction(parsedConfig.translateFunction,
-            parsedConfig.translateCutStart, parsedConfig.translateCutEnd, parsedConfig.translateFunction.period);
-    }
-
-    parsedConfig.functionsConfigs = [];
-
-    if (parsedConfig.translate){
-        parsedConfig.functionsConfigs.push({
-            characteristic:'changeX',
-            speed: parsedConfig.translateXSpeed,
-            multiplier: parsedConfig.translateX,
-            functionType: parsedConfig.translateFunction
-        });
-
-        parsedConfig.functionsConfigs.push({
-            characteristic:'changeY',
-            speed: parsedConfig.translateYSpeed,
-            multiplier: parsedConfig.translateY,
-            functionType: parsedConfig.translateFunction
-        });
-    }
-    if (parsedConfig.rotate){
-        parsedConfig.functionsConfigs.push({
-            characteristic:'changeRotateZ',
-            speed: parsedConfig.rotateSpeed,
-            multiplier: 1/parsedConfig.rotateAngle,
-            functionType: parsedConfig.rotateFunction
-        });
-    }
-    if (parsedConfig.skew){
-        parsedConfig.functionsConfigs.push({
-            characteristic:'changeSkewX',
-            speed: parsedConfig.skewSpeedX,
-            multiplier: parsedConfig.skewAmountX,
-            functionType: parsedConfig.skewFunction
-        });
-        parsedConfig.functionsConfigs.push({
-            characteristic:'changeSkewY',
-            speed: parsedConfig.skewSpeedY,
-            multiplier: parsedConfig.skewAmountY,
-            functionType: parsedConfig.skewFunction
-        });
-    }
-    if (parsedConfig.zoom){
-        if (parsedConfig.zoomRelativeTranslate){
-            parsedConfig.functionsConfigs.push({
-                characteristic:'changeZoom',
-                speed: parsedConfig.zoomSpeed,
-                multiplier: parsedConfig.zoomRelativeMultiplier/parsedConfig.translateY,
-                functionType: parsedConfig.zoomFunction
-            });
-        }
-        else {
-            parsedConfig.functionsConfigs.push({
-                characteristic:'changeZoom',
-                speed: parsedConfig.zoomSpeed,
-                multiplier: parsedConfig.zoomAmount,
-                functionType: parsedConfig.zoomFunction
-            });
-        }
-    }
-
-    parsedConfig.changingFunctions = parsedConfig.functionsConfigs.map(function(functionConfig) {
+    parsedConfig.allFunctions = parsedConfig.dynamicFunctions.concat(parsedConfig.legacyFunctionConfigs);
+    parsedConfig.changingFunctions = parsedConfig.allFunctions.map(function(functionConfig) {
         return {
             characteristic: functionConfig.characteristic,
             fn: ActionFunctions.prototype.timeFunction(parsedConfig.timeOffset,
-                           functionConfig.speed, functionConfig.multiplier, functionConfig.functionType)
+                           functionConfig.speed * parsedConfig.pageSpeed, functionConfig.multiplier, functionConfig.functionType)
         };
     });
 
