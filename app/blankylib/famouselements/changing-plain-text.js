@@ -24,7 +24,7 @@ function ChangingPlainText(node, config, model) {
   Element.apply(this, [node, options, this.config]);
 
   this.updaterComponent = {
-      onUpdate: function(time) {
+      onUpdate: function() {
         var timePassed = self.timeKeeper.timePassed;
         var timeOffset = parseFloat(self.config.timeOffset);
         var pageSpeed = parseFloat(model.page.speed) || 1;

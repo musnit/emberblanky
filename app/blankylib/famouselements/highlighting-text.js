@@ -1,4 +1,3 @@
-import Famous from 'npm:famous';
 import Element from './element-prototype';
 import MathFunctions from '../utils/math-functions';
 
@@ -20,7 +19,7 @@ function HighlightingText(node, config, model) {
   Element.apply(this, [node, options, this.config]);
 
   this.updaterComponent = {
-      onUpdate: function(time) {
+      onUpdate: function() {
           if (self.needsUpdating){
               self.updateContent();
           }
@@ -71,7 +70,7 @@ HighlightingText.prototype.setupGradientCSS = function() {
   return gradientCSS;
 };
 HighlightingText.prototype.contentInserted = function() {
-  self.needsUpdating = true;
+  this.needsUpdating = true;
   this.updateContent();
 };
 HighlightingText.prototype.createContent = function(activeLine) {

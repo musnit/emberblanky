@@ -48,7 +48,7 @@ ParameterTransformer.prototype.createComponent = function(node) {
     this.node = node;
     var self = this;
     var component = {
-        onUpdate: function(time) {
+        onUpdate: function() {
             var updatedTransform = self.calculateTransform();
             node.setRotation(updatedTransform.rotate[0], updatedTransform.rotate[1], updatedTransform.rotate[2]);
             node.setScale(updatedTransform.scale[0], updatedTransform.scale[1], updatedTransform.scale[2]);

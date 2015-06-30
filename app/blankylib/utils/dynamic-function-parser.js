@@ -1,5 +1,4 @@
 import MathFunctions from './math-functions';
-import ActionFunctions from './action-functions';
 
 function DynamicFunctionParser() {
 }
@@ -9,28 +8,20 @@ DynamicFunctionParser.prototype.getFunctionByType = function(functionType){
     switch (functionType) {
         case 'triangle':
             return MathFunctions.prototype.triangleFunction;
-            break;
         case 'sawtooth':
             return MathFunctions.prototype.sawToothFunction;
-            break;
         case 'cos':
             return MathFunctions.prototype.cosFunction;
-            break;
         case 'sine':
             return MathFunctions.prototype.sinFunction;
-            break;
         case 'sinsawtooth':
             return MathFunctions.prototype.sinSawtoothFunction;
-            break;
         case 'tansawtooth':
             return MathFunctions.prototype.tanSawtoothFunction;
-            break;
         case 'cubedsawtooth':
             return MathFunctions.prototype.cubedSawtoothFunction;
-            break;
         default:
             return null;
-            break;
     }
 };
 DynamicFunctionParser.prototype.parseFunctions = function(dynamicFunctions) {

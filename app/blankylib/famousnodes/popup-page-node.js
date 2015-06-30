@@ -1,6 +1,4 @@
 import Famous from 'npm:famous';
-var Node = Famous.core.Node;
-var Camera = Famous.components.Camera;
 import ParameterTransformer from '../utils/parameter-transformer';
 import ConfigParser from '../utils/config-parser';
 import DynamicFunctionParser from '../utils/dynamic-function-parser';
@@ -32,7 +30,7 @@ function _createPage() {
 
 function PopupPageNode(model, scene, topScene, injections) {
     var self = this;
-    Node.apply(this, arguments);
+    Famous.core.Node.apply(this, arguments);
     this.popups = model.popups;
     this.model = model;
     this.scene = scene;
@@ -43,7 +41,7 @@ function PopupPageNode(model, scene, topScene, injections) {
     window.orientationController.setTimeKeeper(injections.timeKeeper);
 
     _createPage.call(this);
-    this.camera = new Camera(scene);
+    this.camera = new Famous.components.Camera(scene);
 
     this.parsedConfig = ConfigParser.prototype.parseConfig(model.camera, model);
     this.transformer = new ParameterTransformer(this.parsedConfig, model, injections.timeKeeper);
@@ -75,7 +73,7 @@ function PopupPageNode(model, scene, topScene, injections) {
     this.requestUpdate(this.componentID);
 }
 
-PopupPageNode.prototype = Object.create(Node.prototype);
+PopupPageNode.prototype = Object.create(Famous.core.Node.prototype);
 PopupPageNode.prototype.constructor = PopupPageNode;
 PopupPageNode.prototype.setupInitialState = function() {
     this.camera.setDepth(parseFloat(this.model.page.perspective));
@@ -85,7 +83,7 @@ PopupPageNode.prototype.setupInitialState = function() {
         this.perspectiveZoomAmount = parseFloat(this.model.camera.perspectiveZoomAmount);
         this.perspectiveZoomCutStart = parseFloat(this.model.camera.perspectiveZoomCutStart);
         this.perspectiveZoomCutEnd = parseFloat(this.model.camera.perspectiveZoomCutEnd);
-        this.perspectiveFunction = DynamicFunctionParser.prototype.getFunctionByType(this.model.camera.perspectiveZoomType)
+        this.perspectiveFunction = DynamicFunctionParser.prototype.getFunctionByType(this.model.camera.perspectiveZoomType);
         if (this.model.camera.perspectiveZoomCut){
             this.perspectiveFunction = MathFunctions.prototype.cutFunction(this.perspectiveFunction, this.perspectiveZoomCutStart, this.perspectiveZoomCutEnd, this.perspectiveFunction.period);
         }
@@ -108,7 +106,7 @@ PopupPageNode.prototype.contentInserted = function() {
 };
 PopupPageNode.prototype.dismount = function() {
   this.cameraBoundRoot.dismount();
-  Node.prototype.dismount.apply(this, arguments);
+  Famous.core.Node.prototype.dismount.apply(this, arguments);
 };
 
 export default PopupPageNode;

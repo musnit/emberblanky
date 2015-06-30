@@ -1,5 +1,4 @@
 import MathFunctions from './math-functions';
-import ActionFunctions from './action-functions';
 
 function LegacyFunctionParser() {
 }

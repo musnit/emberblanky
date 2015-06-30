@@ -48,15 +48,15 @@ export default Ember.Component.extend({
     this.set('currentNodeName', 'camera');
   }.on('init'),
   nodesToEdit: function(){
-    var nodes = this.get('currentPage.popups')
+    var nodes = this.get('currentPage.popups');
     return nodes.concat(this.get('currentPage.camera'));
   }.property('currentPage,currentPage.popups,currentPage.popups.[]'),
   soundsToEdit: function(){
-    var sounds = this.get('currentPage.sounds')
+    var sounds = this.get('currentPage.sounds');
     return sounds;
   }.property('currentPage.sounds,currentPage.sounds.[]'),
   dynamicFunctionsToEdit: function(){
-    var dynamicFunctions = this.get('currentNode.dynamicFunctions')
+    var dynamicFunctions = this.get('currentNode.dynamicFunctions');
     return dynamicFunctions;
   }.property('currentNode.dynamicFunctions,currentNode.dynamicFunctions.[]'),
   currentPage: function(){

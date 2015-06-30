@@ -8,11 +8,11 @@ import TimeKeeper from './time-keeper';
 
 export default function BlankyApp(isApp, pagesModel, defaultPageID) {
   this.pagesModel = pagesModel;
-  this.defaultPageID = defaultPageID || 'UHGPYzstxO'
+  this.defaultPageID = defaultPageID || 'UHGPYzstxO';
   this.timeKeeper = new TimeKeeper();
   this.injections = {
     timeKeeper: this.timeKeeper
-  }
+  };
   var FamousEngine = Famous.core.FamousEngine;
 
   this.isApp = isApp;

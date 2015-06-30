@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import Fixtures from 'emberblanky/blankylib/fixtures/blanky-fixtures';
 var Page = Parse.Object.extend('Page');
 var PageCollection = Parse.Collection.extend({
   model: Page
@@ -14,7 +13,7 @@ export default Ember.Route.extend({
     return this.getPages().then(
       function(pages) {
         pages.forEach(function(page){
-          page.fullName = page.page.name + ' - ' + page.device + ' - ' + page.name + ' - ' + page.objectId
+          page.fullName = page.page.name + ' - ' + page.device + ' - ' + page.name + ' - ' + page.objectId;
         });
         return pages.sortBy('page.name');
       }, function(reason) {
@@ -24,7 +23,7 @@ export default Ember.Route.extend({
     );
   },
   getPages: function() {
-    return new Promise(function(resolve, reject){
+    return new Ember.RSVP.Promise(function(resolve, reject){
       var pageCollection = new PageCollection();
       pageCollection.fetch({
         success: function(pages) {

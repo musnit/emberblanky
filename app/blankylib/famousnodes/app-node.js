@@ -1,10 +1,9 @@
 import Famous from 'npm:famous';
-var Node = Famous.core.Node;
 import PopupPageNode from './popup-page-node';
 import PagerNode from './pager-node';
 
 function AppNode(scene, topScene) {
-    Node.apply(this, arguments);
+    Famous.core.Node.apply(this, arguments);
     scene.addChild(this);
     this.pagerNode = new PagerNode();
     this.addChild(this.pagerNode);
@@ -12,7 +11,7 @@ function AppNode(scene, topScene) {
     this.topScene = topScene;
 }
 
-AppNode.prototype = Object.create(Node.prototype);
+AppNode.prototype = Object.create(Famous.core.Node.prototype);
 AppNode.prototype.constructor = AppNode;
 AppNode.prototype.createAndShowPage = function(pageJSON, injections) {
     this.contentNode = new PopupPageNode(pageJSON, this.scene, this.topScene, injections);

@@ -10,7 +10,7 @@ OrientationController.prototype.reset = function() {
       orientationDifference: this.orientationDifference,
       timeStamp: 0
   };
-  this.orientationDifferenceAt = function(time){
+  this.orientationDifferenceAt = function(){
     return this.lastValue.orientationDifference;
   };
 };
@@ -81,7 +81,7 @@ OrientationController.prototype.startListening = function() {
               self.baseOrientation = currentOrientation;
           }
 
-          var orientationDifference = currentOrientation.map(function(value, index){
+          var orientationDifference = currentOrientation.map(function(value){
             if (value > 30){
                 return 30;
             }

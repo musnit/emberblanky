@@ -1,5 +1,4 @@
 import Famous from 'npm:famous';
-var Node = Famous.core.Node;
 import ParameterTransformer from '../utils/parameter-transformer';
 import ConfigParser from '../utils/config-parser';
 import RepeatingImage from '../famouselements/repeating-image';
@@ -46,7 +45,7 @@ function _createPopup() {
     this.domElement = new ElementType(this, this.parsedConfig, this.model);
 
     this.refresherComponent = {
-        onUpdate: function(time) {
+        onUpdate: function() {
             if (self.config.configChanged){
               self.setParsedConfig(ConfigParser.prototype.parseConfig(self.config, self.model));
               self.setupInitialState();
@@ -62,7 +61,7 @@ function _createPopup() {
 }
 
 function PopupNode(config, model, injections) {
-    Node.apply(this, arguments);
+    Famous.core.Node.apply(this, arguments);
     this.config = config;
     this.model = model;
     this.timeKeeper = injections.timeKeeper;
@@ -72,7 +71,7 @@ function PopupNode(config, model, injections) {
     };
 }
 
-PopupNode.prototype = Object.create(Node.prototype);
+PopupNode.prototype = Object.create(Famous.core.Node.prototype);
 PopupNode.prototype.constructor = PopupNode;
 PopupNode.prototype.setupInitialState = function() {
   if (this.parsedConfig.sizeX && this.parsedConfig.sizeY){

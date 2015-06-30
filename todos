@@ -6,6 +6,7 @@ no more tables
 cordova test
 camera depth vs camera perspective?
 make slider go 0% to 100% and show %!
+split camera/scene properly in node and in tool ui
 
 accom0027
 
@@ -20,3 +21,6 @@ try fit in animation/orientation?
 camera?
 relative to somevalue(maybe should generalize this more)
 interaction ^_^?
+
+think, do we ever want absolute size or just relative? consider differnt screen sizes
+same with ummm...camera position? or app position? should be relative to screen size not abs

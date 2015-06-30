@@ -1,7 +1,6 @@
 import Ember from 'ember';
 
 import BlankyApp from 'emberblanky/blankylib/utils/blanky-app';
-import Fixtures from 'emberblanky/blankylib/fixtures/blanky-fixtures';
 
 export default Ember.Component.extend({
   loopNum: 1,
@@ -18,7 +17,7 @@ export default Ember.Component.extend({
     else {
         var ids = this.get('loopingIDs');
         var num = this.get('loopNum');
-        this.get('blanky').clearPage()
+        this.get('blanky').clearPage();
         this.get('blanky').loadPage(ids[num%ids.length]);
         this.set('loopNum', num + 1);
     }

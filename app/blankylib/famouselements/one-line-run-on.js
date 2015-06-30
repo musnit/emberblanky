@@ -2,7 +2,7 @@ import Element from './element-prototype';
 import RepeatingImage from './repeating-image';
 import MathFunctions from '../utils/math-functions';
 
-function OneLineRunOn(node, config, model) {
+function OneLineRunOn(node, config) {
   var self = this;
   this.config = config;
   var options = {
@@ -25,8 +25,8 @@ function OneLineRunOn(node, config, model) {
   this.textChildNode.setMountPoint(0, 0.3);
   this.textChildNode.domElement = new Element(this.textChildNode, options, config);
   this.textChildNode.updaterComponent = {
-      onUpdate: function(time) {
-        var sizeX = self.textChildNode.getComputedValue().computedValues.size[0];
+      onUpdate: function() {
+        //var sizeX = self.textChildNode.getComputedValue().computedValues.size[0];
         var timePassed = self.timeKeeper.timePassed;
         var xPosition = -MathFunctions.prototype.sawToothFunction((timePassed+self.config.timeOffset)/self.config.singSpeed, self.config.singMotion - self.config.sizeX);
         self.textChildNode.setPosition(xPosition, 0, 2);

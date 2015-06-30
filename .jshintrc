@@ -2,7 +2,10 @@
   "predef": [
     "document",
     "window",
-    "-Promise"
+    "-Promise",
+    "createjs",
+    "Media",
+    "Parse"
   ],
   "browser": true,
   "boss": true,

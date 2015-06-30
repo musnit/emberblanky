@@ -1,17 +1,16 @@
 import Famous from 'npm:famous';
-var Node = Famous.core.Node;
 
 function PagerNode() {
-    Node.apply(this, arguments);
+    Famous.core.Node.apply(this, arguments);
 }
 
-PagerNode.prototype = Object.create(Node.prototype);
+PagerNode.prototype = Object.create(Famous.core.Node.prototype);
 PagerNode.prototype.constructor = PagerNode;
 PagerNode.prototype.showPage = function(contentNode) {
   this.addChild(contentNode);
   this.currentContent = contentNode;
 };
-PagerNode.prototype.clearPage = function(contentNode) {
+PagerNode.prototype.clearPage = function() {
   this.currentContent.dismount();
 };
 export default PagerNode;

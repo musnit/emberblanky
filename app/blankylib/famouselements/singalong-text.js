@@ -21,7 +21,7 @@ function SingalongText(node, config, model) {
   Element.apply(this, [node, options, this.config]);
 
   this.updaterComponent = {
-      onUpdate: function(time) {
+      onUpdate: function() {
           if (self.needsUpdating){
               self.updateContent();
           }
@@ -65,11 +65,11 @@ SingalongText.prototype.updateContent = function() {
 
 SingalongText.prototype.refreshGradient = function() {
   var gradientCSS = this.setupGradientCSS(0);
-  var text = self.surface._currentTarget.getElementsByClassName('highlight-text-div')[0];
+  var text = this.surface._currentTarget.getElementsByClassName('highlight-text-div')[0];
   text.setAttribute('style', gradientCSS);
 };
 SingalongText.prototype.setupGradientCSS = function(index) {
-  var text = self.surface._currentTarget.getElementsByClassName('highlight-text-div')[index];
+  var text = this.surface._currentTarget.getElementsByClassName('highlight-text-div')[index];
   var width = text.getBoundingClientRect().width;
   var redStart = width + 80;
   var redEnd = redStart + 80;
@@ -88,7 +88,7 @@ SingalongText.prototype.setupGradientCSS = function(index) {
   return gradientCSS;
 };
 SingalongText.prototype.contentInserted = function() {
-  self.needsUpdating = true;
+  this.needsUpdating = true;
   this.updateContent();
 };
 
