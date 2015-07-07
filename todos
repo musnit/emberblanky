@@ -1,22 +1,27 @@
-todos:
+josh:
+- cordova build still working? (1)
+- voice loop bug (1.5)
+- fix desk zoom (camera depth vs camera perspective?) (1.5)
+- tweak squashed desk version (0.5)
+- portrait hands version (0.5)
+- tweak hand accelo strength/motion on phone! (1)
+- get pirate narration running on phone (1-2)
+- get demo on phone of all these pages (street, 2xdesk, 2xhands, ship) (1)
+(keep in mind, how to improve my phone dev experience, maybe make app do ajax for JSON) (0-2)
 
-new stuffs!
-proper function 2.0 thing
+Total: 8-11 hours...full day or two!
+
+then:
+- (keep in mind, how to improve my phone dev experience, maybe make app do ajax for JSON)
+- proper nice page change/transition on mobile without quircks with good performance (just swipe or something probably fine)
+- 3d page flip stuff (just flat pages or maybe try straight for page mesh that is flexible)
+
+me:
 no more tables
-cordova test
-camera depth vs camera perspective?
 make slider go 0% to 100% and show %!
 split camera/scene properly in node and in tool ui
 
-accom0027
-
-bug: add many new popups all have same name - new. name is supposed to be unique identifier lol
-bug: remove popup doesnt redraw...should check all things if they redraw insta. seems like change rotate type doesnt either.
-bug: changing names of popup doesnt affect the select until refresh
-bug: selects/radios
-
 dynamic functions:
-cut!
 try fit in animation/orientation?
 camera?
 relative to somevalue(maybe should generalize this more)
@@ -24,3 +29,8 @@ interaction ^_^?
 
 think, do we ever want absolute size or just relative? consider differnt screen sizes
 same with ummm...camera position? or app position? should be relative to screen size not abs
+
+bug: add many new popups all have same name - new. name is supposed to be unique identifier lol
+bug: remove popup doesnt redraw...should check all things if they redraw insta. seems like change rotate type doesnt either.
+bug: changing names of popup doesnt affect the select until refresh
+bug: selects/radios

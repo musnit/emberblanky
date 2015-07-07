@@ -520,18 +520,18 @@
 	"buffers":
 	[
 		{
-			"file": "todos",
+			"file": "divshot.json",
 			"settings":
 			{
-				"buffer_size": 789,
+				"buffer_size": 84,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": ".editorconfig",
+			"file": "app/index.html",
 			"settings":
 			{
-				"buffer_size": 543,
+				"buffer_size": 645,
 				"line_ending": "Unix"
 			}
 		}
@@ -617,44 +617,44 @@
 	},
 	"expanded_folders":
 	[
-		"/home/aidan/code/emberblanky",
-		"/home/aidan/code/emberblanky/app",
-		"/home/aidan/code/emberblanky/app/blankylib",
-		"/home/aidan/code/emberblanky/app/blankylib/famousnodes",
-		"/home/aidan/code/emberblanky/app/blankylib/fixtures",
-		"/home/aidan/code/emberblanky/app/blankylib/utils",
-		"/home/aidan/code/emberblanky/app/components",
-		"/home/aidan/code/emberblanky/app/helpers",
-		"/home/aidan/code/emberblanky/app/styles",
-		"/home/aidan/code/emberblanky/app/styles/app",
-		"/home/aidan/code/emberblanky/app/styles/tool",
-		"/home/aidan/code/emberblanky/app/templates",
-		"/home/aidan/code/emberblanky/app/templates/components",
-		"/home/aidan/code/emberblanky/app/templates/partials",
-		"/home/aidan/code/emberblanky/blanky",
-		"/home/aidan/code/emberblanky/blanky/public",
-		"/home/aidan/code/emberblanky/blanky/src",
-		"/home/aidan/code/emberblanky/builds",
-		"/home/aidan/code/emberblanky/node_modules",
-		"/home/aidan/code/emberblanky/public"
+		"/home/aidan/code/emberblanky"
 	],
 	"file_history":
 	[
-		"/home/aidan/code/emberblanky/app/blankylib/utils/math-functions.js",
-		"/home/aidan/code/emberblanky/app/blankylib/famousnodes/popup-node.js",
-		"/home/aidan/code/emberblanky/app/blankylib/famousnodes/popup-page-node.js",
-		"/home/aidan/code/emberblanky/app/blankylib/utils/dynamic-function-parser.js",
+		"/home/aidan/code/emberblanky/app/routes/web-preview.js",
+		"/home/aidan/code/emberblanky/app/router.js",
+		"/home/aidan/code/emberblanky/.jshintrc",
+		"/home/aidan/code/emberblanky/app/routes/fixture-tool.js",
+		"/home/aidan/code/emberblanky/app/components/blanky-web.js",
 		"/home/aidan/code/emberblanky/app/components/blanky-tool.js",
+		"/home/aidan/code/emberblanky/app/routes/tool.js",
+		"/home/aidan/code/emberblanky/app/styles/tool/tool.css",
+		"/home/aidan/code/emberblanky/app/blankylib/utils/stats-timer.js",
+		"/home/aidan/code/emberblanky/app/blankylib/utils/blanky-app.js",
+		"/home/aidan/code/emberblanky/app/blankylib/utils/dynamic-function-parser.js",
+		"/home/aidan/code/emberblanky/app/blankylib/utils/legacy-function-parser.js",
+		"/home/aidan/code/emberblanky/app/blankylib/utils/orientation-controller.js",
+		"/home/aidan/code/emberblanky/app/blankylib/utils/parameter-transformer.js",
+		"/home/aidan/code/emberblanky/app/blankylib/utils/sound-controller.js",
+		"/home/aidan/code/emberblanky/app/blankylib/famousnodes/pager-node.js",
+		"/home/aidan/code/emberblanky/app/blankylib/famousnodes/popup-page-node.js",
+		"/home/aidan/code/emberblanky/app/blankylib/famousnodes/popup-node.js",
+		"/home/aidan/code/emberblanky/app/blankylib/famousnodes/app-node.js",
+		"/home/aidan/code/emberblanky/app/blankylib/famouselements/singalong-text.js",
+		"/home/aidan/code/emberblanky/app/blankylib/famouselements/one-line-run-on.js",
+		"/home/aidan/code/emberblanky/app/blankylib/famouselements/highlighting-text.js",
+		"/home/aidan/code/emberblanky/app/blankylib/famouselements/changing-plain-text.js",
+		"/home/aidan/code/emberblanky/todos",
+		"/home/aidan/code/emberblanky/.editorconfig",
+		"/home/aidan/code/emberblanky/emberblanky.sublime-project",
+		"/home/aidan/code/emberblanky/app/blankylib/utils/math-functions.js",
 		"/home/aidan/code/emberblanky/app/templates/components/blanky-tool.hbs",
 		"/home/aidan/code/emberblanky/app/templates/partials/camera-legacy-functions.hbs",
 		"/home/aidan/code/emberblanky/app/templates/partials/dynamic-functions.hbs",
 		"/home/aidan/code/emberblanky/app/templates/partials/legacy-functions.hbs",
 		"/home/aidan/code/emberblanky/app/templates/partials/node-controls.hbs",
 		"/home/aidan/code/emberblanky/app/blankylib/utils/config-parser.js",
-		"/home/aidan/code/emberblanky/app/blankylib/utils/legacy-function-parser.js",
 		"/home/aidan/code/emberblanky/app/templates/partials/legacy-attributes.hbs",
-		"/home/aidan/code/emberblanky/app/styles/tool/tool.css",
-		"/home/aidan/code/emberblanky/app/blankylib/utils/parameter-transformer.js",
 		"/home/aidan/code/emberblanky/app/templates/partials/dynamic-attributes.hbs",
 		"/home/aidan/code/emberblanky/app/templates/partials/page-controls.hbs",
 		"/home/aidan/code/emberblanky/app/components/config-input.js",
@@ -664,9 +664,6 @@
 		"/home/aidan/code/emberblanky/app/styles/tool/bootstrap.css",
 		"/home/aidan/code/emberblanky/app/styles/app/app.css",
 		"/home/aidan/code/emberblanky/node_modules/ember-idx-list/app/initializers/em-idx-list.js",
-		"/home/aidan/code/emberblanky/app/blankylib/famousnodes/pager-node.js",
-		"/home/aidan/code/emberblanky/app/blankylib/famouselements/highlighting-text.js",
-		"/home/aidan/code/emberblanky/app/blankylib/famousnodes/app-node.js",
 		"/home/aidan/code/emberblanky/AppBrocfile.js",
 		"/home/aidan/code/emberblanky/blanky/public/index.html",
 		"/home/aidan/code/emberblanky/app/blankylib/famouselements/element-prototype.js",
@@ -675,19 +672,11 @@
 		"/home/aidan/code/emberblanky/app/index.html",
 		"/home/aidan/code/emberblanky/Brocfile.js",
 		"/home/aidan/code/emberblanky/blanky/app.js",
-		"/home/aidan/code/emberblanky/app/blankylib/utils/blanky-app.js",
 		"/home/aidan/code/emberblanky/builds/mobileapp/assets/app.js",
 		"/home/aidan/code/emberblanky/dist/assets/vendor.js",
-		"/home/aidan/code/emberblanky/app/routes/web-preview.js",
-		"/home/aidan/code/emberblanky/app/routes/fixture-tool.js",
-		"/home/aidan/code/emberblanky/app/components/blanky-web.js",
-		"/home/aidan/code/emberblanky/app/routes/tool.js",
 		"/home/aidan/code/emberblanky/app/blankylib/main.js",
-		"/home/aidan/code/emberblanky/app/blankylib/famouselements/changing-plain-text.js",
-		"/home/aidan/code/emberblanky/app/blankylib/famouselements/singalong-text.js",
 		"/home/aidan/code/emberblanky/app/blankylib/famouselements/repeating-image.js",
 		"/home/aidan/code/emberblanky/app/blankylib/famouselements/plain-text.js",
-		"/home/aidan/code/emberblanky/app/blankylib/famouselements/one-line-run-on.js",
 		"/home/aidan/code/emberblanky/app/blankylib/famouselements/image-element.js",
 		"/home/aidan/code/emberblanky/app/styles/tool.css",
 		"/home/aidan/code/emberblanky/app/styles/app.css",
@@ -699,7 +688,6 @@
 		"/home/aidan/code/emberblanky/app/app.js",
 		"/home/aidan/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
 		"/home/aidan/code/emberblanky/app/templates/web-preview.hbs",
-		"/home/aidan/code/emberblanky/app/router.js",
 		"/home/aidan/code/emberblanky/app/templates/partials/popup-static-attributes.hbs",
 		"/home/aidan/code/emberblanky/app/templates/partials/camera-dynamic-attributes.hbs",
 		"/home/aidan/code/emberblanky/app/templates/partials/camera-static-attributes.hbs",
@@ -722,7 +710,6 @@
 		"/home/aidan/code/emberblanky/app/controllers/oldtool.js",
 		"/home/aidan/code/emberblanky/config/environment.js",
 		"/home/aidan/code/emberblanky/app/controllers/fixture-tool.js",
-		"/home/aidan/code/emberblanky/todos",
 		"/home/aidan/code/emberblanky/app/famousnodes/popup-page-node.js",
 		"/home/aidan/code/emberblanky/app/utils/time-keeper.js",
 		"/home/aidan/code/emberblanky/app/famousnodes/popup-node.js",
@@ -761,13 +748,7 @@
 		"/home/aidan/code/emberblanky/app/famouselements/ChangingPlainText.js",
 		"/home/aidan/code/emberblanky/lib/bookanimation/blankyfixtures.js",
 		"/home/aidan/code/emberblanky/config.xml",
-		"/home/aidan/code/emberblanky/lib/fixtures.js",
-		"/home/aidan/code/emberblanky/oldapp/src/tool/animatortool.js",
-		"/home/aidan/code/network-x/client/force2.coffee",
-		"/home/aidan/code/blanky/app/app/src/tool/animatortool.js",
-		"/home/aidan/code/blanky/app/app/src/elements/OneLineRunOn.js",
-		"/home/aidan/code/blanky/app/app/styles/app.css",
-		"/home/aidan/code/blanky/app/app/index.html"
+		"/home/aidan/code/emberblanky/lib/fixtures.js"
 	],
 	"find":
 	{
@@ -785,6 +766,24 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"Fixtures",
+			"Promi",
+			"time",
+			"index",
+			"inedx",
+			"ActionFunctions",
+			"Camera",
+			"Node",
+			"Fm",
+			"Node",
+			"self",
+			"sizeX",
+			"model",
+			"self",
+			"time",
+			"Famous",
+			"time",
+			"camer",
 			"tmp",
 			"Cut",
 			"Cur",
@@ -894,25 +893,7 @@
 			"Fixt",
 			"from",
 			"event",
-			"error",
-			"module",
-			"requi",
-			"requ",
-			"radius",
-			"collide",
-			"select",
-			"selection",
-			".on",
-			"draw",
-			"click",
-			"drag",
-			"click",
-			"R",
-			"save",
-			"highli",
-			"sing",
-			"surface",
-			"child"
+			"error"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -976,24 +957,29 @@
 			[
 				{
 					"buffer": 0,
-					"file": "todos",
+					"file": "divshot.json",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 789,
+						"buffer_size": 84,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								99,
-								99
+								84,
+								84
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
+							"editorconfig": true,
+							"ensure_newline_at_eof_on_save": true,
+							"syntax": "Packages/JavaScript/JSON.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true,
+							"trim_trailing_white_space_on_save": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -1004,26 +990,26 @@
 				},
 				{
 					"buffer": 1,
-					"file": ".editorconfig",
+					"file": "app/index.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 543,
+						"buffer_size": 645,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								543,
-								543
+								405,
+								405
 							]
 						],
 						"settings":
 						{
 							"editorconfig": true,
 							"ensure_newline_at_eof_on_save": true,
-							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"syntax": "Packages/HTML/HTML.tmLanguage",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true,
 							"trim_trailing_white_space_on_save": true
@@ -1091,6 +1077,102 @@
 		"selected_items":
 		[
 			[
+				"index.",
+				"app/index.html"
+			],
+			[
+				"web-pr",
+				"app/routes/web-preview.js"
+			],
+			[
+				"tool.js",
+				"app/routes/tool.js"
+			],
+			[
+				"route",
+				"app/router.js"
+			],
+			[
+				"tool",
+				"app/styles/tool/tool.css"
+			],
+			[
+				"fixtur",
+				"app/routes/fixture-tool.js"
+			],
+			[
+				"blanky-we",
+				"app/components/blanky-web.js"
+			],
+			[
+				"blanky-too",
+				"app/components/blanky-tool.js"
+			],
+			[
+				"stats-",
+				"app/blankylib/utils/stats-timer.js"
+			],
+			[
+				"sound-co",
+				"app/blankylib/utils/sound-controller.js"
+			],
+			[
+				"para",
+				"app/blankylib/utils/parameter-transformer.js"
+			],
+			[
+				"orien",
+				"app/blankylib/utils/orientation-controller.js"
+			],
+			[
+				"lega",
+				"app/blankylib/utils/legacy-function-parser.js"
+			],
+			[
+				"dyun",
+				"app/blankylib/utils/dynamic-function-parser.js"
+			],
+			[
+				"blank",
+				"app/blankylib/utils/blanky-app.js"
+			],
+			[
+				"popup",
+				"app/blankylib/famousnodes/popup-page-node.js"
+			],
+			[
+				"pager",
+				"app/blankylib/famousnodes/pager-node.js"
+			],
+			[
+				"pager-",
+				"app/blankylib/famousnodes/pager-node.js"
+			],
+			[
+				"app-nod",
+				"app/blankylib/famousnodes/app-node.js"
+			],
+			[
+				"singalo",
+				"app/blankylib/famouselements/singalong-text.js"
+			],
+			[
+				"one-",
+				"app/blankylib/famouselements/one-line-run-on.js"
+			],
+			[
+				"highli",
+				"app/blankylib/famouselements/highlighting-text.js"
+			],
+			[
+				"changing",
+				"app/blankylib/famouselements/changing-plain-text.js"
+			],
+			[
+				"pop",
+				"app/blankylib/famousnodes/popup-page-node.js"
+			],
+			[
 				"math-",
 				"app/blankylib/utils/math-functions.js"
 			],
@@ -1113,10 +1195,6 @@
 			[
 				"config-par",
 				"app/blankylib/utils/config-parser.js"
-			],
-			[
-				"lega",
-				"app/templates/partials/legacy-attributes.hbs"
 			],
 			[
 				"mathf",
@@ -1167,10 +1245,6 @@
 				"app/utils/action-functions.js"
 			],
 			[
-				"orien",
-				"app/utils/orientation-controller.js"
-			],
-			[
 				"blanky-ap",
 				"app/utils/blanky-app.js"
 			],
@@ -1183,16 +1257,8 @@
 				"app/famousnodes/popup-node.js"
 			],
 			[
-				"blank",
-				"app/utils/blanky-app.js"
-			],
-			[
 				"bro",
 				"Brocfile.js"
-			],
-			[
-				"changing",
-				"app/famouselements/ChangingPlainText.js"
 			],
 			[
 				"app.css",
@@ -1231,16 +1297,8 @@
 				"app/app/src/helpers/MathFunctions.js"
 			],
 			[
-				"popup",
-				"app/app/src/nodes/PopupNode.js"
-			],
-			[
 				"app",
 				"app/app/src/app.js"
-			],
-			[
-				"para",
-				"app/app/src/helpers/ParameterTransformer.js"
 			],
 			[
 				"popuppa",
@@ -1253,10 +1311,6 @@
 			[
 				"soun",
 				"app/app/src/helpers/SoundController.js"
-			],
-			[
-				"pop",
-				"app/app/src/nodes/PopupNode.js"
 			],
 			[
 				"tex",
@@ -1273,10 +1327,6 @@
 			[
 				"inde",
 				"app/app/index.html"
-			],
-			[
-				"tool",
-				"app/app/src/tool/animatortool.js"
 			],
 			[
 				"parama",
@@ -1537,70 +1587,6 @@
 			[
 				"events.h",
 				"app/templates/events.hbs"
-			],
-			[
-				"events.",
-				"app/templates/events.hbs"
-			],
-			[
-				"app.hb",
-				"app/templates/application.hbs"
-			],
-			[
-				"modelevent",
-				"app/models/event.js"
-			],
-			[
-				"controllerevent",
-				"app/controllers/event.js"
-			],
-			[
-				"event",
-				"app/models/event.js"
-			],
-			[
-				"wel",
-				"app/templates/welcome.hbs"
-			],
-			[
-				"welcome.hb",
-				"app/templates/welcome.hbs"
-			],
-			[
-				"controllereven",
-				"app/controllers/event.js"
-			],
-			[
-				"welcome",
-				"app/routes/welcome.js"
-			],
-			[
-				"event.h",
-				"app/templates/event.hbs"
-			],
-			[
-				"applica",
-				"app/templates/application.hbs"
-			],
-			[
-				"routeappl",
-				"app/routes/application.js"
-			],
-			[
-				"controllerevents",
-				"app/controllers/events.js"
-			],
-			[
-				"routewel",
-				"app/routes/welcome.js"
-			],
-			[
-				"appl",
-				"app/templates/application.hbs"
-			],
-			[
-				"templawe",
-				"app/templates/welcome.hbs"
 			]
 		],
 		"width": 0.0
