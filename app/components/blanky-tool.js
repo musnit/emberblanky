@@ -31,7 +31,7 @@ export default Ember.Component.extend({
   characteristics: [
     {'value': 'changeX' },
     {'value': 'changeY' },
-    {'value': 'changeHeight' },
+    {'value': 'changeZ' },
     {'value': 'changeRotateX' },
     {'value': 'changeRotateY' },
     {'value': 'changeRotateZ' },

@@ -1,11 +1,13 @@
 josh:
-- cordova build still working? (1)
-- voice loop bug (1.5)
 - fix desk zoom (camera depth vs camera perspective?) (1.5)
 - tweak squashed desk version (0.5)
 - portrait hands version (0.5)
-- tweak hand accelo strength/motion on phone! (1)
+
 - get pirate narration running on phone (1-2)
+- tweak hand accelo strength/motion on phone! (1)
+
+- cordova build still working? (1)
+- voice loop bug (1.5)
 - get demo on phone of all these pages (street, 2xdesk, 2xhands, ship) (1)
 (keep in mind, how to improve my phone dev experience, maybe make app do ajax for JSON) (0-2)
 
@@ -20,6 +22,7 @@ me:
 no more tables
 make slider go 0% to 100% and show %!
 split camera/scene properly in node and in tool ui
+deprecate legacy attributes
 
 dynamic functions:
 try fit in animation/orientation?
