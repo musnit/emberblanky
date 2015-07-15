@@ -14,6 +14,8 @@ ParameterTransformer.prototype.setParsedConfig = function(parsedConfig) {
 ParameterTransformer.prototype.setInitialValues = function() {
     this.initialPosition = [this.parsedConfig.x,this.parsedConfig.y,this.parsedConfig.height];
     this.initialOrigin = [this.parsedConfig.xOrigin,this.parsedConfig.yOrigin, 0];
+    this.initialMountPoint = [this.parsedConfig.xMountPoint,this.parsedConfig.yMountPoint, 0];
+    this.initialAlign = [this.parsedConfig.xAlign,this.parsedConfig.yAlign, 0];
     this.initialScale = [this.parsedConfig.scale*this.parsedConfig.xyRatio,
              this.parsedConfig.scale, 1];
     this.initialSize = [this.parsedConfig.sizeX, this.parsedConfig.sizeY];

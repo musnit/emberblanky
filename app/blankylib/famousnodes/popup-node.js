@@ -83,6 +83,8 @@ PopupNode.prototype.setupInitialState = function() {
   }
   this.setPosition(this.transformer.initialPosition[0], this.transformer.initialPosition[1], this.transformer.initialPosition[2]);
   this.setOrigin(this.transformer.initialOrigin[0], this.transformer.initialOrigin[1], this.transformer.initialOrigin[2]);
+  this.setMountPoint(this.transformer.initialMountPoint[0], this.transformer.initialMountPoint[1], this.transformer.initialMountPoint[2]);
+  this.setAlign(this.transformer.initialAlign[0], this.transformer.initialAlign[1], this.transformer.initialAlign[2]);
   this.setScale(this.transformer.initialScale[0], this.transformer.initialScale[1], this.transformer.initialScale[2]);
   this.setRotation(this.transformer.initialRotate[0], this.transformer.initialRotate[1], this.transformer.initialRotate[2]);
   this.setOpacity(this.transformer.initialOpacity);
