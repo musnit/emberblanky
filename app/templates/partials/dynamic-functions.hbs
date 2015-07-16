@@ -6,8 +6,8 @@
               optionLabelPath='content.value'
               valueBinding=dynamicFunction.characteristic
               prompt="none"}}</td>
-      <td>Speed: {{config-input node=node value=dynamicFunction.speed type='range' min='-500' max='500'}}{{config-input node=node style="width:50px" value=dynamicFunction.speed}}</td>
-      <td>Multiplier: {{config-input node=node value=dynamicFunction.multiplier type='range' min='100' max='3000'}}{{config-input node=node style="width:50px" value=dynamicFunction.multiplier}}</td>
+      <td>Speed: {{config-input node=node value=dynamicFunction.speed type='range' min='0' max='100'}}{{config-input node=node style="width:50px" value=dynamicFunction.speed}}</td>
+      <td>Multiplier: {{config-input node=node value=dynamicFunction.multiplier type='range' min='-500' max='500'}}{{config-input node=node style="width:50px" value=dynamicFunction.multiplier}}</td>
       <td>Function Type: {{view 'config-select'
               contentBinding=functionTypes
               optionValuePath='content.value'

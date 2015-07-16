@@ -27,7 +27,15 @@ id: {{page.objectId}}
 </tr>
 <tr>
     <td>
-        Page Perspective: {{input value=page.page.perspective}}
+        Page Perspective:
+    </td>
+</tr>
+<tr>
+    <td>
+        {{config-input node=page value=page.page.perspective type='range' min=-1000 max=10000}}
+    </td>
+    <td>
+        {{config-input node=page value=page.page.perspective}}
     </td>
 </tr>
 <tr>

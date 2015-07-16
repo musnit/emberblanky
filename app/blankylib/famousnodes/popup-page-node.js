@@ -52,15 +52,19 @@ function PopupPageNode(model, scene, topScene, injections) {
       onUpdate: function(time) {
         self.injections.timeKeeper.update(time);
         if (model.camera.configChanged){
-            self.parsedConfig = ConfigParser.prototype.parseConfig(model.camera, model);
-            self.setupInitialState();
-            self.transformer.setParsedConfig(self.parsedConfig);
-            model.camera.configChanged = false;
+          self.parsedConfig = ConfigParser.prototype.parseConfig(model.camera, model);
+          self.setupInitialState();
+          self.transformer.setParsedConfig(self.parsedConfig);
+          model.camera.configChanged = false;
+        }
+        if (model.configChanged){
+          self.setupInitialState();
+          model.configChanged = false;
         }
         if (model.camera.perspectiveZoom){
-            var timeOffset = parseFloat(model.camera.timeOffset);
-            var perspective = model.page.perspective - self.perspectiveFunction((self.injections.timeKeeper.timePassed+timeOffset)/self.perspectiveZoomSpeed, self.perspectiveZoomAmount);
-            self.camera.setDepth(perspective);
+          var timeOffset = parseFloat(model.camera.timeOffset);
+          var perspective = model.page.perspective - self.perspectiveFunction((self.injections.timeKeeper.timePassed+timeOffset)/self.perspectiveZoomSpeed, self.perspectiveZoomAmount);
+          self.camera.setDepth(perspective);
         }
         self.requestUpdate(this.id);
       }
