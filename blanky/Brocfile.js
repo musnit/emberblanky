@@ -5,9 +5,9 @@ var merge = require('broccoli-merge-trees');
 var browserify = require('broccoli-browserify');
 var babel = require('broccoli-babel-transpiler');
 
-var app = 'blanky';
-var lib = 'app/blankylib';
-var content = 'public';
+var app = '.';
+var lib = '../app/blankylib';
+var content = '../public';
 
 var html = copy(app, {
   srcDir: '/',
@@ -15,11 +15,15 @@ var html = copy(app, {
   destDir: '/'
 });
 
-/*var libjs = babel(lib, {});
+var famous = browserify('node_modules/famous',{
+
+});
+
+var libjs = babel(lib, {});
 libjs = browserify(libjs, {
   entries: ['./utils/blanky-app.js'],
   outputFile: 'lib.js'
-});*/
+});
 
 var appjs = babel(app, {});
 
@@ -28,4 +32,4 @@ appjs = browserify(appjs, {
   outputFile: 'app.js'
 });
 
-module.exports = merge([html, content, appjs]);;
+module.exports = merge([html, content, famous, libjs, appjs]);;
