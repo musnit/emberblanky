@@ -3,7 +3,11 @@ var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 var concat = require('broccoli-concat');
 var cleanCSS = require('broccoli-clean-css');
 
-var app = new EmberApp();
+var app = new EmberApp({
+  fingerprint: {
+    enabled: false
+  }
+});
 
 // Use `app.import` to add additional libraries to the generated
 // output files.
