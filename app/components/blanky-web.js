@@ -12,14 +12,14 @@ export default Ember.Component.extend({
   click: function(event){
     var x = event.clientX;
     if (x < this.get('width')/2){
-        window.orientationController.reset();
+      window.orientationController.reset();
     }
     else {
-        var ids = this.get('loopingIDs');
-        var num = this.get('loopNum');
-        this.get('blanky').clearPage();
-        this.get('blanky').loadPage(ids[num%ids.length]);
-        this.set('loopNum', num + 1);
+      var ids = this.get('loopingIDs');
+      var num = this.get('loopNum');
+      this.get('blanky').clearPage();
+      this.get('blanky').loadPage(ids[num%ids.length]);
+      this.set('loopNum', num + 1);
     }
   }
 });

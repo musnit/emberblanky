@@ -6,24 +6,13 @@ body {
   margin: 0px;
 }
 
-
-#device-screen{
+#device-screen,
+#top-screen {
   position: absolute;
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
-}
-
-#top-screen{
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-}
-
-#device-area {
   font-family: TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia, serif;
   font-size: initial;
   line-height: initial;
