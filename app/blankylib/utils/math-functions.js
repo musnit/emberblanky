@@ -1,3 +1,5 @@
+import Famous from 'npm:famous';
+
 function MathFunctions() {
 }
 
@@ -41,7 +43,7 @@ MathFunctions.prototype.sawToothFunction.period = 1;
 
 //amplitute: 1, about: 0.5, start: 0, period: 1
 MathFunctions.prototype.sinSawtoothFunction = function(xPosition, range) {
-    return range*(Math.sin(Math.PI*xPosition - Math.PI*Math.floor(xPosition) - Math.PI/2) + 1);
+    return range*(Math.sin(Math.PI*xPosition - Math.PI*Math.floor(xPosition) - Math.PI/2) + 1)*0.5;
 };
 MathFunctions.prototype.sinSawtoothFunction.period = 1;
 
@@ -50,6 +52,12 @@ MathFunctions.prototype.tanSawtoothFunction = function(xPosition, range) {
     return range*(Math.tan((xPosition - Math.floor(xPosition))*Math.PI/2));
 };
 MathFunctions.prototype.tanSawtoothFunction.period = 1;
+
+MathFunctions.prototype.famousInOutBackFunction = function(xPosition, range) {
+  var testCurve = Famous.transitions.Curves.inOutBack;
+  return range*testCurve(xPosition - Math.floor(xPosition), 3.7);
+};
+MathFunctions.prototype.famousInOutBackFunction.period = 1;
 
 //amplitute: 1, about: 0,5, start: 0, period: 1
 MathFunctions.prototype.cubedSawtoothFunction = function(xPosition, range) {
