@@ -6,3 +6,4 @@ cd phonegaprepo
 git add --all
 git commit -m "Commit files for phonegap build"
 git push --force
+echo All done!

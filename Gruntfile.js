@@ -7,7 +7,7 @@ module.exports = function(grunt) {
             stderr: true
         },
         app: {
-            command: 'cd blanky && ./buildapp'
+            command: './updatefixtures && cd blanky && ./buildapp'
         },
         updatefixtures: {
             command: './updatefixtures'
