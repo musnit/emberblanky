@@ -29,6 +29,7 @@
     "broccoli-env": "0.0.1",
     "broccoli-es6-concatenator": "^0.1.11",
     "broccoli-es6modules": "^1.0.0",
+    "broccoli-funnel": "^0.2.3",
     "broccoli-merge-trees": "^0.2.1",
     "broccoli-requirejs": "^1.1.0",
     "broccoli-static-compiler": "^0.2.1",

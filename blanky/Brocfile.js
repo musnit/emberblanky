@@ -1,20 +1,22 @@
-//var uglifyJavaScript = require('broccoli-uglify-js');
-var copy = require('broccoli-static-compiler');
+var uglify = require('broccoli-uglify-js');
 var merge = require('broccoli-merge-trees');
 var browserify = require('broccoli-browserify');
 var babel = require('broccoli-babel-transpiler');
 var replace = require('broccoli-string-replace');
+var funnel = require('broccoli-funnel');
 
-var app = '.';
-var content = '../public';
-
-var other = copy(app, {
-  srcDir: '/',
-  files: ['index.html', 'app.css', 'config.xml', 'famous.min.js'],
-  destDir: '/'
+var projectFiles = 'src';
+var blankyLib = funnel('../app/blankylib', {
+  destDir: 'blankylib'
 });
 
-app = replace(app, {
+var appJs = funnel('src/js');
+var other = funnel('src/other');
+var content = '../public';
+
+var allJS = merge([blankyLib, appJs]);
+
+allJS = replace(allJS, {
   files: [ '**/*.js' ],
   pattern: {
     match: /import Famous from 'npm:famous';/g,
@@ -22,11 +24,13 @@ app = replace(app, {
   }
 });
 
-var appjs = babel(app, {});
+allJS = babel(allJS, {});
 
-appjs = browserify(appjs, {
+allJS = browserify(allJS, {
   entries: ['./main.js'],
   outputFile: 'app.js'
 });
 
-module.exports = merge([other, content, appjs]);
+allJS = uglify(allJS);
+
+module.exports = merge([other, content, allJS]);

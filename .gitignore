@@ -5,6 +5,7 @@
 /tmp
 /builds
 /.divshot-cache
+/blanky/dist
 
 # dependencies
 /node_modules
