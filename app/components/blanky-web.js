@@ -5,7 +5,7 @@ import BlankyApp from 'emberblanky/blankylib/utils/blanky-app';
 export default Ember.Component.extend({
   loopNum: 1,
   loopingIDs: [
-    'lPPGzLbCio', //portrait hands
+    'Tk0HHLTeBU', //portrait hands
     'cQE07NGbHk', //desk, basic pull back runon
     '6usYlEkJfA', //desk, squashed basic pull
     'Ov30fIhSg9', //desk, basic pull back fulltext

@@ -45,7 +45,8 @@ ConfigParser.prototype.parseConfig = function(config, model) {
     parsedConfig.accel = config.accel;
     parsedConfig.accelAmount = parseFloat(config.accelAmount) || 1;
     parsedConfig.accelRotate = config.accelRotate;
-    parsedConfig.accelRotateAmount = parseFloat(config.accelRotateAmount) || 1;
+    parsedConfig.accelRotateAmountX = parseFloat(config.accelRotateAmountX) || 1;
+    parsedConfig.accelRotateAmountY = parseFloat(config.accelRotateAmountY) || 1;
     parsedConfig.animation = config.animation;
     parsedConfig.cameraBound = config.cameraBound;
     parsedConfig.dynamicFunctions = DynamicFunctionParser.prototype.parseFunctions(config.dynamicFunctions);
@@ -78,26 +79,31 @@ ConfigParser.prototype.parseConfig = function(config, model) {
     if (parsedConfig.accel){
       parsedConfig.changingFunctions.push({
           characteristic: 'changeX',
-          fn: ActionFunctions.prototype.accelerometerFunction(1, parsedConfig.accelAmount)
+          fn: ActionFunctions.prototype.accelerometerFunction(1, parsedConfig.accelAmount, 30)
       });
       parsedConfig.changingFunctions.push({
           characteristic: 'changeY',
-          fn: ActionFunctions.prototype.accelerometerFunction(0, parsedConfig.accelAmount)
+          fn: ActionFunctions.prototype.accelerometerFunction(0, parsedConfig.accelAmount, 30)
       });
     }
     if (parsedConfig.accelRotate){
-      var flipped = 1;
-      if (parsedConfig.portrait){
-        flipped = -1;
+      var xLimit, yLimit;
+      var limit = Math.abs(parsedConfig.accelRotateAmountX/parsedConfig.accelRotateAmountY);
+      if (limit > 0){
+        xLimit = 30;
+        yLimit = 1/limit * 30;
       }
-      console.log(parsedConfig.portrait);
+      else {
+        xLimit = limit  * 30;
+        yLimit = 30;
+      }
       parsedConfig.changingFunctions.push({
           characteristic: 'changeRotateX',
-          fn: ActionFunctions.prototype.accelerometerFunction(0, parsedConfig.accelRotateAmount * flipped)
+          fn: ActionFunctions.prototype.accelerometerFunction(0, parsedConfig.accelRotateAmountX, xLimit)
       });
       parsedConfig.changingFunctions.push({
           characteristic: 'changeRotateY',
-          fn: ActionFunctions.prototype.accelerometerFunction(1, parsedConfig.accelRotateAmount)
+          fn: ActionFunctions.prototype.accelerometerFunction(1, parsedConfig.accelRotateAmountY, yLimit)
       });
     }
 

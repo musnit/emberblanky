@@ -81,17 +81,8 @@ OrientationController.prototype.startListening = function() {
               self.baseOrientation = currentOrientation;
           }
 
-          var orientationDifference = currentOrientation.map(function(value){
-            if (value > 30){
-                return 30;
-            }
-            else if (value < -30){
-                return -30;
-            }
-            else{
-                return value;
-            }
-          });
+          var orientationDifference = currentOrientation;
+
           if(self.timeKeeper){
             var reading = {
               orientationDifference: orientationDifference,

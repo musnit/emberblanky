@@ -1,6 +1,7 @@
 <tr>
     <td>Accelerometer Rotation? {{view 'config-checkbox' node=node checked=node.accelRotate}}</td>
-    <td>Amount: {{config-input node=node value=node.accelRotateAmount type='range' min='100' max='3000'}}{{config-input node=node style="width:50px" value=node.accelRotateAmount}}</td>
+    <td>AmountX: {{config-input node=node value=node.accelRotateAmountX type='range' min='100' max='3000'}}{{config-input node=node style="width:50px" value=node.accelRotateAmountX}}</td>
+    <td>AmountY: {{config-input node=node value=node.accelRotateAmountY type='range' min='100' max='3000'}}{{config-input node=node style="width:50px" value=node.accelRotateAmountY}}</td>
 </tr>
 <tr>
     <td>Zoom Perspective? {{view 'config-checkbox' node=node checked=node.perspectiveZoom}}</td>

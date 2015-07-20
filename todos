@@ -2,6 +2,7 @@ josh:
 - improve portrait hands version
 - maybe improve squashed desks version
 - invert accelo axes on hand page
+- limit one hands axes on hands page
 - invert accelo directions on ship page
 - test/tweak accelo motion on each page
 - voice loop bug (1.5)

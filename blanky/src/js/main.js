@@ -3,7 +3,7 @@ import BlankyApp from './blankylib/utils/blanky-app';
 
 var pages = Fixtures.results;
 var loopingIDs = [
-  'lPPGzLbCio', //portrait hands
+  'Tk0HHLTeBU', //portrait hands
   'cQE07NGbHk', //desk, basic pull back runon
   '6usYlEkJfA', //desk, squashed basic pull
   'Ov30fIhSg9', //desk, basic pull back fulltext
@@ -23,7 +23,6 @@ var clicked = function(event) {
   }
 };
 var startApp = function() {
-  alert('goforit');
   document.getElementById('top-screen').addEventListener('click', clicked, false);
   window.blanky = new BlankyApp(true, pages, loopingIDs[0]);
 };
