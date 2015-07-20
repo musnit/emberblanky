@@ -4,9 +4,9 @@ import BlankyApp from 'emberblanky/blankylib/utils/blanky-app';
 
 export default Ember.Component.extend({
   loopNum: 1,
-  loopingIDs: ['UHGPYzstxO','gBqF9PtfBm','w9zCNnEbfC','mt1s3uZ90p','rZ4dWe9BGU'],
+  loopingIDs: ['lPPGzLbCio','gBqF9PtfBm','w9zCNnEbfC','mt1s3uZ90p','rZ4dWe9BGU'],
   start: function(){
-    this.set('blanky', new BlankyApp(false, this.get('pages')));
+    this.set('blanky', new BlankyApp(false, this.get('pages'), this.get('loopingIDs')[0]));
     this.set('width', document.getElementById('device-screen').getBoundingClientRect().width);
   }.on('didInsertElement'),
   click: function(event){

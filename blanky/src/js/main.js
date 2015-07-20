@@ -18,6 +18,6 @@ var clicked = function(event) {
 var startApp = function() {
   alert('goforit');
   document.getElementById('top-screen').addEventListener('click', clicked, false);
-  window.blanky = new BlankyApp(true, pages);
+  window.blanky = new BlankyApp(true, pages, loopingIDs[0]);
 };
 document.addEventListener('deviceready', startApp, false);
