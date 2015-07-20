@@ -11,6 +11,7 @@ ConfigParser.prototype.parseConfig = function(config, model) {
     var parsedConfig = {};
     parsedConfig.surfaceType = config.surfaceType;
     parsedConfig.name = config.name;
+    parsedConfig.portrait = model.portrait;
     parsedConfig.url = config.url;
     parsedConfig.text = (config.text || '').replace(/"/g,'&quot;');
     parsedConfig.pageSpeed = parseFloat(model.page.speed) || 1;
@@ -52,47 +53,52 @@ ConfigParser.prototype.parseConfig = function(config, model) {
 
     parsedConfig.allFunctions = parsedConfig.dynamicFunctions.concat(parsedConfig.legacyFunctionConfigs);
     parsedConfig.changingFunctions = parsedConfig.allFunctions.map(function(functionConfig) {
-        if (functionConfig.cut){
-            functionConfig.functionType = MathFunctions.prototype.cutFunction(functionConfig.functionType,
-                functionConfig.cutStart, functionConfig.cutEnd, functionConfig.functionType.period);
-        }
-        return {
-            characteristic: functionConfig.characteristic,
-            fn: ActionFunctions.prototype.timeFunction(parsedConfig.timeOffset,
-                           functionConfig.speed * parsedConfig.pageSpeed, functionConfig.multiplier, functionConfig.functionType)
-        };
+      if (functionConfig.cut){
+        functionConfig.functionType = MathFunctions.prototype.cutFunction(functionConfig.functionType,
+            functionConfig.cutStart, functionConfig.cutEnd, functionConfig.functionType.period);
+      }
+      return {
+        characteristic: functionConfig.characteristic,
+        fn: ActionFunctions.prototype.timeFunction(parsedConfig.timeOffset,
+                       functionConfig.speed * parsedConfig.pageSpeed, functionConfig.multiplier, functionConfig.functionType)
+      };
     });
 
     if (parsedConfig.animation){
-        var frameNumberFunction = ActionFunctions.prototype.timeFunction(parsedConfig.timeOffset, parsedConfig.animationSpeed,
-                   parsedConfig.numFrames, parsedConfig.animationFunction);
-        var animationChangeYFunction = function(timePassed) {
-            return -frameNumberFunction(timePassed) * model.page.y * parsedConfig.scale;
-        };
-        parsedConfig.changingFunctions.push({
-            characteristic: 'changeY',
-            fn: animationChangeYFunction
-        });
+      var frameNumberFunction = ActionFunctions.prototype.timeFunction(parsedConfig.timeOffset, parsedConfig.animationSpeed,
+                 parsedConfig.numFrames, parsedConfig.animationFunction);
+      var animationChangeYFunction = function(timePassed) {
+          return -frameNumberFunction(timePassed) * model.page.y * parsedConfig.scale;
+      };
+      parsedConfig.changingFunctions.push({
+          characteristic: 'changeY',
+          fn: animationChangeYFunction
+      });
     }
     if (parsedConfig.accel){
-        parsedConfig.changingFunctions.push({
-            characteristic: 'changeX',
-            fn: ActionFunctions.prototype.accelerometerFunction(1, parsedConfig.accelAmount)
-        });
-        parsedConfig.changingFunctions.push({
-            characteristic: 'changeY',
-            fn: ActionFunctions.prototype.accelerometerFunction(0, parsedConfig.accelAmount)
-        });
+      parsedConfig.changingFunctions.push({
+          characteristic: 'changeX',
+          fn: ActionFunctions.prototype.accelerometerFunction(1, parsedConfig.accelAmount)
+      });
+      parsedConfig.changingFunctions.push({
+          characteristic: 'changeY',
+          fn: ActionFunctions.prototype.accelerometerFunction(0, parsedConfig.accelAmount)
+      });
     }
     if (parsedConfig.accelRotate){
-        parsedConfig.changingFunctions.push({
-            characteristic: 'changeRotateX',
-            fn: ActionFunctions.prototype.accelerometerFunction(0, parsedConfig.accelRotateAmount)
-        });
-        parsedConfig.changingFunctions.push({
-            characteristic: 'changeRotateY',
-            fn: ActionFunctions.prototype.accelerometerFunction(1, parsedConfig.accelRotateAmount)
-        });
+      var flipped = 1;
+      if (parsedConfig.portrait){
+        flipped = -1;
+      }
+      console.log(parsedConfig.portrait);
+      parsedConfig.changingFunctions.push({
+          characteristic: 'changeRotateX',
+          fn: ActionFunctions.prototype.accelerometerFunction(0, parsedConfig.accelRotateAmount * flipped)
+      });
+      parsedConfig.changingFunctions.push({
+          characteristic: 'changeRotateY',
+          fn: ActionFunctions.prototype.accelerometerFunction(1, parsedConfig.accelRotateAmount)
+      });
     }
 
     return parsedConfig;

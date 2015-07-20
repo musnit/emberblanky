@@ -40,7 +40,7 @@ ActionFunctions.prototype.timeFunction = function(timeOffset, speed, multiplier,
 
 ActionFunctions.prototype.accelerometerFunction = function(dimension, multiplier) {
     var newFunction = function(timePassed) {
-        return window.orientationController.orientationDifferenceAt(timePassed)[dimension] * multiplier;
+        return (window.orientationController.orientationDifferenceAt(timePassed)[dimension]/30) * multiplier;
     };
     return newFunction;
 };

@@ -9,7 +9,7 @@ export default Ember.Component.extend({
   hiddenOverflow: false,
   editingPage: false,
   editingSection: 'static',
-  intialPageID: 'lQWU9rOHj8',
+  intialPageID: 'Tk0HHLTeBU',
   surfaceTypes: [
     {'label': 'Image' , 'value': 'image' },
     {'label': 'Plain' , 'value': 'plain' },

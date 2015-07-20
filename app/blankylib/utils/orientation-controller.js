@@ -6,12 +6,12 @@ OrientationController.prototype.reset = function() {
   this.started = false;
   this.baseOrientation = undefined;
   this.orientationDifference = [0,0,0];
-  this.lastValue = {
+  this.lastExposedValue = {
       orientationDifference: this.orientationDifference,
       timeStamp: 0
   };
   this.orientationDifferenceAt = function(){
-    return this.lastValue.orientationDifference;
+    return this.lastExposedValue.orientationDifference;
   };
 };
 OrientationController.prototype.interpolate = function(x0, y0, x1, y1) {
@@ -28,7 +28,7 @@ OrientationController.prototype.setTimeKeeper = function(timeKeeper) {
 };
 OrientationController.prototype.makeOrientationFunction = function(reading) {
     var self = this;
-    var point1 = this.lastValue;
+    var point1 = this.lastExposedValue;
     var point2 = reading;
     var functions = [undefined,undefined,undefined];
     functions = functions.map(function(value, index){
@@ -47,7 +47,7 @@ OrientationController.prototype.makeOrientationFunction = function(reading) {
         else{
             orientation = [functions[0](time), functions[1](time), functions[2](time)];
         }
-        this.lastValue = {
+        this.lastExposedValue = {
             orientationDifference: orientation,
             timeStamp: time
         };
