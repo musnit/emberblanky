@@ -1,0 +1,116 @@
+html {
+}
+
+body {
+  overflow: auto;
+  margin: 0px;
+}
+
+#device-screen,
+#top-screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  font-family: TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia, serif;
+  font-size: initial;
+  line-height: initial;
+  color: initial;
+  background-color: initial;
+}
+
+.overlay-text {
+  font-size: 18px;
+}
+
+.runon-text {
+  white-space: nowrap;
+  opacity: 100%;
+  z-index: 2 !important;
+}
+
+.runon-background {
+  overflow: hidden;
+}
+
+.hightlight-inactive{
+  background-image: -webkit-linear-gradient(left, white 0%,white 100%);
+  background-size: 100% 100%;
+}
+
+.highlight-text {
+  position: relative;
+  text-align: left;
+  width: 100%;
+}
+
+.highlight-text:after {
+    text-shadow: 0px 1px 0px #999, 0px 2px 0px #888, 0px 3px 0px #777, 0px 4px 0px #666, 0px 5px 0px #555, 0px 6px 0px #444, 0px 7px 0px #333, 0px 8px 7px #001135;
+    -webkit-text-stroke: 4px black;
+    -moz-text-stroke: 4px black;
+    color: transparent;
+}
+
+.gradient-shadow:after {
+    content: attr(title); /* Pulls the text from the 'title' attribute to make the shadow */
+}
+
+.highlight-text-div {
+  background-repeat: repeat;
+  background-position: 100% 0px;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -moz-text-fill-color: transparent;
+  -moz-background-clip: text;
+  position: absolute;
+}
+
+@-webkit-keyframes stripes {
+  100% {
+    background-position: 0% 0px;
+  }
+}
+@-moz-keyframes stripes {
+  100% {
+    background-position: 0% 0px;
+  }
+}
+
+.repeating-image{
+  background-repeat: repeat;
+  background-size: 85%;
+}
+
+.overlay-transparency{
+  background: rgba(120, 223, 235, 0.5);
+}
+
+.overlay-highlighting .overlay-text{
+  background: rgba(255, 0, 0, 0.5);
+}
+
+.hidden-overflow {
+  overflow: hidden;
+}
+
+#device-area{
+  position: absolute;
+  top: 0px;
+  left: 850px;
+  bottom: inherit;
+  right: inherit;
+  margin-left: 250px;
+  margin-top: 150px;
+  z-index: -999999;
+}
+
+.ipad {
+  width: 1024px;
+  height: 768px;
+}
+
+.iphone-5 {
+  width: 568px;
+  height: 320px;
+}
