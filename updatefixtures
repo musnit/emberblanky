@@ -1,0 +1,4 @@
+cat /dev/null > app/blankylib/fixtures/blanky-fixtures.js
+echo -n "var fixtures = " >> app/blankylib/fixtures/blanky-fixtures.js
+curl 'https://api.parse.com/1/classes/Page' -H 'Origin: http://localhost:4200' -H 'Accept-Encoding: gzip, deflate' -H 'Accept-Language: en-GB,en-US;q=0.8,en;q=0.6' -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.130 Safari/537.36' -H 'Content-Type: text/plain' -H 'Accept: */*' -H 'CSP: active' -H 'Cache-Control: max-age=0' -H 'Referer: http://localhost:4200/' -H 'Connection: keep-alive' --data-binary '{"where":{},"_method":"GET","_ApplicationId":"jMRxP9yPhtv1P9g3oPtrKYhIgwkhZAgD7XPRBwwp","_JavaScriptKey":"WIkGloO6EWK8WakPrFnLpajSvM1kAzsOgB4bPbl4","_ClientVersion":"js1.3.2","_InstallationId":"6579d2be-9d8e-c0fe-8c7c-7a60fbe6427e"}' --compressed >> app/blankylib/fixtures/blanky-fixtures.js
+echo "export default fixtures;\n" >> app/blankylib/fixtures/blanky-fixtures.js

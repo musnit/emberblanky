@@ -8,6 +8,9 @@ module.exports = function(grunt) {
         },
         app: {
             command: 'cd blanky && ./buildapp'
+        },
+        updatefixtures: {
+            command: './updatefixtures'
         }
     }
   });
@@ -16,5 +19,6 @@ module.exports = function(grunt) {
 
   // Default task(s).
   grunt.registerTask('app', ['shell:app']);
+  grunt.registerTask('updatefixtures', ['shell:updatefixtures']);
 
 };
