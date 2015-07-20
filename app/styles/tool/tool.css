@@ -5,13 +5,22 @@ section {
     width: 100%;
     height: 100%;
 }
+
 #time-chooser{
   width: 800px;
 }
+
 #editor-section{
   z-index: 999;
   max-width: 1000px;
 }
+
+.portrait {
+  transform: rotate(90deg);
+  left: 950px !important;
+  top: 150px !important;
+}
+
 .full-image {
     position: relative;
 

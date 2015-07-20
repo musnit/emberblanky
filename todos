@@ -1,25 +1,22 @@
 josh:
-- fix desk zoom (camera depth vs camera perspective?) (1.5)
-- tweak squashed desk version (0.5)
-- portrait hands version (0.5)
-
-- get pirate narration running on phone (1-2)
-- tweak hand accelo strength/motion on phone! (1)
-
-- cordova build still working? (1)
-- build to cordova one line, with updating/rewriting libs
-- cordova and emberapp in same repo if possible
+- improve portrait hands version
+- maybe improve squashed desks version
+- invert accelo axes on hand page
+- invert accelo directions on ship page
+- test/tweak accelo motion on each page
 - voice loop bug (1.5)
-- get demo on phone of all these pages (street, 2xdesk, 2xhands, ship) (1)
+
 (keep in mind, how to improve my phone dev experience, maybe make app do ajax for JSON) (0-2)
 
 Total: 8-11 hours...full day or two!
 
 then:
+- merge css for app in ember and outside ember
 - (keep in mind, how to improve my phone dev experience, maybe make app do ajax for JSON)
-- proper nice page change/transition on mobile without quircks with good performance (just swipe or something probably fine)
+- proper nice page change/transition on mobile without quirks with good performance (just swipe or something probably fine)
 - 3d page flip stuff (just flat pages or maybe try straight for page mesh that is flexible)
 - control start/stop of narration/pause
+- menu/page chooser on app
 
 me:
 no more tables
