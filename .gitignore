@@ -6,6 +6,7 @@
 /builds
 /.divshot-cache
 /blanky/dist
+/blanky/phonegaprepo
 
 # dependencies
 /node_modules

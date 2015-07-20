@@ -52,7 +52,8 @@
     "famous": "^0.5.2",
     "grunt": "^0.4.5",
     "grunt-broccoli": "^0.4.0",
-    "grunt-broccoli-build": "^0.6.0"
+    "grunt-broccoli-build": "^0.6.0",
+    "grunt-shell": "^1.1.2"
   },
   "dependencies": {}
 }

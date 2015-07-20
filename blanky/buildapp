@@ -1,0 +1,8 @@
+rm -rf dist
+rm -rf phonegaprepo/*
+broccoli build dist
+cp -r dist/* phonegaprepo
+cd phonegaprepo
+git add --all
+git commit -m "Commit files for phonegap build"
+git push --force
