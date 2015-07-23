@@ -4,9 +4,8 @@ import BlankyApp from './blankylib/utils/blanky-app';
 var pages = Fixtures.results;
 var loopingIDs = [
   'Tk0HHLTeBU', //portrait hands
-  'cQE07NGbHk', //desk, basic pull back runon
   '6usYlEkJfA', //desk, squashed basic pull
-  'Ov30fIhSg9', //desk, basic pull back fulltext
+  'cQE07NGbHk', //desk, basic pull back runon
   'w9zCNnEbfC', //pirate, runon
   'rZ4dWe9BGU', //car, static car
 ];

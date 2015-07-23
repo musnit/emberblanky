@@ -1,23 +1,20 @@
 josh:
 - improve portrait hands version
-- maybe improve squashed desks version
-- invert accelo axes on hand page
-- limit one hands axes on hands page
-- invert accelo directions on ship page
+- improve squashed desks version
 - test/tweak accelo motion on each page
+
 - voice loop bug (1.5)
-
-(keep in mind, how to improve my phone dev experience, maybe make app do ajax for JSON) (0-2)
-
-Total: 8-11 hours...full day or two!
+- letter light up
+- voice text sync
 
 then:
 - merge css for app in ember and outside ember
-- (keep in mind, how to improve my phone dev experience, maybe make app do ajax for JSON)
-- proper nice page change/transition on mobile without quirks with good performance (just swipe or something probably fine)
+- CR accelo code paths/refactor?
+- bugs with page change! - proper nice page change/transition on mobile without quirks with good performance (just swipe or something probably fine)
 - 3d page flip stuff (just flat pages or maybe try straight for page mesh that is flexible)
 - control start/stop of narration/pause
 - menu/page chooser on app
+- acceletometer work better when you move and crazy and start page wrong orientation and lock orientation
 
 me:
 no more tables
