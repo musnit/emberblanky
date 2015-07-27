@@ -38,8 +38,6 @@ function PopupPageNode(model, scene, topScene, injections) {
     this.previousTime = 0;
     this.injections = injections;
 
-    window.orientationController.setTimeKeeper(injections.timeKeeper);
-
     _createPage.call(this);
     this.camera = new Famous.components.Camera(scene);
 

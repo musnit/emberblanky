@@ -19,6 +19,7 @@ export default Ember.Component.extend({
     var x = event.clientX;
     if (x < this.get('width')/2){
       window.orientationController.reset();
+      $('#debug-overlay').text(window.orientationController.peekOrientationDifference(Date.now()));
     }
     else {
       var ids = this.get('loopingIDs');

@@ -39,8 +39,8 @@ ActionFunctions.prototype.timeFunction = function(timeOffset, speed, multiplier,
 };
 
 ActionFunctions.prototype.accelerometerFunction = function(dimension, multiplier, limit) {
-    var newFunction = function(timePassed) {
-      var orientation = window.orientationController.orientationDifferenceAt(timePassed)[dimension];
+    var newFunction = function() {
+      var orientation = window.orientationController.orientationDifferenceAt(Date.now())[dimension];
       if (orientation > limit){
           orientation = limit;
       }

@@ -3,15 +3,13 @@ function OrientationController() {
 OrientationController.prototype.constructor = OrientationController;
 
 OrientationController.prototype.reset = function() {
-  this.started = false;
   this.baseOrientation = undefined;
-  this.orientationDifference = [0,0,0];
-  this.lastExposedValue = {
-      orientationDifference: this.orientationDifference,
-      timeStamp: 0
-  };
+  self.lastExposedValue = undefined;
   this.orientationDifferenceAt = function(){
-    return this.lastExposedValue.orientationDifference;
+    return [0,0,0];
+  };
+  this.peekOrientationDifference = function(){
+    return [0,0,0];
   };
 };
 OrientationController.prototype.interpolate = function(x0, y0, x1, y1) {
@@ -22,10 +20,6 @@ OrientationController.prototype.interpolate = function(x0, y0, x1, y1) {
     result.text = 'y = ' + result.m + 'x';
     return result;
 };
-OrientationController.prototype.setTimeKeeper = function(timeKeeper) {
-  this.timeKeeper = timeKeeper;
-  this.reset();
-};
 OrientationController.prototype.makeOrientationFunction = function(reading) {
     var self = this;
     var point1 = this.lastExposedValue;
@@ -33,35 +27,48 @@ OrientationController.prototype.makeOrientationFunction = function(reading) {
     var functions = [undefined,undefined,undefined];
     functions = functions.map(function(value, index){
         var x0 = point1.timeStamp;
-        var y0 = point1.orientationDifference[index];
+        var y0 = point1.orientation[index];
         var x1 = point2.timeStamp;
-        var y1 = point2.orientationDifference[index];
+        var y1 = point2.orientation[index];
         var fx = self.interpolate(x0, y0, x1, y1);
         return fx;
     });
     var orientationDifferenceAt = function(time){
         var orientation;
         if(time >= point2.timeStamp){
-            orientation = point2.orientationDifference;
+            orientation = point2.orientation;
         }
         else{
             orientation = [functions[0](time), functions[1](time), functions[2](time)];
         }
         this.lastExposedValue = {
-            orientationDifference: orientation,
+            orientation: orientation,
             timeStamp: time
         };
-        return orientation;
+        var orientationDifference = [
+          orientation[0] - self.baseOrientation[0],
+          orientation[1] - self.baseOrientation[1],
+          orientation[2] - self.baseOrientation[2]
+        ];
+        return orientationDifference;
     };
+    var peekOrientationDifference = function(time){
+        var orientation;
+        if(time >= point2.timeStamp){
+            orientation = point2.orientation;
+        }
+        else{
+            orientation = [functions[0](time), functions[1](time), functions[2](time)];
+        }
+        var orientationDifference = [
+          orientation[0] - self.baseOrientation[0],
+          orientation[1] - self.baseOrientation[1],
+          orientation[2] - self.baseOrientation[2]
+        ];
+        return orientationDifference;
+    };
+    this.peekOrientation = peekOrientationDifference();
     return orientationDifferenceAt;
-};
-
-
-OrientationController.prototype.reInterpolate = function(x0, y0, x1, y1) {
-    var result = function(x) {
-       return y0 + (y1 - y0)*((x - x0)/(x1-x0));
-    };
-    return result;
 };
 
 OrientationController.prototype.normalize = function(orientation){
@@ -71,27 +78,27 @@ OrientationController.prototype.normalize = function(orientation){
 
 OrientationController.prototype.startListening = function() {
   var self = this;
+  this.reset();
   if (window.DeviceOrientationEvent) {
-    self.started = true;
-      window.addEventListener('deviceorientation', function(eventData) {
-          var orientation = [eventData.gamma, eventData.beta, eventData.alpha];
-          var currentOrientation = self.normalize(orientation);
+    window.addEventListener('deviceorientation', function(eventData) {
+        var orientation = [eventData.gamma, eventData.beta, eventData.alpha];
+        var currentOrientation = self.normalize(orientation);
 
-          if (!self.baseOrientation){
-              self.baseOrientation = currentOrientation;
-          }
-
-          var orientationDifference = currentOrientation;
-
-          if(self.timeKeeper){
-            var reading = {
-              orientationDifference: orientationDifference,
-              timeStamp: self.timeKeeper.timePassed + 50
-            };
-            self.orientationDifferenceAt = self.makeOrientationFunction(reading);
-          }
-
-      });
+        if (!self.baseOrientation){
+          self.baseOrientation = currentOrientation;
+          self.lastExposedValue = {
+              orientation: currentOrientation,
+              timeStamp: eventData.timeStamp
+          };
+        }
+        else{
+          var reading = {
+            orientation: currentOrientation,
+            timeStamp: eventData.timeStamp + 50
+          };
+          self.orientationDifferenceAt = self.makeOrientationFunction(reading);
+        }
+    });
   }
 };
 export default OrientationController;
