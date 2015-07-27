@@ -114,3 +114,14 @@ body {
   width: 568px;
   height: 320px;
 }
+
+
+#debug-overlay{
+  transform: rotate(90deg);
+  position: absolute;
+  top: 115px;
+  left: 350px;
+  background: #B1E8EF;
+  width: 300px;
+  height: 100px;
+}

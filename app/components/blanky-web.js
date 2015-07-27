@@ -14,12 +14,14 @@ export default Ember.Component.extend({
   start: function(){
     this.set('blanky', new BlankyApp(false, this.get('pages'), this.get('loopingIDs')[0]));
     this.set('width', document.getElementById('device-screen').getBoundingClientRect().width);
+    window.debugframe = document.getElementById('debug-overlay');
+    window.debugframe.hidden = true;
   }.on('didInsertElement'),
   click: function(event){
     var x = event.clientX;
     if (x < this.get('width')/2){
       window.orientationController.reset();
-      $('#debug-overlay').text(window.orientationController.peekOrientationDifference(Date.now()));
+      window.debugframe.hidden = false;
     }
     else {
       var ids = this.get('loopingIDs');

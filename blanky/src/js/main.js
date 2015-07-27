@@ -13,16 +13,19 @@ var loopNum = 1;
 var clicked = function(event) {
   var x = event.clientX;
   if (x < document.getElementById('device-screen').getBoundingClientRect().width/2){
-      window.orientationController.reset();
+    window.orientationController.reset();
+    window.debugframe.hidden = false;
   }
   else {
-      window.blanky.clearPage();
-      window.blanky.loadPage(loopingIDs[loopNum%loopingIDs.length]);
-      loopNum++;
+    window.blanky.clearPage();
+    window.blanky.loadPage(loopingIDs[loopNum%loopingIDs.length]);
+    loopNum++;
   }
 };
 var startApp = function() {
   document.getElementById('top-screen').addEventListener('click', clicked, false);
+  window.debugframe = document.getElementById('debug-overlay');
+  window.debugframe.hidden = true;
   window.blanky = new BlankyApp(true, pages, loopingIDs[0]);
 };
 document.addEventListener('deviceready', startApp, false);

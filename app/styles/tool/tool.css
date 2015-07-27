@@ -16,9 +16,8 @@ section {
 }
 
 .portrait {
-  transform: rotate(90deg);
-  left: 950px !important;
-  top: 150px !important;
+  transform: rotate(-90deg);
+  left: 850px !important;
 }
 
 .full-image {
@@ -54,12 +53,4 @@ section {
 
 .click-hover{
   cursor: pointer;
-}
-
-#debug-overlay{
-  background: #B1E8EF;
-  width: 500px;
-  height: 500px;
-  position: absolute;
-  left: 700px;
 }

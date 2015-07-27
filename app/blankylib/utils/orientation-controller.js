@@ -50,6 +50,9 @@ OrientationController.prototype.makeOrientationFunction = function(reading) {
         orientation[1] - self.baseOrientation[1],
         orientation[2] - self.baseOrientation[2]
       ];
+      window.debugframe.innerHTML = 'last actual reading: ' + point2.orientation.map(function(f){return Math.round(f*1000)/1000;}) + '<br/>' +
+                                    'base: ' + self.baseOrientation.map(function(f){return Math.round(f*1000)/1000;}) + '<br/>' +
+                                    'diff: ' + orientationDifference.map(function(f){return Math.round(f*1000)/1000;}) + '<br/>';
       var returnValue = orientationDifference[dimension];
       if (returnValue > limit){
           var extra = returnValue - limit;
