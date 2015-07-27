@@ -72,6 +72,8 @@ export default Ember.Component.extend({
     return node;
   }.property('currentNodeName,currentPage'),
   start: function(){
+    window.debugframe = document.getElementById('debug-overlay');
+    window.debugframe.hidden = true;
     this.set('blanky', new BlankyApp(false, this.get('pages'), this.get('intialPageID')));
   }.on('didInsertElement'),
   actions:
