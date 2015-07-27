@@ -4,7 +4,7 @@ OrientationController.prototype.constructor = OrientationController;
 
 OrientationController.prototype.reset = function() {
   this.baseOrientation = undefined;
-  self.lastExposedValue = undefined;
+  self.lastExposedReading = undefined;
   this.orientationDifferenceAt = function(){
     return 0;
   };
@@ -22,7 +22,7 @@ OrientationController.prototype.interpolate = function(x0, y0, x1, y1) {
 };
 OrientationController.prototype.makeOrientationFunction = function(reading) {
     var self = this;
-    var point1 = this.lastExposedValue;
+    var point1 = this.lastExposedReading;
     var point2 = reading;
     var functions = [undefined,undefined,undefined];
     functions = functions.map(function(value, index){
@@ -41,7 +41,7 @@ OrientationController.prototype.makeOrientationFunction = function(reading) {
       else{
         orientation = [functions[0](time), functions[1](time), functions[2](time)];
       }
-      this.lastExposedValue = {
+      this.lastExposedReading = {
           orientation: orientation,
           timeStamp: time
       };
@@ -52,9 +52,13 @@ OrientationController.prototype.makeOrientationFunction = function(reading) {
       ];
       var returnValue = orientationDifference[dimension];
       if (returnValue > limit){
+          var extra = returnValue - limit;
+          self.baseOrientation[dimension] = self.baseOrientation[dimension] + extra;
           returnValue = limit;
       }
       else if (returnValue < -limit){
+          var extra = returnValue + limit;
+          self.baseOrientation[dimension] = self.baseOrientation[dimension] + extra;
           returnValue = -limit;
       }
       return returnValue/limit;
@@ -93,7 +97,7 @@ OrientationController.prototype.startListening = function() {
 
       if (!self.baseOrientation){
         self.baseOrientation = currentOrientation;
-        self.lastExposedValue = {
+        self.lastExposedReading = {
             orientation: currentOrientation,
             timeStamp: eventData.timeStamp
         };
